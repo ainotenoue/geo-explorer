@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Geo Explorer Version 0.1</title>
+<style>
+:root{--ink:#203047;--muted:#6e7b8e;--blue:#4c8dff;--blue2:#2f6fdd;--green:#34b66e;--red:#e75b5b;--shadow:0 18px 40px rgba(40,72,110,.16)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink)}
+body{background:linear-gradient(160deg,#eaf5ff,#f8fbff);min-height:100vh}.app{max-width:980px;margin:auto;padding:20px}.screen{display:none}.screen.active{display:block}
+.hero,.game-card,.clear-card{background:#fffffff0;border-radius:28px;padding:28px;box-shadow:var(--shadow);text-align:center}
+.kicker{font-size:13px;letter-spacing:.18em;font-weight:900;color:var(--blue2)}.logo{font-size:clamp(36px,7vw,64px);font-weight:1000;margin:14px 0 8px}.subtitle{color:var(--muted);font-size:18px;font-weight:800}
+.stage-badge{display:inline-flex;margin-top:24px;padding:10px 16px;border-radius:999px;background:#eef5ff;color:var(--blue2);font-weight:900}
+button{font:inherit}.start-btn,.primary-btn{border:0;border-radius:18px;padding:16px 26px;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;font-weight:1000;font-size:20px;box-shadow:0 10px 24px rgba(47,111,221,.28);cursor:pointer}.start-btn{margin-top:28px;min-width:210px}.note{margin-top:18px;color:var(--muted);font-size:14px;font-weight:700}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.brand-small{font-weight:1000;font-size:20px}.progress-wrap{display:flex;align-items:center;gap:10px;flex:1;max-width:420px}.progress-track{height:12px;background:#dce9f8;border-radius:999px;overflow:hidden;flex:1}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#6fb2ff,#4c8dff);transition:.35s}.progress-label{font-size:13px;font-weight:900;color:var(--muted)}
+.question{font-size:clamp(22px,4vw,34px);font-weight:1000;margin:4px 0 8px}.hint{color:var(--muted);font-weight:800;margin-bottom:16px}.map-area{position:relative;background:linear-gradient(180deg,#dff4ff,#eef9ff);border-radius:24px;min-height:390px;overflow:hidden;border:3px solid #d6ebfb}.map-area:before{content:"北海道";position:absolute;left:18px;top:14px;font-weight:1000;color:#5f7793}
+#map{position:absolute;inset:20px;width:calc(100% - 40px);height:calc(100% - 40px)}.map-shape{fill:#f5ead6;stroke:#9d7e5a;stroke-width:4;filter:drop-shadow(0 10px 12px rgba(60,70,80,.14))}.map-detail{fill:none;stroke:#d0b692;stroke-width:2;stroke-dasharray:5 5;opacity:.6}
+.target{position:absolute;transform:translate(-50%,-50%);width:116px;height:80px;border:4px dashed var(--blue);border-radius:22px;display:flex;align-items:center;justify-content:center;color:var(--blue2);font-size:13px;font-weight:1000;background:#ffffffc7;box-shadow:0 8px 18px rgba(47,111,221,.14);z-index:3}.target.over{transform:translate(-50%,-50%) scale(1.08);background:#fff6cf}.target.correct{background:#e8fff0;border-color:var(--green);color:#207d4c}.target.wrong{animation:shake .35s;background:#fff0f0;border-color:var(--red);color:#a73535}.pin{font-size:24px;display:block}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}.choice{min-height:94px;border:3px solid transparent;border-radius:20px;background:linear-gradient(180deg,#fff,#edf4ff);box-shadow:0 10px 22px rgba(35,62,90,.11);padding:14px 10px;font-size:18px;font-weight:1000;display:flex;align-items:center;justify-content:center;text-align:center;cursor:grab;user-select:none;touch-action:none}.choice.dragging{opacity:.25}.choice.correct{border-color:var(--green);background:#eafff1;color:#217b4b}.choice.wrong{border-color:var(--red);background:#fff0f0;color:#a73535}.choice.locked{pointer-events:none}
+.drag-ghost{position:fixed;z-index:9999;pointer-events:none;min-width:150px;max-width:260px;padding:16px 18px;border-radius:18px;background:#fff;border:3px solid var(--blue);box-shadow:0 18px 40px rgba(35,62,90,.25);font-weight:1000;text-align:center;transform:translate(-50%,-50%) rotate(-2deg)}
+.feedback{min-height:46px;margin-top:14px;display:flex;align-items:center;justify-content:center;font-weight:1000;font-size:18px;text-align:center;color:var(--muted)}.feedback.good{color:var(--green)}.feedback.bad{color:var(--red)}.next-row{text-align:center;margin-top:8px}.next-btn{display:none}.next-btn.show{display:inline-block}
+.big-mark{position:fixed;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:10000}.big-mark.show{display:flex;animation:fadeMark .7s forwards}.big-mark span{font-size:min(46vw,300px);font-weight:1000;color:var(--green);filter:drop-shadow(0 16px 26px rgba(52,182,110,.26))}
+.clear-icon{font-size:84px}.clear-title{font-size:clamp(34px,7vw,62px);font-weight:1000;margin:8px 0}.clear-sub{color:var(--muted);font-size:18px;font-weight:800}.stars{font-size:46px;margin:18px}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.summary-item{background:#f2f7fd;border-radius:18px;padding:14px;font-weight:900}.summary-item strong{display:block;font-size:26px;color:var(--blue2)}.secondary-btn{border:2px solid #cfdced;border-radius:16px;padding:14px 20px;background:#fff;color:var(--ink);font-weight:1000;cursor:pointer}
+@keyframes shake{0%,100%{transform:translate(-50%,-50%)}25%{transform:translate(-50%,-50%) translateX(-7px)}50%{transform:translate(-50%,-50%) translateX(7px)}}@keyframes fadeMark{0%{opacity:0;transform:scale(.55)}35%{opacity:1;transform:scale(1.08)}100%{opacity:0}}
+@media(max-width:700px){.app{padding:12px}.hero,.game-card,.clear-card{border-radius:22px;padding:18px}.topbar{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%;max-width:none}.map-area{min-height:350px}.choices{gap:8px}.choice{font-size:15px;min-height:86px;padding:10px 7px}.target{width:102px;height:72px}}
+@media(max-width:430px){.map-area{min-height:320px}.choices{grid-template-columns:1fr}.choice{min-height:64px}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="home" class="screen active"><div class="hero">
+<div class="kicker">PROJECT AIノオト #002</div><div class="logo">Geo Explorer</div><div class="subtitle">日本発見！ 地図をめぐる冒険へ</div>
+<div class="stage-badge">🧭 Stage 1　北海道・山地編</div><br><button id="start" class="start-btn">冒険をはじめる</button><div class="note">カードを地図の正しい場所へ運ぼう</div>
+</div></section>
+
+<section id="game" class="screen">
+<div class="topbar"><div class="brand-small">Geo Explorer</div><div class="progress-wrap"><div class="progress-track"><div id="bar" class="progress-bar"></div></div><div id="plabel" class="progress-label"></div></div></div>
+<div class="game-card">
+<div id="question" class="question"></div><div class="hint">正しいカードを、地図の青い場所へドラッグしよう</div>
+<div class="map-area">
+<svg id="map" viewBox="0 0 760 430" aria-label="北海道の簡略地図">
+<path class="map-shape" d="M128,205 C145,170 175,142 214,127 C248,114 279,92 302,64 C320,42 348,50 365,75 C382,102 406,117 439,115 C477,113 506,83 533,48 C548,29 567,28 581,44 C596,61 597,84 593,106 C587,139 604,163 639,177 C674,191 695,217 699,245 C703,272 685,286 657,281 C625,276 598,284 574,307 C548,331 527,356 496,362 C464,368 435,350 409,343 C377,334 353,344 323,365 C290,388 252,391 221,375 C193,360 180,333 175,304 C170,276 155,253 131,240 C111,229 112,222 128,205 Z"/>
+<path class="map-detail" d="M240,132 C280,168 295,204 301,255"/><path class="map-detail" d="M430,130 C406,174 402,216 410,258"/><path class="map-detail" d="M560,120 C538,156 531,191 536,223"/><path class="map-detail" d="M280,320 C335,305 394,305 450,324"/>
+</svg>
+<div id="target" class="target"><div><span class="pin">📍</span>ここへ運ぼう</div></div>
+</div>
+<div id="choices" class="choices"></div><div id="feedback" class="feedback">カードを長押しして動かしてみよう</div>
+<div class="next-row"><button id="next" class="primary-btn next-btn">次の場所へ</button></div>
+</div></section>
+
+<section id="clear" class="screen"><div class="clear-card"><div class="clear-icon">🗺️✨</div><div class="clear-title">北海道クリア！</div><div class="clear-sub">最初の冒険、大成功。</div><div class="stars">★★★</div>
+<div class="summary-grid"><div class="summary-item"><strong id="correctCount">3</strong>正解</div><div class="summary-item"><strong id="missCount">0</strong>ミス</div><div class="summary-item"><strong>1</strong>地域制覇</div></div>
+<button id="retry" class="primary-btn">もう一度あそぶ</button> <button id="backHome" class="secondary-btn">ホームへ戻る</button>
+</div></section>
+</div>
+<div id="bigMark" class="big-mark"><span>○</span></div>
+
+<script>
+const QUESTIONS=[
+{title:"日高山脈を見つけよう！",answer:"日高山脈",choices:["日高山脈","石狩山地","筑紫山地"],target:{x:55,y:61},success:"正解！ 北海道の中央南部にのびる山脈だね。"},
+{title:"石狩山地を見つけよう！",answer:"石狩山地",choices:["出羽山地","石狩山地","阿武隈高地"],target:{x:45,y:43},success:"正解！ 北海道の中央部に広がる山地だよ。"},
+{title:"北見山地を見つけよう！",answer:"北見山地",choices:["北見山地","紀伊山地","筑紫山地"],target:{x:62,y:34},success:"正解！ 北海道の北東側にある山地だね。"}
+];
+const $=id=>document.getElementById(id),screens={home:$("home"),game:$("game"),clear:$("clear")};
+let index=0,misses=0,solved=false,drag=null;
+function show(name){Object.values(screens).forEach(s=>s.classList.remove("active"));screens[name].classList.add("active");scrollTo({top:0,behavior:"smooth"})}
+function startGame(){index=0;misses=0;show("game");render()}
+function render(){solved=false;const q=QUESTIONS[index];$("question").textContent=q.title;$("feedback").textContent="カードを長押しして動かしてみよう";$("feedback").className="feedback";$("next").classList.remove("show");$("target").className="target";$("target").innerHTML='<div><span class="pin">📍</span>ここへ運ぼう</div>';$("target").style.left=q.target.x+"%";$("target").style.top=q.target.y+"%";$("plabel").textContent=`${index+1} / ${QUESTIONS.length}`;$("bar").style.width=`${index/QUESTIONS.length*100}%`;$("choices").innerHTML="";
+q.choices.forEach(t=>{const c=document.createElement("div");c.className="choice";c.textContent=t;c.dataset.value=t;c.tabIndex=0;c.addEventListener("pointerdown",begin);c.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&!solved){e.preventDefault();check(c)}});$("choices").appendChild(c)})}
+function begin(e){if(solved)return;const card=e.currentTarget,ghost=document.createElement("div");ghost.className="drag-ghost";ghost.textContent=card.dataset.value;document.body.appendChild(ghost);drag={card,ghost};card.classList.add("dragging");move(e.clientX,e.clientY);card.setPointerCapture?.(e.pointerId);card.addEventListener("pointermove",moving);card.addEventListener("pointerup",end,{once:true});card.addEventListener("pointercancel",end,{once:true})}
+function moving(e){if(!drag)return;move(e.clientX,e.clientY);$("target").classList.toggle("over",inside(e.clientX,e.clientY,$("target")))}
+function end(e){if(!drag)return;const {card,ghost}=drag,dropped=inside(e.clientX,e.clientY,$("target"));ghost.remove();card.classList.remove("dragging");card.removeEventListener("pointermove",moving);$("target").classList.remove("over");drag=null;if(dropped)check(card)}
+function move(x,y){drag.ghost.style.left=x+"px";drag.ghost.style.top=y+"px"}
+function inside(x,y,el){const r=el.getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom}
+function check(card){if(solved)return;const q=QUESTIONS[index],all=[...document.querySelectorAll(".choice")];if(card.dataset.value===q.answer){solved=true;card.classList.add("correct");all.forEach(c=>c.classList.add("locked"));$("target").classList.add("correct");$("target").innerHTML=`<div><span class="pin">✅</span>${q.answer}</div>`;$("feedback").textContent=q.success;$("feedback").className="feedback good";$("bigMark").classList.remove("show");void $("bigMark").offsetWidth;$("bigMark").classList.add("show");$("bar").style.width=`${(index+1)/QUESTIONS.length*100}%`;$("next").textContent=index===QUESTIONS.length-1?"北海道をクリア！":"次の場所へ";$("next").classList.add("show")}else{misses++;card.classList.add("wrong");$("target").classList.add("wrong");$("feedback").textContent="おしい！ 地図をよく見て、もう一度ためそう。";$("feedback").className="feedback bad";setTimeout(()=>{card.classList.remove("wrong");$("target").classList.remove("wrong")},550)}}
+$("start").onclick=startGame;$("retry").onclick=startGame;$("backHome").onclick=()=>show("home");$("next").onclick=()=>{if(index<QUESTIONS.length-1){index++;render()}else{$("correctCount").textContent=QUESTIONS.length;$("missCount").textContent=misses;show("clear")}};
+</script>
+</body>
+</html>
