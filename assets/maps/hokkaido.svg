@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 570" role="img" aria-labelledby="title desc">
+  <title id="title">北海道 教材型マップ</title>
+  <desc id="desc">主要な半島や岬を残し、海岸線を整理したGeo Explorer用の北海道地図</desc>
+  <style>
+    .land {
+      fill: var(--map-fill, #f1e6ce);
+      stroke: var(--map-stroke, #9d7a50);
+      stroke-width: var(--map-stroke-width, 5);
+      stroke-linejoin: round;
+    }
+  </style>
+  <path class="land" fill-rule="evenodd" d="M 707.82 239.50 L 689.55 278.21 L 698.00 302.52 L 672.74 336.71 L 610.76 359.53 L 525.49 362.50 L 456.38 417.87 L 423.79 399.23 L 421.77 362.98 L 337.41 373.68 L 280.00 396.52 L 223.22 397.45 L 272.40 433.14 L 240.03 515.59 L 208.67 536.00 L 185.20 517.15 L 197.10 473.43 L 166.39 459.32 L 146.69 426.06 L 192.55 411.11 L 217.99 380.62 L 266.78 355.55 L 302.36 322.38 L 398.92 307.92 L 450.78 317.84 L 501.54 231.60 L 533.88 254.76 L 632.63 187.41 L 663.11 128.09 L 654.80 73.55 L 675.29 42.90 L 726.86 34.00 L 753.31 101.28 L 751.87 140.60 L 707.00 189.44 L 707.82 239.50 Z"/>
+</svg>
