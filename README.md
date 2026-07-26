@@ -4,6 +4,7 @@
 地図をドラッグして学ぶ中学受験向けゲーム
 
 ---
+https://ainotenoue.github.io/geo-explorer/
 
 ## Version History
 
