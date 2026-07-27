@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Geo Explorer v0.3</title>
+<title>Geo Explorer v0.4</title>
 <style>
 :root{--bg:#eaf6f7;--ink:#18364b;--muted:#6b8190;--panel:#fffdf8;--line:#d7e4e6;--shadow:0 10px 24px rgba(28,66,86,.13)}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
@@ -15,11 +15,11 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}.version{font-size:12px;color:var(-
 .game{min-height:0;display:grid;grid-template-columns:minmax(150px,22vw) minmax(0,1fr) minmax(150px,22vw);gap:10px}
 .card-column{min-height:0;display:flex;flex-direction:column;gap:9px;justify-content:center}
 .map-panel{position:relative;min-width:0;min-height:0;background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.map-stage{position:absolute;inset:10px;display:flex;align-items:center;justify-content:center}.map-wrap{position:relative;width:min(100%,860px);height:100%;max-height:620px}
+.map-stage{position:absolute;inset:-8%;display:flex;align-items:center;justify-content:center}.map-wrap{position:relative;width:min(100%,860px);height:100%;max-height:620px}
 .map{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
 .drop-zone{position:absolute;transform:translate(-50%,-50%);width:clamp(62px,8vw,104px);min-height:50px;border:2px dashed rgba(58,102,119,.4);border-radius:16px;background:#ffffffad;display:flex;align-items:center;justify-content:center;padding:5px;transition:.18s}
 .drop-zone.hot{transform:translate(-50%,-50%) scale(1.08);border-color:#47a778;background:#dcf8e7ed}.drop-zone.close{animation:wobble .36s;border-color:#e5b44f;background:#fff8db}
-.drop-zone.filled{border-style:solid;border-color:#3a66772e;background:#ffffffd1}
+.drop-zone.filled{border-color:transparent;background:transparent;box-shadow:none}
 .placed{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;font-weight:900;font-size:clamp(10px,1.25vw,15px);line-height:1.12;white-space:pre-line}
 .placed img{width:clamp(28px,3.4vw,42px);height:clamp(22px,2.8vw,34px);object-fit:contain}
 .card{display:flex;align-items:center;gap:9px;min-height:64px;border:2px solid transparent;border-radius:18px;background:#fff;padding:9px 10px;box-shadow:0 7px 16px rgba(43,79,95,.11);cursor:grab;touch-action:none;transition:.15s}
@@ -27,7 +27,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}.version{font-size:12px;color:var(-
 .card-icon{flex:0 0 auto;width:42px;height:36px;display:grid;place-items:center;border-radius:12px}.card-icon img{width:34px;height:28px;object-fit:contain}
 .card-name{font-weight:900;font-size:clamp(13px,1.6vw,18px);line-height:1.15;white-space:pre-line}
 .category-mountain .card-icon{color:#a87916;background:#fff3cf}.category-plain .card-icon{color:#328554;background:#e5f7e9}.category-river .card-icon,.category-lake .card-icon{color:#247ba6;background:#e1f4fb}
-.drag-ghost{position:fixed;z-index:1000;pointer-events:none;width:190px;max-width:28vw;transform:translate(-50%,-50%) rotate(-2deg) scale(1.04);box-shadow:0 18px 38px rgba(22,57,76,.24)}
+.drag-ghost{position:fixed;z-index:1000;pointer-events:none;width:170px;max-width:26vw;transform:translate3d(-50%,-50%,0) scale(1.01);box-shadow:0 12px 24px rgba(22,57,76,.18);will-change:left,top,transform}
 footer{min-height:46px;display:flex;align-items:center;justify-content:center}.message{font-weight:800;color:#496b7a}.next-button{display:none;border:0;border-radius:999px;background:#267b63;color:#fff;font-weight:900;padding:11px 28px}
 .next-button.show{display:block}.complete-banner{position:absolute;left:50%;top:12px;transform:translateX(-50%) translateY(-12px);opacity:0;background:#fffffff0;border:1px solid #d9e9dd;border-radius:999px;padding:8px 18px;font-weight:900;box-shadow:var(--shadow);transition:.35s;z-index:4}
 .complete-banner.show{opacity:1;transform:translateX(-50%)}
@@ -36,32 +36,48 @@ footer{min-height:46px;display:flex;align-items:center;justify-content:center}.m
 </head>
 <body>
 <div class="app">
-<header><div class="title-wrap"><h1>Geo Explorer</h1><span class="version">v0.3</span></div><div class="progress" id="progress">0 / 6</div></header>
+<header><div class="title-wrap"><h1>Geo Explorer</h1><span class="version">v0.4</span></div><div class="progress" id="progress">0 / 6</div></header>
 <main class="game">
 <section class="card-column" id="leftCards"></section>
-<section class="map-panel"><div class="complete-banner" id="completeBanner">北海道が完成！</div><div class="map-stage"><div class="map-wrap" id="mapWrap"><img class="map" src="assets/maps/hokkaido.svg" alt="北海道の地図"></div></div></section>
+<section class="map-panel"><div class="complete-banner" id="completeBanner">北海道が完成！</div><div class="map-stage"><div class="map-wrap" id="mapWrap"><img class="map" src="assets/maps/hokkaido.svg?v=4" alt="北海道の地図"></div></div></section>
 <section class="card-column" id="rightCards"></section>
 </main>
 <footer><div class="message" id="message">カードを地図の場所へドラッグしよう</div><button class="next-button" id="nextButton">次へ</button></footer>
 </div>
 <script>
 const ITEMS=[
-{id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg",x:42,y:54,side:"left"},
-{id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg",x:61,y:70,side:"right"},
-{id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg",x:62,y:39,side:"right"},
-{id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg",x:51,y:66,side:"left"},
-{id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg",x:45,y:46,side:"left"},
-{id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg",x:72,y:49,side:"right"}];
-const state={placed:new Set(),dragging:null,audio:null};
+{id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=4",x:42,y:54,side:"left"},
+{id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=4",x:61,y:70,side:"right"},
+{id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=4",x:62,y:39,side:"right"},
+{id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=4",x:51,y:66,side:"left"},
+{id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=4",x:45,y:46,side:"left"},
+{id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=4",x:72,y:49,side:"right"}];
+const state={placed:new Set(),dragging:null,audio:null,raf:0,pointerX:0,pointerY:0};
 const $=id=>document.getElementById(id),mapWrap=$("mapWrap"),leftCards=$("leftCards"),rightCards=$("rightCards"),progress=$("progress"),message=$("message"),nextButton=$("nextButton"),completeBanner=$("completeBanner");
 function initAudio(){if(!state.audio)state.audio=new(window.AudioContext||window.webkitAudioContext)();if(state.audio.state==="suspended")state.audio.resume()}
 function tone(f,d=.1,type="sine",g=.035,delay=0){initAudio();const t=state.audio.currentTime+delay,o=state.audio.createOscillator(),a=state.audio.createGain();o.type=type;o.frequency.setValueAtTime(f,t);a.gain.setValueAtTime(g,t);a.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(a);a.connect(state.audio.destination);o.start(t);o.stop(t+d)}
 const pickup=()=>{tone(430,.07,"sine",.025);tone(610,.08,"sine",.022,.045)},correct=()=>{tone(590,.10);tone(790,.13,"sine",.035,.08)},closeSound=()=>{tone(660,.07,"triangle",.025);tone(760,.08,"triangle",.022,.065)},clearSound=()=>[523,659,784,1047].forEach((f,i)=>tone(f,.18,"sine",.04,i*.09));
 function build(){ITEMS.forEach(item=>{const z=document.createElement("div");z.className="drop-zone";z.dataset.id=item.id;z.style.left=item.x+"%";z.style.top=item.y+"%";mapWrap.appendChild(z);const c=document.createElement("div");c.className=`card category-${item.category}`;c.dataset.id=item.id;c.innerHTML=`<span class="card-icon"><img src="${item.icon}" alt=""></span><span class="card-name">${item.name}</span>`;c.addEventListener("pointerdown",startDrag);(item.side==="left"?leftCards:rightCards).appendChild(c)});update()}
-function startDrag(e){const card=e.currentTarget,item=ITEMS.find(v=>v.id===card.dataset.id);if(!item||state.placed.has(item.id))return;e.preventDefault();pickup();const ghost=card.cloneNode(true);ghost.classList.add("drag-ghost");ghost.style.left=e.clientX+"px";ghost.style.top=e.clientY+"px";document.body.appendChild(ghost);card.classList.add("lifted");state.dragging={item,card,ghost};window.addEventListener("pointermove",move,{passive:false});window.addEventListener("pointerup",end,{once:true});window.addEventListener("pointercancel",end,{once:true})}
-function move(e){if(!state.dragging)return;e.preventDefault();state.dragging.ghost.style.left=e.clientX+"px";state.dragging.ghost.style.top=e.clientY+"px";document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));const h=zoneAt(e.clientX,e.clientY);if(h)h.classList.add("hot")}
+function startDrag(e){const card=e.currentTarget,item=ITEMS.find(v=>v.id===card.dataset.id);if(!item||state.placed.has(item.id))return;e.preventDefault();pickup();const ghost=card.cloneNode(true);ghost.classList.add("drag-ghost");ghost.style.left=e.clientX+"px";ghost.style.top=e.clientY+"px";document.body.appendChild(ghost);card.classList.add("lifted");state.pointerX=e.clientX;state.pointerY=e.clientY;state.dragging={item,card,ghost};window.addEventListener("pointermove",move,{passive:false});window.addEventListener("pointerup",end,{once:true});window.addEventListener("pointercancel",end,{once:true})}
+function move(e){
+  if(!state.dragging)return;
+  e.preventDefault();
+  state.pointerX=e.clientX;
+  state.pointerY=e.clientY;
+  if(state.raf)return;
+  state.raf=requestAnimationFrame(()=>{
+    state.raf=0;
+    if(!state.dragging)return;
+    const{x:unused}=state.dragging;
+    state.dragging.ghost.style.left=state.pointerX+"px";
+    state.dragging.ghost.style.top=state.pointerY+"px";
+    document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));
+    const h=zoneAt(state.pointerX,state.pointerY);
+    if(h)h.classList.add("hot");
+  });
+}
 function zoneAt(x,y){return[...document.querySelectorAll(".drop-zone:not(.filled)")].find(z=>{const r=z.getBoundingClientRect(),m=18;return x>=r.left-m&&x<=r.right+m&&y>=r.top-m&&y<=r.bottom+m})}
-function end(e){if(!state.dragging)return;const{item,card,ghost}=state.dragging,hit=zoneAt(e.clientX,e.clientY);document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));ghost.remove();card.classList.remove("lifted");if(hit&&hit.dataset.id===item.id)place(item,card,hit);else if(hit){hit.classList.add("close");setTimeout(()=>hit.classList.remove("close"),420);message.textContent="おしい！ 地図をよく見て、もう一度";closeSound()}else message.textContent="カードを地図の枠へ運ぼう";state.dragging=null;window.removeEventListener("pointermove",move)}
+function end(e){if(!state.dragging)return;const{item,card,ghost}=state.dragging,hit=zoneAt(e.clientX,e.clientY);document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));ghost.remove();card.classList.remove("lifted");if(hit&&hit.dataset.id===item.id)place(item,card,hit);else if(hit){hit.classList.add("close");setTimeout(()=>hit.classList.remove("close"),420);message.textContent="おしい！ 地図をよく見て、もう一度";closeSound()}else message.textContent="カードを地図の枠へ運ぼう";state.dragging=null;if(state.raf){cancelAnimationFrame(state.raf);state.raf=0}window.removeEventListener("pointermove",move)}
 function place(item,card,zone){state.placed.add(item.id);zone.classList.add("filled");zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;card.classList.add("done");correct();message.textContent="ぴったり！";update();if(state.placed.size===ITEMS.length)complete()}
 function update(){progress.textContent=`${state.placed.size} / ${ITEMS.length}`}
 function complete(){clearSound();completeBanner.classList.add("show");message.style.display="none";nextButton.classList.add("show")}
