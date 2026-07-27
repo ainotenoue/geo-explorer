@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Geo Explorer v0.5</title>
+<title>Geo Explorer v0.6</title>
 <style>
 :root{--bg:#eaf6f7;--ink:#18364b;--muted:#6b8190;--panel:#fffdf8;--line:#d7e4e6;--shadow:0 10px 24px rgba(28,66,86,.13)}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
@@ -15,7 +15,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}.version{font-size:12px;color:var(-
 .game{min-height:0;display:grid;grid-template-columns:minmax(150px,22vw) minmax(0,1fr) minmax(150px,22vw);gap:10px}
 .card-column{min-height:0;display:flex;flex-direction:column;gap:9px;justify-content:center}
 .map-panel{position:relative;min-width:0;min-height:0;background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.map-stage{position:absolute;inset:-14%;display:flex;align-items:center;justify-content:center}.map-wrap{position:relative;width:min(100%,860px);height:100%;max-height:620px}
+.map-stage{position:absolute;inset:-19%;display:flex;align-items:center;justify-content:center}.map-wrap{position:relative;width:min(100%,860px);height:100%;max-height:620px}
 .map{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
 .drop-zone{position:absolute;transform:translate(-50%,-50%);width:clamp(62px,8vw,104px);min-height:50px;border:2px dashed rgba(58,102,119,.4);border-radius:16px;background:#ffffffad;display:flex;align-items:center;justify-content:center;padding:5px;transition:.18s}
 .drop-zone.hot{transform:translate(-50%,-50%) scale(1.08);border-color:#47a778;background:#dcf8e7ed}.drop-zone.close{animation:wobble .36s;border-color:#e5b44f;background:#fff8db}
@@ -36,22 +36,22 @@ footer{min-height:46px;display:flex;align-items:center;justify-content:center}.m
 </head>
 <body>
 <div class="app">
-<header><div class="title-wrap"><h1>Geo Explorer</h1><span class="version">v0.5</span></div><div class="progress" id="progress">0 / 6</div></header>
+<header><div class="title-wrap"><h1>Geo Explorer</h1><span class="version">v0.6</span></div><div class="progress" id="progress">0 / 6</div></header>
 <main class="game">
 <section class="card-column" id="leftCards"></section>
-<section class="map-panel"><div class="complete-banner" id="completeBanner">北海道が完成！</div><div class="map-stage"><div class="map-wrap" id="mapWrap"><img class="map" src="assets/maps/hokkaido.svg?v=5" alt="北海道の地図"></div></div></section>
+<section class="map-panel"><div class="complete-banner" id="completeBanner">完成！</div><div class="map-stage"><div class="map-wrap" id="mapWrap"><img class="map" src="assets/maps/hokkaido.svg?v=6" alt="北海道の地図"></div></div></section>
 <section class="card-column" id="rightCards"></section>
 </main>
 <footer><div class="message" id="message">カードを地図の場所へドラッグしよう</div><button class="next-button" id="nextButton">次へ</button></footer>
 </div>
 <script>
 const ITEMS=[
-{id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=5",x:38,y:54,side:"left"},
-{id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=5",x:67,y:74,side:"right"},
-{id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=5",x:66,y:37,side:"right"},
-{id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=5",x:54,y:69,side:"left"},
-{id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=5",x:42,y:43,side:"left"},
-{id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=5",x:77,y:49,side:"right"}];
+{id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=6",x:38,y:54,side:"left"},
+{id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=6",x:67,y:74,side:"right"},
+{id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=6",x:66,y:37,side:"right"},
+{id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=6",x:54,y:69,side:"left"},
+{id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=6",x:42,y:43,side:"left"},
+{id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=6",x:77,y:49,side:"right"}];
 const state={placed:new Set(),dragging:null,audio:null,raf:0,pointerX:0,pointerY:0};
 const $=id=>document.getElementById(id),mapWrap=$("mapWrap"),leftCards=$("leftCards"),rightCards=$("rightCards"),progress=$("progress"),message=$("message"),nextButton=$("nextButton"),completeBanner=$("completeBanner");
 function initAudio(){if(!state.audio)state.audio=new(window.AudioContext||window.webkitAudioContext)();if(state.audio.state==="suspended")state.audio.resume()}
