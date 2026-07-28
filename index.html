@@ -3,564 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Geo Explorer v0.7.1</title>
+<title>Geo Explorer v0.8</title>
 <style>
-:root{
-  --ink:#18364b;
-  --muted:#6b8190;
-  --panel:#fffdf8;
-  --line:#d7e4e6;
-  --shadow:0 10px 24px rgba(28,66,86,.13);
-}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
-  color:var(--ink);
-  background:linear-gradient(180deg,#e7f5f7,#f6fbf8);
-  touch-action:none;
-  -webkit-user-select:none;
-  user-select:none;
-}
-button{font:inherit}
-.app{
-  height:100dvh;
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  gap:8px;
-  padding:10px 12px;
-}
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:44px;
-}
-.title-wrap{display:flex;align-items:baseline;gap:10px}
-h1{font-size:clamp(20px,2.5vw,30px);margin:0}
-.version{font-size:12px;color:var(--muted);font-weight:700}
-.status-wrap{display:flex;align-items:center;gap:8px}
-.region-badge,.progress{
-  text-align:center;
-  background:#ffffffc7;
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:7px 12px;
-  font-weight:800;
-}
-.region-badge{min-width:80px;color:#476575}
-.progress{min-width:92px}
-.game{
-  min-height:0;
-  display:grid;
-  grid-template-columns:minmax(150px,22vw) minmax(0,1fr) minmax(150px,22vw);
-  gap:10px;
-}
-.card-column{
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  justify-content:center;
-}
-.map-panel{
-  position:relative;
-  min-width:0;
-  min-height:0;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-.map-stage{
-  position:absolute;
-  inset:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:opacity .26s ease,transform .26s ease;
-}
-.map-stage.switching{
-  opacity:0;
-  transform:scale(.97);
-}
-.map-wrap{
-  position:relative;
-  flex:0 0 auto;
-}
-.map{
-  width:100%;
-  height:100%;
-  display:block;
-  pointer-events:none;
-}
-.drop-zone{
-  position:absolute;
-  transform:translate(-50%,-50%);
-  width:clamp(58px,7.4vw,94px);
-  min-height:48px;
-  border:2px dashed rgba(58,102,119,.30);
-  border-radius:16px;
-  background:#ffffff80;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:5px;
-  transition:.18s;
-}
-.drop-zone.hot{
-  transform:translate(-50%,-50%) scale(1.08);
-  border-color:#47a778;
-  background:#dcf8e7ed;
-}
-.drop-zone.close{
-  animation:wobble .36s;
-  border-color:#e5b44f;
-  background:#fff8db;
-}
-.drop-zone.filled{
-  border-color:transparent;
-  background:transparent;
-  box-shadow:none;
-}
-.placed{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:2px;
-  text-align:center;
-  font-weight:700;
-  color:#294d5d;
-  font-size:clamp(10px,1.18vw,14px);
-  line-height:1.1;
-  white-space:pre-line;
-}
-.placed img{
-  width:clamp(26px,3.1vw,38px);
-  height:clamp(20px,2.6vw,31px);
-  object-fit:contain;
-  opacity:.9;
-}
-.card{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  min-height:64px;
-  border:2px solid transparent;
-  border-radius:18px;
-  background:#fff;
-  padding:9px 10px;
-  box-shadow:0 7px 16px rgba(43,79,95,.11);
-  cursor:grab;
-  touch-action:none;
-  transition:transform .15s ease,opacity .18s ease,box-shadow .15s ease;
-}
-.card.lifted{opacity:.22}
-.card.done{opacity:0;pointer-events:none;transform:scale(.85)}
-.card-icon{
-  flex:0 0 auto;
-  width:42px;height:36px;
-  display:grid;place-items:center;
-  border-radius:12px;
-}
-.card-icon img{width:34px;height:28px;object-fit:contain}
-.card-name{
-  font-weight:900;
-  font-size:clamp(13px,1.6vw,18px);
-  line-height:1.15;
-  white-space:pre-line;
-}
-.category-mountain .card-icon{color:#a87916;background:#fff3cf}
-.category-plain .card-icon{color:#328554;background:#e5f7e9}
-.category-river .card-icon,.category-lake .card-icon{color:#247ba6;background:#e1f4fb}
-.drag-ghost{
-  position:fixed;
-  z-index:1000;
-  pointer-events:none;
-  width:170px;
-  max-width:26vw;
-  transform:translate3d(-50%,-50%,0) scale(1.01);
-  box-shadow:0 12px 24px rgba(22,57,76,.18);
-  will-change:left,top,transform;
-}
-footer{
-  min-height:46px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.message{font-weight:800;color:#496b7a;text-align:center}
-.next-button{
-  display:none;
-  border:0;
-  border-radius:999px;
-  background:#267b63;
-  color:#fff;
-  font-weight:900;
-  padding:11px 28px;
-  box-shadow:0 8px 16px rgba(38,123,99,.20);
-}
-.next-button.show{display:block}
-.complete-banner{
-  position:absolute;
-  left:50%;
-  top:12px;
-  transform:translateX(-50%) translateY(-12px);
-  opacity:0;
-  background:#fffffff0;
-  border:1px solid #d9e9dd;
-  border-radius:999px;
-  padding:8px 18px;
-  font-weight:900;
-  box-shadow:var(--shadow);
-  transition:.35s ease;
-  z-index:4;
-}
-.complete-banner.show{
-  opacity:1;
-  transform:translateX(-50%);
-}
-@keyframes wobble{
-  25%{transform:translate(-50%,-50%) rotate(-2deg)}
-  65%{transform:translate(-50%,-50%) rotate(2deg)}
-}
+:root{--ink:#18364b;--muted:#6b8190;--panel:#fffdf8;--line:#d7e4e6;--shadow:0 10px 24px rgba(28,66,86,.13)}
+*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink);background:linear-gradient(180deg,#e7f5f7,#f6fbf8);-webkit-user-select:none;user-select:none}
+button{font:inherit}.screen{display:none;height:100dvh}.screen.active{display:grid}
+/* HOME */
+#homeScreen{grid-template-rows:auto 1fr auto;gap:8px;padding:10px 12px;touch-action:manipulation}
+.home-header{display:flex;align-items:baseline;justify-content:space-between;min-height:44px}
+.title-wrap{display:flex;align-items:baseline;gap:10px}h1{font-size:clamp(20px,2.5vw,30px);margin:0}.version{font-size:12px;color:var(--muted);font-weight:700}
+.home-copy{text-align:right}.home-copy strong{display:block;font-size:clamp(14px,1.8vw,20px)}.home-copy span{font-size:12px;color:var(--muted);font-weight:700}
+.home-main{min-height:0;display:flex;align-items:center;justify-content:center}
+.japan-panel{position:relative;height:100%;max-height:760px;aspect-ratio:620/760;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.japan-map{position:absolute;inset:2.5%;width:95%;height:95%;object-fit:contain;pointer-events:none}
+.region-button{position:absolute;transform:translate(-50%,-50%);border:2px solid rgba(38,123,99,.48);border-radius:999px;background:#fffffff0;color:#245e4d;font-weight:900;padding:8px 13px;box-shadow:0 5px 12px rgba(28,66,86,.13);cursor:pointer;touch-action:manipulation;white-space:nowrap;transition:.16s}
+.region-button:active{transform:translate(-50%,-50%) scale(.95)}
+.region-button.available::after{content:"へ行く";display:block;font-size:9px;color:#5d8175;line-height:1;margin-top:2px}
+.region-button.locked{border-color:#cad4d7;background:#f1f4f3e8;color:#8a999d;box-shadow:none;cursor:default}
+.region-button.locked::after{content:"準備中";display:block;font-size:9px;line-height:1;margin-top:2px}
+.region-button.completed{background:#e7f7ed;border-color:#58a77c}
+.region-button.completed::before{content:"✓ ";color:#267b63}
+.home-footer{text-align:center;min-height:46px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#496b7a}
+/* GAME */
+#gameScreen{grid-template-rows:auto 1fr auto;gap:8px;padding:10px 12px;touch-action:none}
+.game-header{display:flex;align-items:center;justify-content:space-between;min-height:44px}.game-title{display:flex;align-items:center;gap:9px}
+.home-button{border:1px solid var(--line);border-radius:999px;background:#ffffffc7;color:#476575;font-weight:900;padding:7px 12px}
+.status-wrap{display:flex;align-items:center;gap:8px}.region-badge,.progress{text-align:center;background:#ffffffc7;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:800}.region-badge{min-width:80px;color:#476575}.progress{min-width:92px}
+.game{min-height:0;display:grid;grid-template-columns:minmax(150px,22vw) minmax(0,1fr) minmax(150px,22vw);gap:10px}.card-column{min-height:0;display:flex;flex-direction:column;gap:9px;justify-content:center}.map-panel{position:relative;min-width:0;min-height:0;background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.map-stage{position:absolute;inset:18px;display:flex;align-items:center;justify-content:center;transition:opacity .26s ease,transform .26s ease}.map-stage.switching{opacity:0;transform:scale(.97)}.map-wrap{position:relative;flex:0 0 auto}.map{width:100%;height:100%;display:block;pointer-events:none}.drop-zone{position:absolute;transform:translate(-50%,-50%);width:clamp(58px,7.4vw,94px);min-height:48px;border:2px dashed rgba(58,102,119,.30);border-radius:16px;background:#ffffff80;display:flex;align-items:center;justify-content:center;padding:5px;transition:.18s}.drop-zone.hot{transform:translate(-50%,-50%) scale(1.08);border-color:#47a778;background:#dcf8e7ed}.drop-zone.close{animation:wobble .36s;border-color:#e5b44f;background:#fff8db}.drop-zone.filled{border-color:transparent;background:transparent;box-shadow:none}.placed{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;font-weight:700;color:#294d5d;font-size:clamp(10px,1.18vw,14px);line-height:1.1;white-space:pre-line}.placed img{width:clamp(26px,3.1vw,38px);height:clamp(20px,2.6vw,31px);object-fit:contain;opacity:.9}.card{display:flex;align-items:center;gap:9px;min-height:64px;border:2px solid transparent;border-radius:18px;background:#fff;padding:9px 10px;box-shadow:0 7px 16px rgba(43,79,95,.11);cursor:grab;touch-action:none;transition:transform .15s ease,opacity .18s ease,box-shadow .15s ease}.card.lifted{opacity:.22}.card.done{opacity:0;pointer-events:none;transform:scale(.85)}.card-icon{flex:0 0 auto;width:42px;height:36px;display:grid;place-items:center;border-radius:12px}.card-icon img{width:34px;height:28px;object-fit:contain}.card-name{font-weight:900;font-size:clamp(13px,1.6vw,18px);line-height:1.15;white-space:pre-line}.category-mountain .card-icon{color:#a87916;background:#fff3cf}.category-plain .card-icon{color:#328554;background:#e5f7e9}.category-river .card-icon,.category-lake .card-icon{color:#247ba6;background:#e1f4fb}.drag-ghost{position:fixed;z-index:1000;pointer-events:none;width:170px;max-width:26vw;transform:translate3d(-50%,-50%,0) scale(1.01);box-shadow:0 12px 24px rgba(22,57,76,.18);will-change:left,top,transform}.game-footer{min-height:46px;display:flex;align-items:center;justify-content:center}.message{font-weight:800;color:#496b7a;text-align:center}.next-button{display:none;border:0;border-radius:999px;background:#267b63;color:#fff;font-weight:900;padding:11px 28px;box-shadow:0 8px 16px rgba(38,123,99,.20)}.next-button.show{display:block}.complete-banner{position:absolute;left:50%;top:12px;transform:translateX(-50%) translateY(-12px);opacity:0;background:#fffffff0;border:1px solid #d9e9dd;border-radius:999px;padding:8px 18px;font-weight:900;box-shadow:var(--shadow);transition:.35s ease;z-index:4}.complete-banner.show{opacity:1;transform:translateX(-50%)}
+@keyframes wobble{25%{transform:translate(-50%,-50%) rotate(-2deg)}65%{transform:translate(-50%,-50%) rotate(2deg)}}
+@media(max-width:700px){.game{grid-template-columns:minmax(110px,25vw) minmax(0,1fr) minmax(110px,25vw)}.card{min-height:56px;padding:7px}.card-icon{width:34px}.home-copy span{display:none}}
 </style>
 </head>
 <body>
-<div class="app">
-  <header>
-    <div class="title-wrap">
-      <h1>Geo Explorer</h1>
-      <span class="version">v0.7.1</span>
-    </div>
-    <div class="status-wrap">
-      <div class="region-badge" id="regionBadge">北海道</div>
-      <div class="progress" id="progress">0 / 6</div>
-    </div>
+<section class="screen active" id="homeScreen">
+  <header class="home-header">
+    <div class="title-wrap"><h1>Geo Explorer</h1><span class="version">v0.8</span></div>
+    <div class="home-copy"><strong>日本を旅しよう</strong><span>地図をタッチして、行きたい地方へ</span></div>
   </header>
-
+  <main class="home-main">
+    <div class="japan-panel" aria-label="日本の地方を選ぶ地図">
+      <img class="japan-map" src="assets/maps/japan-home.svg?v=80" alt="日本地図">
+      <button class="region-button available" data-level="hokkaido" style="left:78.3%;top:23.8%">北海道</button>
+      <button class="region-button available" data-level="tohoku" style="left:68.7%;top:48.4%">東北</button>
+      <button class="region-button locked" disabled style="left:62%;top:67.2%">関東</button>
+      <button class="region-button locked" disabled style="left:49.6%;top:66.6%">中部</button>
+      <button class="region-button locked" disabled style="left:38.3%;top:74.2%">近畿</button>
+      <button class="region-button locked" disabled style="left:25.9%;top:75.4%">中国</button>
+      <button class="region-button locked" disabled style="left:28.7%;top:81.7%">四国</button>
+      <button class="region-button locked" disabled style="left:12.9%;top:87.1%">九州</button>
+    </div>
+  </main>
+  <footer class="home-footer" id="homeMessage">行きたい場所を選ぼう</footer>
+</section>
+<section class="screen" id="gameScreen">
+  <header class="game-header">
+    <div class="game-title"><button class="home-button" id="homeButton" type="button">← 日本地図</button><span class="version">v0.8</span></div>
+    <div class="status-wrap"><div class="region-badge" id="regionBadge">北海道</div><div class="progress" id="progress">0 / 6</div></div>
+  </header>
   <main class="game">
     <section class="card-column" id="leftCards" aria-label="左側のカード"></section>
-
-    <section class="map-panel" aria-label="地図">
-      <div class="complete-banner" id="completeBanner">完成！</div>
-      <div class="map-stage" id="mapStage">
-        <div class="map-wrap" id="mapWrap">
-          <img class="map" id="mapImage" alt="">
-        </div>
-      </div>
-    </section>
-
+    <section class="map-panel" aria-label="地図"><div class="complete-banner" id="completeBanner">完成！</div><div class="map-stage" id="mapStage"><div class="map-wrap" id="mapWrap"><img class="map" id="mapImage" alt=""></div></div></section>
     <section class="card-column" id="rightCards" aria-label="右側のカード"></section>
   </main>
-
-  <footer>
-    <div class="message" id="message">カードを地図の場所へドラッグしよう</div>
-    <button class="next-button" id="nextButton" type="button">次へ</button>
-  </footer>
-</div>
-
-<script src="assets/cards/tohoku-items.js?v=71"></script>
+  <footer class="game-footer"><div class="message" id="message">カードを地図の場所へドラッグしよう</div><button class="next-button" id="nextButton" type="button">日本地図へ戻る</button></footer>
+</section>
+<script src="assets/cards/tohoku-items.js?v=80"></script>
 <script>
 const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=71",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=71",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=71",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=71",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=71",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=71",x:77,y:49,side:"right"}
+{id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=80",x:38,y:54,side:"left"},
+{id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=80",x:67,y:74,side:"right"},
+{id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=80",x:66,y:37,side:"right"},
+{id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=80",x:54,y:69,side:"left"},
+{id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=80",x:42,y:43,side:"left"},
+{id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=80",x:77,y:49,side:"right"}
 ];
-
 const LEVELS=[
-  {
-    id:"hokkaido",
-    name:"北海道",
-    map:"assets/maps/hokkaido.svg?v=71",
-    mapWidth:1000,
-    mapHeight:700,
-    displayScale:1.24,
-    items:HOKKAIDO_ITEMS
-  },
-  {
-    id:"tohoku",
-    name:"東北",
-    map:"assets/maps/tohoku.svg?v=71",
-    mapWidth:760,
-    mapHeight:1200,
-    displayScale:1.00,
-    items:typeof TOHOKU_ITEMS!=="undefined" ? TOHOKU_ITEMS : []
-  }
+{id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=80",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+{id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=80",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]}
 ];
-
-const state={
-  levelIndex:0,
-  items:[],
-  placed:new Set(),
-  dragging:null,
-  audio:null,
-  raf:0,
-  pointerX:0,
-  pointerY:0
-};
-
-const $=id=>document.getElementById(id);
-const mapStage=$("mapStage");
-const mapWrap=$("mapWrap");
-const mapImage=$("mapImage");
-const leftCards=$("leftCards");
-const rightCards=$("rightCards");
-const progress=$("progress");
-const regionBadge=$("regionBadge");
-const message=$("message");
-const nextButton=$("nextButton");
-const completeBanner=$("completeBanner");
-
+const state={levelIndex:0,items:[],placed:new Set(),completed:new Set(),dragging:null,audio:null,raf:0,pointerX:0,pointerY:0};
+const $=id=>document.getElementById(id),homeScreen=$("homeScreen"),gameScreen=$("gameScreen"),mapStage=$("mapStage"),mapWrap=$("mapWrap"),mapImage=$("mapImage"),leftCards=$("leftCards"),rightCards=$("rightCards"),progress=$("progress"),regionBadge=$("regionBadge"),message=$("message"),nextButton=$("nextButton"),completeBanner=$("completeBanner"),homeMessage=$("homeMessage");
 function currentLevel(){return LEVELS[state.levelIndex]}
-
-function initAudio(){
-  if(!state.audio) state.audio=new(window.AudioContext||window.webkitAudioContext)();
-  if(state.audio.state==="suspended") state.audio.resume();
-}
-function tone(f,d=.1,type="sine",g=.035,delay=0){
-  initAudio();
-  const t=state.audio.currentTime+delay;
-  const o=state.audio.createOscillator();
-  const a=state.audio.createGain();
-  o.type=type;
-  o.frequency.setValueAtTime(f,t);
-  a.gain.setValueAtTime(g,t);
-  a.gain.exponentialRampToValueAtTime(.001,t+d);
-  o.connect(a);
-  a.connect(state.audio.destination);
-  o.start(t);
-  o.stop(t+d);
-}
-const pickup=()=>{tone(430,.07,"sine",.025);tone(610,.08,"sine",.022,.045)};
-const correct=()=>{tone(590,.10);tone(790,.13,"sine",.035,.08)};
-const closeSound=()=>{tone(660,.07,"triangle",.025);tone(760,.08,"triangle",.022,.065)};
-const clearSound=()=>[523,659,784,1047].forEach((f,i)=>tone(f,.18,"sine",.04,i*.09));
-
-function fitMap(){
-  const level=currentLevel();
-  const stageRect=mapStage.getBoundingClientRect();
-  const ratio=level.mapWidth/level.mapHeight;
-  let width=stageRect.width;
-  let height=width/ratio;
-
-  if(height>stageRect.height){
-    height=stageRect.height;
-    width=height*ratio;
-  }
-
-  const displayScale=level.displayScale||1;
-  width*=displayScale;
-  height*=displayScale;
-
-  mapWrap.style.width=`${Math.floor(width)}px`;
-  mapWrap.style.height=`${Math.floor(height)}px`;
-}
-
-function clearLevelDom(){
-  leftCards.replaceChildren();
-  rightCards.replaceChildren();
-  [...mapWrap.querySelectorAll(".drop-zone")].forEach(node=>node.remove());
-}
-
-function loadLevel(index,{animate=false}={}){
-  state.levelIndex=index;
-  const level=currentLevel();
-
-  const apply=()=>{
-    state.items=level.items.map(item=>({
-      ...item,
-      icon:item.icon.includes("?") ? item.icon : `${item.icon}?v=71`
-    }));
-    state.placed=new Set();
-    clearLevelDom();
-
-    regionBadge.textContent=level.name;
-    mapImage.src=level.map;
-    mapImage.alt=`${level.name}の地図`;
-    message.style.display="";
-    message.textContent="カードを地図の場所へドラッグしよう";
-    nextButton.classList.remove("show");
-    nextButton.disabled=false;
-    completeBanner.classList.remove("show");
-    completeBanner.textContent="完成！";
-
-    fitMap();
-    build();
-    requestAnimationFrame(fitMap);
-
-    if(animate){
-      requestAnimationFrame(()=>{
-        mapStage.classList.remove("switching");
-      });
-    }
-  };
-
-  if(animate){
-    mapStage.classList.add("switching");
-    setTimeout(apply,260);
-  }else{
-    apply();
-  }
-}
-
-function build(){
-  if(!state.items.length){
-    message.textContent="東北カードを読み込めませんでした。assets/cards/tohoku-items.js を確認してください。";
-    progress.textContent="0 / 0";
-    return;
-  }
-
-  state.items.forEach(item=>{
-    const zone=document.createElement("div");
-    zone.className="drop-zone";
-    zone.dataset.id=item.id;
-    zone.style.left=item.x+"%";
-    zone.style.top=item.y+"%";
-    zone.setAttribute("aria-label",`${item.name}の配置場所`);
-    mapWrap.appendChild(zone);
-
-    const card=document.createElement("div");
-    card.className=`card category-${item.category}`;
-    card.dataset.id=item.id;
-    card.innerHTML=`
-      <span class="card-icon"><img src="${item.icon}" alt=""></span>
-      <span class="card-name">${item.name}</span>`;
-    card.addEventListener("pointerdown",startDrag);
-    (item.side==="left"?leftCards:rightCards).appendChild(card);
-  });
-
-  update();
-}
-
-function startDrag(e){
-  const card=e.currentTarget;
-  const item=state.items.find(v=>v.id===card.dataset.id);
-  if(!item||state.placed.has(item.id))return;
-
-  e.preventDefault();
-  pickup();
-
-  const ghost=card.cloneNode(true);
-  ghost.classList.add("drag-ghost");
-  ghost.style.left=e.clientX+"px";
-  ghost.style.top=e.clientY+"px";
-  document.body.appendChild(ghost);
-  card.classList.add("lifted");
-
-  state.pointerX=e.clientX;
-  state.pointerY=e.clientY;
-  state.dragging={item,card,ghost};
-
-  window.addEventListener("pointermove",move,{passive:false});
-  window.addEventListener("pointerup",end,{once:true});
-  window.addEventListener("pointercancel",end,{once:true});
-}
-
-function move(e){
-  if(!state.dragging)return;
-  e.preventDefault();
-
-  state.pointerX=e.clientX;
-  state.pointerY=e.clientY;
-  if(state.raf)return;
-
-  state.raf=requestAnimationFrame(()=>{
-    state.raf=0;
-    if(!state.dragging)return;
-
-    state.dragging.ghost.style.left=state.pointerX+"px";
-    state.dragging.ghost.style.top=state.pointerY+"px";
-
-    document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));
-    const h=zoneAt(state.pointerX,state.pointerY);
-    if(h)h.classList.add("hot");
-  });
-}
-
-function zoneAt(x,y){
-  return [...document.querySelectorAll(".drop-zone:not(.filled)")].find(z=>{
-    const r=z.getBoundingClientRect();
-    const margin=18;
-    return x>=r.left-margin&&x<=r.right+margin&&y>=r.top-margin&&y<=r.bottom+margin;
-  });
-}
-
-function end(e){
-  if(!state.dragging)return;
-
-  const{item,card,ghost}=state.dragging;
-  const hit=zoneAt(e.clientX,e.clientY);
-
-  document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));
-  ghost.remove();
-  card.classList.remove("lifted");
-
-  if(hit&&hit.dataset.id===item.id){
-    place(item,card,hit);
-  }else if(hit){
-    hit.classList.add("close");
-    setTimeout(()=>hit.classList.remove("close"),420);
-    message.textContent="おしい！ 地図をよく見て、もう一度";
-    closeSound();
-  }else{
-    message.textContent="カードを地図の枠へ運ぼう";
-  }
-
-  state.dragging=null;
-  if(state.raf){
-    cancelAnimationFrame(state.raf);
-    state.raf=0;
-  }
-  window.removeEventListener("pointermove",move);
-}
-
-function place(item,card,zone){
-  state.placed.add(item.id);
-  zone.classList.add("filled");
-  zone.innerHTML=`
-    <div class="placed">
-      <img src="${item.icon}" alt="">
-      <span>${item.name}</span>
-    </div>`;
-  card.classList.add("done");
-  correct();
-  message.textContent="ぴったり！";
-  update();
-
-  if(state.placed.size===state.items.length) complete();
-}
-
-function update(){
-  progress.textContent=`${state.placed.size} / ${state.items.length}`;
-}
-
-function complete(){
-  clearSound();
-  completeBanner.classList.add("show");
-  message.style.display="none";
-  nextButton.textContent=state.levelIndex<LEVELS.length-1 ? "次へ" : "もう一度";
-  nextButton.classList.add("show");
-}
-
-nextButton.addEventListener("click",()=>{
-  if(state.levelIndex<LEVELS.length-1){
-    loadLevel(state.levelIndex+1,{animate:true});
-  }else{
-    loadLevel(0,{animate:true});
-  }
-});
-
-window.addEventListener("resize",fitMap);
-if("ResizeObserver" in window){
-  new ResizeObserver(fitMap).observe(mapStage);
-}
-
-loadLevel(0);
+function showHome(){if(state.dragging)cancelDrag();gameScreen.classList.remove("active");homeScreen.classList.add("active");document.body.style.touchAction="manipulation";updateHome()}
+function showGame(levelId){const index=LEVELS.findIndex(v=>v.id===levelId);if(index<0)return;homeScreen.classList.remove("active");gameScreen.classList.add("active");document.body.style.touchAction="none";loadLevel(index)}
+function updateHome(){document.querySelectorAll(".region-button[data-level]").forEach(b=>b.classList.toggle("completed",state.completed.has(b.dataset.level)));homeMessage.textContent=state.completed.size?`${state.completed.size}つの地方を完成！ 次はどこへ行こう？`:"行きたい場所を選ぼう"}
+document.querySelectorAll(".region-button[data-level]").forEach(b=>b.addEventListener("click",()=>showGame(b.dataset.level)));$("homeButton").addEventListener("click",showHome);nextButton.addEventListener("click",showHome);
+function initAudio(){if(!state.audio)state.audio=new(window.AudioContext||window.webkitAudioContext)();if(state.audio.state==="suspended")state.audio.resume()}
+function tone(f,d=.1,type="sine",g=.035,delay=0){initAudio();const t=state.audio.currentTime+delay,o=state.audio.createOscillator(),a=state.audio.createGain();o.type=type;o.frequency.setValueAtTime(f,t);a.gain.setValueAtTime(g,t);a.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(a);a.connect(state.audio.destination);o.start(t);o.stop(t+d)}
+const pickup=()=>{tone(430,.07,"sine",.025);tone(610,.08,"sine",.022,.045)},correct=()=>{tone(590,.10);tone(790,.13,"sine",.035,.08)},closeSound=()=>{tone(660,.07,"triangle",.025);tone(760,.08,"triangle",.022,.065)},clearSound=()=>[523,659,784,1047].forEach((f,i)=>tone(f,.18,"sine",.04,i*.09));
+function fitMap(){if(!gameScreen.classList.contains("active"))return;const level=currentLevel(),r=mapStage.getBoundingClientRect(),ratio=level.mapWidth/level.mapHeight;let w=r.width,h=w/ratio;if(h>r.height){h=r.height;w=h*ratio}w*=level.displayScale||1;h*=level.displayScale||1;mapWrap.style.width=`${Math.floor(w)}px`;mapWrap.style.height=`${Math.floor(h)}px`}
+function clearLevelDom(){leftCards.replaceChildren();rightCards.replaceChildren();[...mapWrap.querySelectorAll(".drop-zone")].forEach(n=>n.remove())}
+function loadLevel(index){state.levelIndex=index;const level=currentLevel();state.items=level.items.map(item=>({...item,icon:item.icon.includes("?")?item.icon:`${item.icon}?v=80`}));state.placed=new Set();clearLevelDom();regionBadge.textContent=level.name;mapImage.src=level.map;mapImage.alt=`${level.name}の地図`;message.style.display="";message.textContent="カードを地図の場所へドラッグしよう";nextButton.classList.remove("show");completeBanner.classList.remove("show");fitMap();build();requestAnimationFrame(fitMap)}
+function build(){if(!state.items.length){message.textContent="カードを読み込めませんでした。";progress.textContent="0 / 0";return}state.items.forEach(item=>{const zone=document.createElement("div");zone.className="drop-zone";zone.dataset.id=item.id;zone.style.left=item.x+"%";zone.style.top=item.y+"%";zone.setAttribute("aria-label",`${item.name}の配置場所`);mapWrap.appendChild(zone);const card=document.createElement("div");card.className=`card category-${item.category}`;card.dataset.id=item.id;card.innerHTML=`<span class="card-icon"><img src="${item.icon}" alt=""></span><span class="card-name">${item.name}</span>`;card.addEventListener("pointerdown",startDrag);(item.side==="left"?leftCards:rightCards).appendChild(card)});update()}
+function startDrag(e){const card=e.currentTarget,item=state.items.find(v=>v.id===card.dataset.id);if(!item||state.placed.has(item.id))return;e.preventDefault();pickup();const ghost=card.cloneNode(true);ghost.classList.add("drag-ghost");ghost.style.left=e.clientX+"px";ghost.style.top=e.clientY+"px";document.body.appendChild(ghost);card.classList.add("lifted");state.pointerX=e.clientX;state.pointerY=e.clientY;state.dragging={item,card,ghost};window.addEventListener("pointermove",move,{passive:false});window.addEventListener("pointerup",end,{once:true});window.addEventListener("pointercancel",end,{once:true})}
+function move(e){if(!state.dragging)return;e.preventDefault();state.pointerX=e.clientX;state.pointerY=e.clientY;if(state.raf)return;state.raf=requestAnimationFrame(()=>{state.raf=0;if(!state.dragging)return;state.dragging.ghost.style.left=state.pointerX+"px";state.dragging.ghost.style.top=state.pointerY+"px";document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));const h=zoneAt(state.pointerX,state.pointerY);if(h)h.classList.add("hot")})}
+function zoneAt(x,y){return[...document.querySelectorAll(".drop-zone:not(.filled)")].find(z=>{const r=z.getBoundingClientRect(),m=18;return x>=r.left-m&&x<=r.right+m&&y>=r.top-m&&y<=r.bottom+m})}
+function end(e){if(!state.dragging)return;const{item,card,ghost}=state.dragging,hit=zoneAt(e.clientX,e.clientY);document.querySelectorAll(".drop-zone").forEach(z=>z.classList.remove("hot"));ghost.remove();card.classList.remove("lifted");if(hit&&hit.dataset.id===item.id)place(item,card,hit);else if(hit){hit.classList.add("close");setTimeout(()=>hit.classList.remove("close"),420);message.textContent="おしい！ 地図をよく見て、もう一度";closeSound()}else message.textContent="カードを地図の枠へ運ぼう";state.dragging=null;if(state.raf){cancelAnimationFrame(state.raf);state.raf=0}window.removeEventListener("pointermove",move)}
+function cancelDrag(){if(!state.dragging)return;state.dragging.ghost.remove();state.dragging.card.classList.remove("lifted");state.dragging=null;window.removeEventListener("pointermove",move)}
+function place(item,card,zone){state.placed.add(item.id);zone.classList.add("filled");zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;card.classList.add("done");correct();message.textContent="ぴったり！";update();if(state.placed.size===state.items.length)complete()}
+function update(){progress.textContent=`${state.placed.size} / ${state.items.length}`}
+function complete(){clearSound();state.completed.add(currentLevel().id);completeBanner.classList.add("show");message.style.display="none";nextButton.textContent="日本地図へ戻る";nextButton.classList.add("show")}
+window.addEventListener("resize",fitMap);if("ResizeObserver"in window)new ResizeObserver(fitMap).observe(mapStage);updateHome();
 </script>
 </body>
 </html>
