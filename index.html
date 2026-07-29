@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v0.9.4</title>
+<title>Geo Explorer v0.9.5</title>
 <style>
 :root{
   --ink:#18364b;
@@ -122,16 +122,24 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   opacity:.88;
 }
 .completion-star{
-  fill:#e9ad26;
-  stroke:#fffdf5;
-  stroke-width:8;
+  fill:url(#completion-star-gold);
+  stroke:#d99400;
+  stroke-width:7;
   paint-order:stroke fill;
   font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
   font-weight:900;
   text-anchor:middle;
   dominant-baseline:central;
   pointer-events:none;
-  filter:drop-shadow(0 7px 7px rgba(80,64,20,.22));
+  filter:url(#completion-star-glow);
+}
+.completion-sparkle{
+  fill:#fff8c7;
+  stroke:#f2b400;
+  stroke-width:2.5;
+  paint-order:stroke fill;
+  pointer-events:none;
+  filter:url(#completion-star-glow);
 }
 .home-footer{
   text-align:center;
@@ -367,7 +375,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v0.9.4</span>
+      <span class="version">v0.9.5</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -462,7 +470,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v0.9.4</span>
+      <span class="version">v0.9.5</span>
     </div>
     <div class="status-wrap">
       <div class="region-badge" id="regionBadge">北海道</div>
@@ -490,20 +498,20 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<script src="assets/cards/tohoku-items.js?v=094"></script>
+<script src="assets/cards/tohoku-items.js?v=095"></script>
 <script>
 const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=094",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=094",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=094",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=094",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=094",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=094",x:77,y:49,side:"right"}
+  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=095",x:38,y:54,side:"left"},
+  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=095",x:67,y:74,side:"right"},
+  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=095",x:66,y:37,side:"right"},
+  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=095",x:54,y:69,side:"left"},
+  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=095",x:42,y:43,side:"left"},
+  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=095",x:77,y:49,side:"right"}
 ];
 
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=094",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
-  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=094",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]}
+  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=095",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=095",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]}
 ];
 
 const state={
@@ -577,6 +585,63 @@ function ensureStarLayer(){
   const svg=document.querySelector("#japanMap svg");
   if(!svg)return null;
 
+  let defs=svg.querySelector("defs");
+  if(!defs){
+    defs=document.createElementNS("http://www.w3.org/2000/svg","defs");
+    svg.insertBefore(defs,svg.firstChild);
+  }
+
+  if(!svg.querySelector("#completion-star-gold")){
+    const gradient=document.createElementNS("http://www.w3.org/2000/svg","linearGradient");
+    gradient.id="completion-star-gold";
+    gradient.setAttribute("x1","0%");
+    gradient.setAttribute("y1","0%");
+    gradient.setAttribute("x2","0%");
+    gradient.setAttribute("y2","100%");
+
+    [["0%","#fff27a"],["48%","#ffc928"],["100%","#ee9d00"]].forEach(([offset,color])=>{
+      const stop=document.createElementNS("http://www.w3.org/2000/svg","stop");
+      stop.setAttribute("offset",offset);
+      stop.setAttribute("stop-color",color);
+      gradient.appendChild(stop);
+    });
+    defs.appendChild(gradient);
+  }
+
+  if(!svg.querySelector("#completion-star-glow")){
+    const glow=document.createElementNS("http://www.w3.org/2000/svg","filter");
+    glow.id="completion-star-glow";
+    glow.setAttribute("x","-80%");
+    glow.setAttribute("y","-80%");
+    glow.setAttribute("width","260%");
+    glow.setAttribute("height","260%");
+
+    const blur=document.createElementNS("http://www.w3.org/2000/svg","feGaussianBlur");
+    blur.setAttribute("stdDeviation","7");
+    blur.setAttribute("result","blur");
+
+    const flood=document.createElementNS("http://www.w3.org/2000/svg","feFlood");
+    flood.setAttribute("flood-color","#ffd84e");
+    flood.setAttribute("flood-opacity",".56");
+    flood.setAttribute("result","glowColor");
+
+    const composite=document.createElementNS("http://www.w3.org/2000/svg","feComposite");
+    composite.setAttribute("in","glowColor");
+    composite.setAttribute("in2","blur");
+    composite.setAttribute("operator","in");
+    composite.setAttribute("result","softGlow");
+
+    const merge=document.createElementNS("http://www.w3.org/2000/svg","feMerge");
+    const glowNode=document.createElementNS("http://www.w3.org/2000/svg","feMergeNode");
+    glowNode.setAttribute("in","softGlow");
+    const sourceNode=document.createElementNS("http://www.w3.org/2000/svg","feMergeNode");
+    sourceNode.setAttribute("in","SourceGraphic");
+    merge.append(glowNode,sourceNode);
+
+    glow.append(blur,flood,composite,merge);
+    defs.appendChild(glow);
+  }
+
   let layer=svg.querySelector("#completion-stars");
   if(!layer){
     layer=document.createElementNS("http://www.w3.org/2000/svg","g");
@@ -594,14 +659,31 @@ function addCompletionStar(regionId){
   if(!region||!layer)return;
 
   const box=region.getBBox();
+  const cx=box.x+box.width/2;
+  const cy=box.y+box.height/2;
+
+  const badge=document.createElementNS("http://www.w3.org/2000/svg","g");
+  badge.dataset.region=regionId;
+  badge.setAttribute("aria-hidden","true");
+
   const star=document.createElementNS("http://www.w3.org/2000/svg","text");
   star.classList.add("completion-star");
-  star.dataset.region=regionId;
-  star.setAttribute("x",String(box.x+box.width/2));
-  star.setAttribute("y",String(box.y+box.height/2));
+  star.setAttribute("x",String(cx));
+  star.setAttribute("y",String(cy));
   star.setAttribute("font-size","118");
   star.textContent="★";
-  layer.appendChild(star);
+
+  const sparkle=document.createElementNS("http://www.w3.org/2000/svg","text");
+  sparkle.classList.add("completion-sparkle");
+  sparkle.setAttribute("x",String(cx+57));
+  sparkle.setAttribute("y",String(cy-55));
+  sparkle.setAttribute("font-size","42");
+  sparkle.setAttribute("text-anchor","middle");
+  sparkle.setAttribute("dominant-baseline","central");
+  sparkle.textContent="✦";
+
+  badge.append(star,sparkle);
+  layer.appendChild(badge);
 }
 
 function updateHome(){
@@ -695,7 +777,7 @@ function loadLevel(index){
   const level=currentLevel();
   state.items=level.items.map(item=>({
     ...item,
-    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=094`
+    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=095`
   }));
   state.placed=new Set();
   clearLevelDom();
