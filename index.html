@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v0.9.5</title>
+<title>Geo Explorer v1.0</title>
 <style>
 :root{
   --ink:#18364b;
@@ -176,16 +176,15 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .home-button:active{transform:scale(.96);background:#fff}
 .status-wrap{display:flex;align-items:center;gap:8px}
-.region-badge,.progress{
+.progress{
   text-align:center;
   background:#ffffffc7;
   border:1px solid var(--line);
   border-radius:999px;
   padding:7px 12px;
   font-weight:800;
+  min-width:92px;
 }
-.region-badge{min-width:80px;color:#476575}
-.progress{min-width:92px}
 .game{
   min-height:0;
   display:grid;
@@ -209,6 +208,42 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   box-shadow:var(--shadow);
   overflow:hidden;
 }
+.area-title{
+  position:absolute;
+  left:50%;
+  top:12px;
+  transform:translateX(-50%);
+  z-index:5;
+  font-size:clamp(24px,3.1vw,38px);
+  font-weight:900;
+  letter-spacing:.04em;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.completion-actions{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.completion-actions.show{display:flex}
+.replay-button,.return-button{
+  border-radius:999px;
+  font-weight:900;
+  padding:11px 24px;
+  transition:transform .15s ease;
+}
+.replay-button{
+  background:#fff;
+  color:var(--accent);
+  border:2px solid var(--accent);
+}
+.return-button{
+  background:var(--accent);
+  color:#fff;
+  border:2px solid var(--accent);
+}
+.replay-button:active,.return-button:active{transform:scale(.96)}
 .map-stage{
   position:absolute;
   inset:18px;
@@ -375,7 +410,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v0.9.5</span>
+      <span class="version">v1.0</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -470,10 +505,9 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v0.9.5</span>
+      <span class="version">v1.0</span>
     </div>
     <div class="status-wrap">
-      <div class="region-badge" id="regionBadge">北海道</div>
       <div class="progress" id="progress">0 / 6</div>
     </div>
   </header>
@@ -481,7 +515,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <main class="game">
     <section class="card-column" id="leftCards" aria-label="左側のカード"></section>
     <section class="map-panel" aria-label="地図">
-      <div class="complete-banner" id="completeBanner">完成！</div>
+      <div class="area-title" id="areaTitle">北海道</div>
+      <div class="complete-banner" id="completeBanner">できた！</div>
       <div class="map-stage" id="mapStage">
         <div class="map-wrap" id="mapWrap">
           <img class="map" id="mapImage" alt="">
@@ -493,25 +528,29 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 
   <footer class="game-footer">
     <div class="message" id="message">カードを地図の場所へドラッグしよう</div>
-    <button class="next-button" id="nextButton" type="button">日本地図へ戻る</button>
+    <div class="completion-actions" id="completionActions">
+      <button class="replay-button" id="replayButton" type="button">もう一度</button>
+      <button class="return-button" id="returnButton" type="button">日本地図へ戻る</button>
+    </div>
+    <button class="next-button" id="nextButton" type="button" hidden></button>
   </footer>
 </section>
 
 
-<script src="assets/cards/tohoku-items.js?v=095"></script>
+<script src="assets/cards/tohoku-items.js?v=100"></script>
 <script>
 const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=095",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=095",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=095",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=095",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=095",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=095",x:77,y:49,side:"right"}
+  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=100",x:38,y:54,side:"left"},
+  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=100",x:67,y:74,side:"right"},
+  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=100",x:66,y:37,side:"right"},
+  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=100",x:54,y:69,side:"left"},
+  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=100",x:42,y:43,side:"left"},
+  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=100",x:77,y:49,side:"right"}
 ];
 
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=095",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
-  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=095",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]}
+  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=100",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=100",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]}
 ];
 
 const state={
@@ -519,6 +558,7 @@ const state={
   items:[],
   placed:new Set(),
   completed:new Set(),
+  levelProgress:new Map(),
   dragging:null,
   audio:null,
   raf:0,
@@ -536,10 +576,13 @@ const mapImage=$("mapImage");
 const leftCards=$("leftCards");
 const rightCards=$("rightCards");
 const progress=$("progress");
-const regionBadge=$("regionBadge");
+const areaTitle=$("areaTitle");
 const message=$("message");
 const nextButton=$("nextButton");
 const completeBanner=$("completeBanner");
+const completionActions=$("completionActions");
+const replayButton=$("replayButton");
+const returnButton=$("returnButton");
 const homeMessage=$("homeMessage");
 
 function currentLevel(){return LEVELS[state.levelIndex]}
@@ -724,7 +767,8 @@ prepareHomeRegions();
 activateRegion("hokkaido");
 activateRegion("tohoku");
 $("homeButton").addEventListener("click",travelHome);
-nextButton.addEventListener("click",travelHome);
+returnButton.addEventListener("click",travelHome);
+replayButton.addEventListener("click",replayCurrentLevel);
 
 function initAudio(){
   if(!state.audio)state.audio=new(window.AudioContext||window.webkitAudioContext)();
@@ -777,22 +821,29 @@ function loadLevel(index){
   const level=currentLevel();
   state.items=level.items.map(item=>({
     ...item,
-    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=095`
+    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=100`
   }));
-  state.placed=new Set();
+  const saved=state.levelProgress.get(level.id);
+  state.placed=new Set(saved ? saved : []);
   clearLevelDom();
 
-  regionBadge.textContent=level.name;
+  areaTitle.textContent=level.name;
   mapImage.src=level.map;
   mapImage.alt=`${level.name}の地図`;
   message.style.display="";
   message.textContent="カードを地図の場所へドラッグしよう";
-  nextButton.classList.remove("show");
+  completionActions.classList.remove("show");
   completeBanner.classList.remove("show");
 
   mapStage.classList.add("switching");
   fitMap();
   build();
+  restorePlacedItems();
+
+  if(state.placed.size===state.items.length&&state.items.length){
+    showCompletedState(false);
+  }
+
   requestAnimationFrame(()=>{
     fitMap();
     mapStage.classList.remove("switching");
@@ -820,9 +871,21 @@ function build(){
     card.dataset.id=item.id;
     card.innerHTML=`<span class="card-icon"><img src="${item.icon}" alt=""></span><span class="card-name">${item.name}</span>`;
     card.addEventListener("pointerdown",startDrag);
+    if(state.placed.has(item.id))card.classList.add("done");
     (item.side==="left"?leftCards:rightCards).appendChild(card);
   });
 
+  update();
+}
+
+function restorePlacedItems(){
+  state.items.forEach(item=>{
+    if(!state.placed.has(item.id))return;
+    const zone=mapWrap.querySelector(`.drop-zone[data-id="${item.id}"]`);
+    if(!zone)return;
+    zone.classList.add("filled");
+    zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;
+  });
   update();
 }
 
@@ -917,6 +980,7 @@ function cancelDrag(){
 
 function place(item,card,zone){
   state.placed.add(item.id);
+  state.levelProgress.set(currentLevel().id,new Set(state.placed));
   zone.classList.add("filled");
   zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;
   card.classList.add("done");
@@ -931,13 +995,27 @@ function update(){
   progress.textContent=`${state.placed.size} / ${state.items.length}`;
 }
 
-function complete(){
-  clearSound();
+function showCompletedState(playSound=true){
+  if(playSound)clearSound();
   state.completed.add(currentLevel().id);
+  state.levelProgress.set(
+    currentLevel().id,
+    new Set(state.items.map(item=>item.id))
+  );
   completeBanner.classList.add("show");
   message.style.display="none";
-  nextButton.textContent="日本地図へ戻る";
-  nextButton.classList.add("show");
+  completionActions.classList.add("show");
+}
+
+function complete(){
+  showCompletedState(true);
+}
+
+function replayCurrentLevel(){
+  const level=currentLevel();
+  state.levelProgress.set(level.id,new Set());
+  state.placed=new Set();
+  loadLevel(state.levelIndex);
 }
 
 window.addEventListener("resize",fitMap);
