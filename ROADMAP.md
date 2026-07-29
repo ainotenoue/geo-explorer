@@ -20,3 +20,7 @@ Level1 地方マップ
 ☐ 中国
 ☐ 四国
 ☐ 九州
+
+Geo Explorer v0.8.1
+
+“The Journey Begins.”（旅の始まり）
