@@ -4,8 +4,8 @@ const KANTO_ITEMS = [
     "name": "関東平野",
     "category": "plain",
     "icon": "assets/icons/plain.svg",
-    "x": 52,
-    "y": 43,
+    "x": 58,
+    "y": 44,
     "side": "left"
   },
   {
@@ -13,8 +13,8 @@ const KANTO_ITEMS = [
     "name": "関東山地",
     "category": "mountain",
     "icon": "assets/icons/mountain-area.svg",
-    "x": 27,
-    "y": 43,
+    "x": 28,
+    "y": 46,
     "side": "left"
   },
   {
@@ -22,7 +22,7 @@ const KANTO_ITEMS = [
     "name": "利根川",
     "category": "river",
     "icon": "assets/icons/river.svg",
-    "x": 53,
+    "x": 57,
     "y": 27,
     "side": "right"
   },
@@ -32,7 +32,7 @@ const KANTO_ITEMS = [
     "category": "bay",
     "icon": "assets/icons/bay.svg",
     "x": 61,
-    "y": 69,
+    "y": 70,
     "side": "right"
   },
   {
@@ -41,7 +41,7 @@ const KANTO_ITEMS = [
     "category": "peninsula",
     "icon": "assets/icons/peninsula.svg",
     "x": 79,
-    "y": 66,
+    "y": 67,
     "side": "right"
   },
   {
@@ -49,8 +49,8 @@ const KANTO_ITEMS = [
     "name": "三浦半島",
     "category": "peninsula",
     "icon": "assets/icons/peninsula.svg",
-    "x": 53,
-    "y": 82,
+    "x": 52,
+    "y": 84,
     "side": "left"
   }
 ];
