@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v2.0</title>
+<title>Geo Explorer v2.0.1</title>
 <style>
 :root{
   --ink:#18364b;
@@ -431,7 +431,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v2.0</span>
+      <span class="version">v2.0.1</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -526,7 +526,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v2.0</span>
+      <span class="version">v2.0.1</span>
     </div>
     <div class="area-title" id="areaTitle">北海道</div>
     <div class="status-wrap">
@@ -558,22 +558,22 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<script src="assets/cards/tohoku-items.js?v=200"></script>
-<script src="assets/cards/kanto-items.js?v=200"></script>
+<script src="assets/cards/tohoku-items.js?v=201"></script>
+<script src="assets/cards/kanto-items.js?v=201"></script>
 <script>
 const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=200",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=200",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=200",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=200",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=200",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=200",x:77,y:49,side:"right"}
+  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=201",x:38,y:54,side:"left"},
+  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=201",x:67,y:74,side:"right"},
+  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=201",x:66,y:37,side:"right"},
+  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=201",x:54,y:69,side:"left"},
+  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=201",x:42,y:43,side:"left"},
+  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=201",x:77,y:49,side:"right"}
 ];
 
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=200",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
-  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=200",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
-  {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=200",mapWidth:404.28,mapHeight:436.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]}
+  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=201",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=201",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
+  {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=201",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]}
 ];
 
 const state={
@@ -845,7 +845,7 @@ function loadLevel(index){
   const level=currentLevel();
   state.items=level.items.map(item=>({
     ...item,
-    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=200`
+    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=201`
   }));
   const saved=state.levelProgress.get(level.id);
   state.placed=new Set(saved ? saved : []);
