@@ -5,7 +5,7 @@
   <ns0:style>
   .land { fill:#F2E8CF; }
   .prefecture-boundary { fill:#F2E8CF; stroke:#B9AE92; stroke-width:0.72; stroke-opacity:0.34; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
-  .inset-frame { fill:#fffdf8; stroke:#d7e4e6; stroke-width:0.55; stroke-opacity:0.38; vector-effect:non-scaling-stroke; }
+  .inset-frame { fill:none; stroke:#d7e4e6; stroke-width:0.55; stroke-opacity:0.38; vector-effect:non-scaling-stroke; }
 </ns0:style>
   <ns0:defs>
     <ns0:filter id="outer-outline" x="-6%" y="-6%" width="112%" height="112%" color-interpolation-filters="sRGB">
@@ -19,7 +19,7 @@
       </ns0:feMerge>
     </ns0:filter>
   </ns0:defs>
-  <ns0:g id="kyushu-main" transform="matrix(2.82 0 0 2.82 -83 -2121)" filter="url(#outer-outline)">
+  <ns0:g id="kyushu-main" transform="matrix(3.15 0 0 3.15 -132 -2408)" filter="url(#outer-outline)">
     <ns0:g transform="matrix(1.028807 0 0 1.028807 -41.544239 -10.806583)">
       <ns0:g data-code="46" transform="translate(96.000000, 17.000000)">
         <ns0:polygon points="38 844 43 848 52 844 57 850 56 852 61 859 66 864 65 869 70 871 73 880 80 881 80 888 78 891 75 890 70 896 75 899 73 903 76 902 69 905 66 910 50 918 50 913 55 910 59 898 53 889 54 884 48 881 53 879 54 883 57 884 61 878 54 872 50 874 44 887 46 898 51 901 49 906 43 907 40 901 27 901 28 897 25 896 27 894 22 890 31 890 35 880 32 871 27 867 30 860 28 848 31 846 35 848" class="prefecture-boundary"/>
@@ -45,7 +45,7 @@
     </ns0:g>
   </ns0:g>
   <ns0:path d="M445 505 V430 Q445 390 485 390 H560" class="inset-frame" fill="none"/>
-  <ns0:g id="okinawa-inset-map" transform="translate(438 455) scale(0.55)" filter="url(#outer-outline)">
+  <ns0:g id="okinawa-inset-map" transform="translate(413 445) scale(0.715)" filter="url(#outer-outline)">
     <ns0:g data-code="47" transform="translate(-0 -0)">
       <ns0:polygon points="4 109 6 110 4 111 0 110" fill="#F2E8CF"/>
       <ns0:polygon points="48 121 55 123 51 129 39 124 42 122 44 125 46 118" fill="#F2E8CF"/>
