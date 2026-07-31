@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v2.2</title>
+<title>Geo Explorer v2.3</title>
 <style>
 :root{
   --ink:#18364b;
@@ -437,6 +437,12 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   background:#f3eadb;
 }
 
+
+.category-dune .card-icon{
+  color:#9a7030;
+  background:#fff1c9;
+}
+
 </style>
 </head>
 <body>
@@ -445,7 +451,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v2.2</span>
+      <span class="version">v2.3</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -540,7 +546,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v2.2</span>
+      <span class="version">v2.3</span>
     </div>
     <div class="area-title" id="areaTitle">北海道</div>
     <div class="status-wrap">
@@ -572,26 +578,28 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<script src="assets/cards/tohoku-items.js?v=220"></script>
-<script src="assets/cards/kanto-items.js?v=220"></script>
-<script src="assets/cards/chubu-items.js?v=220"></script>
-<script src="assets/cards/kinki-items.js?v=220"></script>
+<script src="assets/cards/tohoku-items.js?v=230"></script>
+<script src="assets/cards/kanto-items.js?v=230"></script>
+<script src="assets/cards/chubu-items.js?v=230"></script>
+<script src="assets/cards/kinki-items.js?v=230"></script>
+<script src="assets/cards/chugoku-items.js?v=230"></script>
 <script>
 const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=220",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=220",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=220",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=220",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=220",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=220",x:77,y:49,side:"right"}
+  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=230",x:38,y:54,side:"left"},
+  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=230",x:67,y:74,side:"right"},
+  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=230",x:66,y:37,side:"right"},
+  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=230",x:54,y:69,side:"left"},
+  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=230",x:42,y:43,side:"left"},
+  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=230",x:77,y:49,side:"right"}
 ];
 
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=220",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
-  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=220",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
-  {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=220",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]},
-  {id:"chubu",name:"中部",map:"assets/maps/chubu.svg?v=220",mapWidth:573.88,mapHeight:740.47,displayScale:1.05,items:typeof CHUBU_ITEMS!=="undefined"?CHUBU_ITEMS:[]},
-  {id:"kinki",name:"近畿",map:"assets/maps/kinki.svg?v=220",mapWidth:458.42,mapHeight:428.93,displayScale:1.08,items:typeof KINKI_ITEMS!=="undefined"?KINKI_ITEMS:[]}
+  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=230",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=230",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
+  {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=230",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]},
+  {id:"chubu",name:"中部",map:"assets/maps/chubu.svg?v=230",mapWidth:573.88,mapHeight:740.47,displayScale:1.05,items:typeof CHUBU_ITEMS!=="undefined"?CHUBU_ITEMS:[]},
+  {id:"kinki",name:"近畿",map:"assets/maps/kinki.svg?v=230",mapWidth:458.42,mapHeight:428.93,displayScale:1.08,items:typeof KINKI_ITEMS!=="undefined"?KINKI_ITEMS:[]},
+  {id:"chugoku",name:"中国",map:"assets/maps/chugoku.svg?v=230",mapWidth:539.55,mapHeight:380.15,displayScale:1.08,items:typeof CHUGOKU_ITEMS!=="undefined"?CHUGOKU_ITEMS:[]}
 ];
 
 const state={
@@ -810,6 +818,7 @@ activateRegion("tohoku");
 activateRegion("kanto");
 activateRegion("chubu");
 activateRegion("kinki");
+activateRegion("chugoku");
 $("homeButton").addEventListener("click",travelHome);
 returnButton.addEventListener("click",travelHome);
 replayButton.addEventListener("click",replayCurrentLevel);
@@ -865,7 +874,7 @@ function loadLevel(index){
   const level=currentLevel();
   state.items=level.items.map(item=>({
     ...item,
-    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=220`
+    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=230`
   }));
   const saved=state.levelProgress.get(level.id);
   state.placed=new Set(saved ? saved : []);
