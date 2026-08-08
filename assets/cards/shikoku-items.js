@@ -13,8 +13,8 @@ const SHIKOKU_ITEMS = [
     "name": "讃岐平野",
     "category": "plain",
     "icon": "assets/icons/plain.svg",
-    "x": 65,
-    "y": 25,
+    "x": 68,
+    "y": 20,
     "side": "right"
   },
   {
@@ -22,8 +22,8 @@ const SHIKOKU_ITEMS = [
     "name": "吉野川",
     "category": "river",
     "icon": "assets/icons/river.svg",
-    "x": 60,
-    "y": 35,
+    "x": 120,
+    "y": 30,
     "side": "left"
   },
   {
