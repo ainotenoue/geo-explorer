@@ -31,8 +31,8 @@ const SHIKOKU_ITEMS = [
     "name": "四万十川",
     "category": "river",
     "icon": "assets/icons/river.svg",
-    "x": 29,
-    "y": 68,
+    "x": 31,
+    "y": 66,
     "side": "right"
   },
   {
@@ -40,8 +40,8 @@ const SHIKOKU_ITEMS = [
     "name": "室戸岬",
     "category": "cape",
     "icon": "assets/icons/cape.svg",
-    "x": 82,
-    "y": 73,
+    "x": 80,
+    "y": 76,
     "side": "right"
   },
   {
@@ -49,8 +49,8 @@ const SHIKOKU_ITEMS = [
     "name": "足摺岬",
     "category": "cape",
     "icon": "assets/icons/cape.svg",
-    "x": 24,
-    "y": 83,
+    "x": 21,
+    "y": 79,
     "side": "left"
   }
 ];
