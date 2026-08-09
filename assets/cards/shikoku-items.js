@@ -50,7 +50,7 @@ const SHIKOKU_ITEMS = [
     "category": "cape",
     "icon": "assets/icons/cape.svg",
     "x": 36,
-    "y": 95,
+    "y": 97,
     "side": "left"
   }
 ];
