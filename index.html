@@ -213,6 +213,16 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   flex-direction:column;
   gap:5px;
   justify-content:center;
+  width:82%;
+}
+
+/* Narrower card columns, kept close to the map.
+   The freed space stays on the outside edges. */
+.game > .card-column:first-child{
+  justify-self:end;
+}
+.game > .card-column:last-child{
+  justify-self:start;
 }
 .map-panel{
   position:relative;
