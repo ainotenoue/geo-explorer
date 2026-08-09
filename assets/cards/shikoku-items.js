@@ -14,7 +14,7 @@ const SHIKOKU_ITEMS = [
     "category": "plain",
     "icon": "assets/icons/plain.svg",
     "x": 68,
-    "y": 20,
+    "y": 19,
     "side": "right"
   },
   {
