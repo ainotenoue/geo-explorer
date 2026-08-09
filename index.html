@@ -154,7 +154,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 /* Geo Explorer next UI:
    - 10-card capacity: 5 left / 5 right (item side remains data-driven)
    - compact card height/gap
-   - smaller, near-square hint/drop zones
+   - hint/drop zone: 46 x 46px, 2px dashed, slightly darker
    - map sizing/viewBox unchanged
 */
 /* GAME */
@@ -271,15 +271,15 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .drop-zone{
   position:absolute;
   transform:translate(-50%,-50%);
-  width:58px;
-  height:52px;
-  border:1.5px dashed rgba(58,102,119,.24);
-  border-radius:10px;
-  background:#ffffff70;
+  width:46px;
+  height:46px;
+  border:2px dashed rgba(58,102,119,.38);
+  border-radius:9px;
+  background:#ffffff66;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:3px;
+  padding:2px;
   transition:.18s;
 }
 .drop-zone.hot{
