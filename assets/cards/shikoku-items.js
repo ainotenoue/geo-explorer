@@ -22,8 +22,8 @@ const SHIKOKU_ITEMS = [
     "name": "吉野川",
     "category": "river",
     "icon": "assets/icons/river.svg",
-    "x": 80,
-    "y": 30,
+    "x": 82,
+    "y": 28,
     "side": "left"
   },
   {
