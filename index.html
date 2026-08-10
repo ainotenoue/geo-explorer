@@ -151,6 +151,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   color:#496b7a;
 }
 
+/* TEST BUILD: 6 real questions + 4 temporary runtime questions = 10 */
 /* Geo Explorer next UI:
    - 10-card capacity: 5 left / 5 right (item side remains data-driven)
    - compact card height/gap
@@ -905,13 +906,86 @@ function clearLevelDom(){
   [...mapWrap.querySelectorAll(".drop-zone")].forEach(node=>node.remove());
 }
 
+
+/* =========================================================
+   10-question layout TEST
+   ---------------------------------------------------------
+   Purpose:
+   - Keep all existing real 6 questions unchanged.
+   - Add 4 temporary questions at runtime only.
+   - Result: left 5 / right 5 for UI and drag-distance testing.
+   - This block can be removed once each *-items.js contains
+     10 real questions.
+   ========================================================= */
+const TEN_ITEM_LAYOUT_TEST = true;
+
+function expandToTenForLayoutTest(sourceItems){
+  const items = sourceItems.map(item => ({...item}));
+  if(!TEN_ITEM_LAYOUT_TEST || items.length !== 6) return items;
+
+  const leftBase  = items.filter(item => item.side === "left");
+  const rightBase = items.filter(item => item.side === "right");
+
+  // Current packs are designed as 3 left / 3 right.
+  // If a pack differs, fall back to the first available item.
+  const L1 = leftBase[0]  || items[0];
+  const L2 = leftBase[1]  || items[1] || items[0];
+  const R1 = rightBase[0] || items[3] || items[0];
+  const R2 = rightBase[1] || items[4] || items[0];
+
+  const clamp = v => Math.max(7, Math.min(93, v));
+
+  const testItems = [
+    {
+      ...L1,
+      id:`${L1.id}-layout-test-7`,
+      name:"追加山地",
+      side:"left",
+      x:clamp(Number(L1.x) + 7),
+      y:clamp(Number(L1.y) - 7),
+      __layoutTest:true
+    },
+    {
+      ...L2,
+      id:`${L2.id}-layout-test-8`,
+      name:"追加平野",
+      side:"left",
+      x:clamp(Number(L2.x) - 7),
+      y:clamp(Number(L2.y) + 7),
+      __layoutTest:true
+    },
+    {
+      ...R1,
+      id:`${R1.id}-layout-test-9`,
+      name:"追加河川",
+      side:"right",
+      x:clamp(Number(R1.x) - 7),
+      y:clamp(Number(R1.y) - 7),
+      __layoutTest:true
+    },
+    {
+      ...R2,
+      id:`${R2.id}-layout-test-10`,
+      name:"追加地形",
+      side:"right",
+      x:clamp(Number(R2.x) + 7),
+      y:clamp(Number(R2.y) + 7),
+      __layoutTest:true
+    }
+  ];
+
+  return items.concat(testItems);
+}
+
 function loadLevel(index){
   state.levelIndex=index;
   const level=currentLevel();
-  state.items=level.items.map(item=>({
-    ...item,
-    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=250`
-  }));
+  state.items=expandToTenForLayoutTest(
+    level.items.map(item=>({
+      ...item,
+      icon:item.icon.includes("?")?item.icon:`${item.icon}?v=250`
+    }))
+  );
   const saved=state.levelProgress.get(level.id);
   state.placed=new Set(saved ? saved : []);
   clearLevelDom();
