@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v3.1</title>
+<title>Geo Explorer v4.0</title>
 <style>
 :root{
   --ink:#18364b;
@@ -151,11 +151,10 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   color:#496b7a;
 }
 
-/* TEST BUILD: 6 real questions + 4 temporary runtime questions = 10 */
 /* Geo Explorer next UI:
    - 10-card capacity: 5 left / 5 right (item side remains data-driven)
    - compact card height/gap
-   - hint/drop zone: 46 x 46px, 2px dashed, slightly darker
+   - hint/drop zone: 38 x 38px, 2px dashed, slightly darker
    - map sizing/viewBox unchanged
 */
 /* GAME */
@@ -212,7 +211,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   min-height:0;
   display:flex;
   flex-direction:column;
-  gap:5px;
+  gap:9px;
   justify-content:center;
   width:82%;
 }
@@ -282,10 +281,10 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .drop-zone{
   position:absolute;
   transform:translate(-50%,-50%);
-  width:46px;
-  height:46px;
+  width:38px;
+  height:38px;
   border:2px dashed rgba(58,102,119,.45);
-  border-radius:9px;
+  border-radius:8px;
   background:#ffffff66;
   display:flex;
   align-items:center;
@@ -482,7 +481,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v3.1</span>
+      <span class="version">v4.0</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -577,7 +576,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v3.1</span>
+      <span class="version">v4.0</span>
     </div>
     <div class="area-title" id="areaTitle">北海道</div>
     <div class="status-wrap">
@@ -908,13 +907,13 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   10-question layout TEST
+   Geo Explorer v4.0 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
    - Add 4 temporary questions at runtime only.
-   - Result: left 5 / right 5 for UI and drag-distance testing.
-   - This block can be removed once each *-items.js contains
+   - Result: left 5 / right 5 for UI and drag testing.
+   - Remove this block once each *-items.js contains
      10 real questions.
    ========================================================= */
 const TEN_ITEM_LAYOUT_TEST = true;
@@ -926,8 +925,6 @@ function expandToTenForLayoutTest(sourceItems){
   const leftBase  = items.filter(item => item.side === "left");
   const rightBase = items.filter(item => item.side === "right");
 
-  // Current packs are designed as 3 left / 3 right.
-  // If a pack differs, fall back to the first available item.
   const L1 = leftBase[0]  || items[0];
   const L2 = leftBase[1]  || items[1] || items[0];
   const R1 = rightBase[0] || items[3] || items[0];
@@ -935,7 +932,7 @@ function expandToTenForLayoutTest(sourceItems){
 
   const clamp = v => Math.max(7, Math.min(93, v));
 
-  const testItems = [
+  return items.concat([
     {
       ...L1,
       id:`${L1.id}-layout-test-7`,
@@ -972,9 +969,7 @@ function expandToTenForLayoutTest(sourceItems){
       y:clamp(Number(R2.y) + 7),
       __layoutTest:true
     }
-  ];
-
-  return items.concat(testItems);
+  ]);
 }
 
 function loadLevel(index){
