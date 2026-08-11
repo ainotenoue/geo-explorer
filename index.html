@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.3</title>
+<title>Geo Explorer v4.4</title>
 <style>
 :root{
   --ink:#18364b;
@@ -505,7 +505,13 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .layer-button:active{transform:scale(.97)}
 
 
-/* --- v4.3 Achievement badges / medals: 九州・沖縄 only --- */
+/* --- v4.4 Persistent medals: 九州・沖縄 only ---
+   - no completion checkmarks in the layer switch
+   - no "地方クリア" header badge
+   - nature medal stays on Nature view after completion
+   - life medal stays on Life view after completion
+   - when both are complete, both views show the gold region medal
+*/
 .area-center{
   display:grid;
   justify-items:center;
@@ -517,38 +523,10 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   justify-content:center;
   gap:8px;
 }
-.layer-button.completed::after{
-  content:" ✓";
-  font-weight:1000;
-}
-.layer-button.completed:not(.active){
-  box-shadow:inset 0 0 0 1.5px rgba(38,123,99,.28);
-  color:#2e725e;
-}
 #lifeLayerButton.active{
   background:#d88435;
   color:#fff;
 }
-#lifeLayerButton.completed:not(.active){
-  box-shadow:inset 0 0 0 1.5px rgba(216,132,53,.32);
-  color:#a45f21;
-}
-.region-clear-badge{
-  display:none;
-  align-items:center;
-  justify-content:center;
-  min-height:30px;
-  padding:5px 11px;
-  border-radius:999px;
-  border:1px solid #e6c65c;
-  background:#fff7d6;
-  color:#8e6810;
-  font-size:12px;
-  font-weight:900;
-  white-space:nowrap;
-  box-shadow:0 4px 10px rgba(113,87,22,.10);
-}
-.region-clear-badge.show{display:flex}
 
 .achievement-medal{
   position:absolute;
@@ -637,7 +615,6 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   .achievement-medal-icon svg{width:25px;height:25px}
   .achievement-medal-title{font-size:12px}
   .achievement-medal-sub{font-size:9px}
-  .region-clear-badge{font-size:10px;padding:4px 8px}
 }
 
 </style>
@@ -648,7 +625,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.3</span>
+      <span class="version">v4.4</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -743,7 +720,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.3</span>
+      <span class="version">v4.4</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -752,7 +729,6 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
           <button class="layer-button active" id="natureLayerButton" type="button">自然</button>
           <button class="layer-button" id="lifeLayerButton" type="button">暮らし</button>
         </div>
-        <div class="region-clear-badge" id="regionClearBadge" aria-label="地方クリア">★ 地方クリア</div>
       </div>
     </div>
     <div class="status-wrap">
@@ -855,7 +831,6 @@ const homeMessage=$("homeMessage");
 const layerSwitch=$("layerSwitch");
 const natureLayerButton=$("natureLayerButton");
 const lifeLayerButton=$("lifeLayerButton");
-const regionClearBadge=$("regionClearBadge");
 const achievementMedal=$("achievementMedal");
 const achievementMedalIcon=$("achievementMedalIcon");
 const achievementMedalTitle=$("achievementMedalTitle");
@@ -878,16 +853,10 @@ function currentItems(){
 
 function updateLayerSwitch(){
   const isKyushu=currentLevel().id==="kyushu";
-  const natureDone=state.completed.has("kyushu:nature");
-  const lifeDone=state.completed.has("kyushu:life");
-  const regionDone=natureDone&&lifeDone;
-
   layerSwitch.classList.toggle("show",isKyushu);
   natureLayerButton.classList.toggle("active",state.layer==="nature");
   lifeLayerButton.classList.toggle("active",state.layer==="life");
-  natureLayerButton.classList.toggle("completed",isKyushu&&natureDone);
-  lifeLayerButton.classList.toggle("completed",isKyushu&&lifeDone);
-  regionClearBadge.classList.toggle("show",isKyushu&&regionDone);
+  refreshPersistentMedal();
 }
 
 
@@ -909,11 +878,9 @@ function medalIcon(type){
   </svg>`;
 }
 
-let medalTimer=0;
 let medalPromoteTimer=0;
 
 function hideAchievementMedal(){
-  clearTimeout(medalTimer);
   clearTimeout(medalPromoteTimer);
   achievementMedal.classList.remove("show");
 }
@@ -929,8 +896,32 @@ function setAchievementMedal(type){
   requestAnimationFrame(()=>achievementMedal.classList.add("show"));
 }
 
+function medalStateForCurrentView(){
+  if(currentLevel().id!=="kyushu")return null;
+
+  const natureDone=state.completed.has("kyushu:nature");
+  const lifeDone=state.completed.has("kyushu:life");
+
+  if(natureDone&&lifeDone)return "region";
+  if(state.layer==="nature"&&natureDone)return "nature";
+  if(state.layer==="life"&&lifeDone)return "life";
+  return null;
+}
+
+function refreshPersistentMedal(){
+  clearTimeout(medalPromoteTimer);
+  const type=medalStateForCurrentView();
+
+  if(!type){
+    achievementMedal.classList.remove("show");
+    return;
+  }
+
+  setAchievementMedal(type);
+}
+
 function showAchievementMedal(type,regionComplete=false){
-  hideAchievementMedal();
+  clearTimeout(medalPromoteTimer);
   setAchievementMedal(type);
 
   if(regionComplete){
@@ -938,15 +929,11 @@ function showAchievementMedal(type,regionComplete=false){
       achievementMedal.classList.remove("show");
       setTimeout(()=>setAchievementMedal("region"),180);
     },900);
-    medalTimer=setTimeout(()=>achievementMedal.classList.remove("show"),3200);
-  }else{
-    medalTimer=setTimeout(()=>achievementMedal.classList.remove("show"),2100);
   }
 }
 
 function switchLayer(nextLayer){
   if(currentLevel().id!=="kyushu" || state.layer===nextLayer)return;
-  hideAchievementMedal();
   if(state.dragging)cancelDrag();
   state.layer=nextLayer;
   updateLayerSwitch();
@@ -1201,7 +1188,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.3 — 10-question layout TEST
+   Geo Explorer v4.4 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -1267,7 +1254,7 @@ function expandToTenForLayoutTest(sourceItems){
 }
 
 function loadLevel(index){
-  hideAchievementMedal();
+  achievementMedal.classList.remove("show");
   state.levelIndex=index;
   const level=currentLevel();
   const sourceItems=currentItems();
@@ -1469,7 +1456,12 @@ function complete(){
     const regionComplete=
       state.completed.has("kyushu:nature") &&
       state.completed.has("kyushu:life");
-    showAchievementMedal(currentType,regionComplete);
+
+    // Completion animation:
+    // 1) show the just-earned layer medal
+    // 2) if both layers are complete, promote it to the gold region medal
+    achievementMedal.classList.remove("show");
+    setTimeout(()=>showAchievementMedal(currentType,regionComplete),80);
   }
 }
 
