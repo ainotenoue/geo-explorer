@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.1</title>
+<title>Geo Explorer v4.2</title>
 <style>
 :root{
   --ink:#18364b;
@@ -473,6 +473,37 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   background:#e3f5f7;
 }
 
+
+/* --- v4.2 Layer switch: 九州・沖縄 only --- */
+.layer-switch{
+  display:none;
+  justify-self:center;
+  align-items:center;
+  gap:4px;
+  padding:3px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#ffffffb8;
+  box-shadow:0 4px 10px rgba(43,79,95,.08);
+}
+.layer-switch.show{display:flex}
+.layer-button{
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:#587382;
+  font-weight:900;
+  padding:6px 15px;
+  min-width:72px;
+  cursor:pointer;
+  transition:background .16s ease,color .16s ease,transform .12s ease;
+}
+.layer-button.active{
+  background:var(--accent);
+  color:#fff;
+}
+.layer-button:active{transform:scale(.97)}
+
 </style>
 </head>
 <body>
@@ -481,7 +512,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.1</span>
+      <span class="version">v4.2</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -576,9 +607,15 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.1</span>
+      <span class="version">v4.2</span>
     </div>
-    <div class="area-title" id="areaTitle">北海道</div>
+    <div style="display:grid;justify-items:center;gap:5px">
+      <div class="area-title" id="areaTitle">北海道</div>
+      <div class="layer-switch" id="layerSwitch" aria-label="九州・沖縄の学習レイヤー">
+        <button class="layer-button active" id="natureLayerButton" type="button">自然</button>
+        <button class="layer-button" id="lifeLayerButton" type="button">暮らし</button>
+      </div>
+    </div>
     <div class="status-wrap">
       <div class="progress" id="progress">0 / 10</div>
     </div>
@@ -614,7 +651,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 <script src="assets/cards/kinki-items.js?v=250"></script>
 <script src="assets/cards/chugoku-items.js?v=250"></script>
 <script src="assets/cards/shikoku-items.js?v=250"></script>
-<script src="assets/cards/kyushu-okinawa-items.js?v=451"></script>
+<script src="assets/cards/kyushu-nature-items.js?v=420"></script>
+<script src="assets/cards/kyushu-life-items.js?v=420"></script>
 <script>
 const HOKKAIDO_ITEMS=[
   {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=250",x:38,y:54,side:"left"},
@@ -633,7 +671,7 @@ const LEVELS=[
   {id:"kinki",name:"近畿",map:"assets/maps/kinki.svg?v=250",mapWidth:458.42,mapHeight:428.93,displayScale:1.08,items:typeof KINKI_ITEMS!=="undefined"?KINKI_ITEMS:[]},
   {id:"chugoku",name:"中国",map:"assets/maps/chugoku.svg?v=250",mapWidth:539.55,mapHeight:380.15,displayScale:1.08,items:typeof CHUGOKU_ITEMS!=="undefined"?CHUGOKU_ITEMS:[]},
   {id:"shikoku",name:"四国",map:"assets/maps/shikoku.svg?v=250",mapWidth:425.16,mapHeight:337.08,displayScale:1.10,items:typeof SHIKOKU_ITEMS!=="undefined"?SHIKOKU_ITEMS:[]},
-  {id:"kyushu",name:"九州・沖縄",map:"assets/maps/kyushu-okinawa.svg?v=451",mapWidth:661.55,mapHeight:650.00,displayScale:1.04,items:typeof KYUSHU_OKINAWA_ITEMS!=="undefined"?KYUSHU_OKINAWA_ITEMS:[]}
+  {id:"kyushu",name:"九州・沖縄",map:"assets/maps/kyushu-okinawa.svg?v=451",mapWidth:661.55,mapHeight:650.00,displayScale:1.04,sets:{nature:typeof KYUSHU_NATURE_ITEMS!=="undefined"?KYUSHU_NATURE_ITEMS:[],life:typeof KYUSHU_LIFE_ITEMS!=="undefined"?KYUSHU_LIFE_ITEMS:[]}}
 ];
 
 const state={
@@ -647,7 +685,8 @@ const state={
   raf:0,
   pointerX:0,
   pointerY:0,
-  transitioning:false
+  transitioning:false,
+  layer:"nature"
 };
 
 const $=id=>document.getElementById(id);
@@ -667,8 +706,39 @@ const completionActions=$("completionActions");
 const replayButton=$("replayButton");
 const returnButton=$("returnButton");
 const homeMessage=$("homeMessage");
+const layerSwitch=$("layerSwitch");
+const natureLayerButton=$("natureLayerButton");
+const lifeLayerButton=$("lifeLayerButton");
 
 function currentLevel(){return LEVELS[state.levelIndex]}
+
+function currentProgressKey(){
+  const level=currentLevel();
+  return level.id==="kyushu" ? `${level.id}:${state.layer}` : level.id;
+}
+
+function currentItems(){
+  const level=currentLevel();
+  if(level.id==="kyushu" && level.sets){
+    return level.sets[state.layer] || [];
+  }
+  return level.items || [];
+}
+
+function updateLayerSwitch(){
+  const isKyushu=currentLevel().id==="kyushu";
+  layerSwitch.classList.toggle("show",isKyushu);
+  natureLayerButton.classList.toggle("active",state.layer==="nature");
+  lifeLayerButton.classList.toggle("active",state.layer==="life");
+}
+
+function switchLayer(nextLayer){
+  if(currentLevel().id!=="kyushu" || state.layer===nextLayer)return;
+  if(state.dragging)cancelDrag();
+  state.layer=nextLayer;
+  updateLayerSwitch();
+  loadLevel(state.levelIndex);
+}
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 
@@ -907,7 +977,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.1 — 10-question layout TEST
+   Geo Explorer v4.2 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -916,7 +986,7 @@ function clearLevelDom(){
    - Remove this block once each *-items.js contains
      10 real questions.
    ========================================================= */
-const TEN_ITEM_LAYOUT_TEST = true;
+const TEN_ITEM_LAYOUT_TEST = false;
 
 function expandToTenForLayoutTest(sourceItems){
   const items = sourceItems.map(item => ({...item}));
@@ -975,17 +1045,17 @@ function expandToTenForLayoutTest(sourceItems){
 function loadLevel(index){
   state.levelIndex=index;
   const level=currentLevel();
-  state.items=expandToTenForLayoutTest(
-    level.items.map(item=>({
-      ...item,
-      icon:item.icon.includes("?")?item.icon:`${item.icon}?v=250`
-    }))
-  );
-  const saved=state.levelProgress.get(level.id);
+  const sourceItems=currentItems();
+  state.items=sourceItems.map(item=>({
+    ...item,
+    icon:item.icon.includes("?")?item.icon:`${item.icon}?v=420`
+  }));
+  const saved=state.levelProgress.get(currentProgressKey());
   state.placed=new Set(saved ? saved : []);
   clearLevelDom();
 
   areaTitle.textContent=level.name;
+  updateLayerSwitch();
   mapImage.src=level.map;
   mapImage.alt=`${level.name}の地図`;
   message.style.display="";
@@ -1138,7 +1208,7 @@ function cancelDrag(){
 
 function place(item,card,zone){
   state.placed.add(item.id);
-  state.levelProgress.set(currentLevel().id,new Set(state.placed));
+  state.levelProgress.set(currentProgressKey(),new Set(state.placed));
   zone.classList.add("filled");
   zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;
   card.classList.add("done");
@@ -1155,9 +1225,9 @@ function update(){
 
 function showCompletedState(playSound=true){
   if(playSound)clearSound();
-  state.completed.add(currentLevel().id);
+  state.completed.add(currentProgressKey());
   state.levelProgress.set(
-    currentLevel().id,
+    currentProgressKey(),
     new Set(state.items.map(item=>item.id))
   );
   completeBanner.classList.add("show");
@@ -1175,6 +1245,9 @@ function replayCurrentLevel(){
   state.placed=new Set();
   loadLevel(state.levelIndex);
 }
+
+natureLayerButton.addEventListener("click",()=>switchLayer("nature"));
+lifeLayerButton.addEventListener("click",()=>switchLayer("life"));
 
 window.addEventListener("resize",fitMap);
 if("ResizeObserver"in window)new ResizeObserver(fitMap).observe(mapStage);
