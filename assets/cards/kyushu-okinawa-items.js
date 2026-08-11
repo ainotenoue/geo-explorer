@@ -1,96 +1,13 @@
-const KYUSHU_NATURE_ITEMS = [
-  {
-    id: "kyushu-mountains",
-    name: "九州山地",
-    category: "mountain",
-    icon: "assets/icons/mountain-area.svg",
-    x: 57,
-    y: 46,
-    side: "left"
-  },
-  {
-    id: "aso",
-    name: "阿蘇山",
-    category: "volcano",
-    icon: "assets/icons/volcano.svg",
-    x: 58,
-    y: 35,
-    side: "left"
-  },
-  {
-    id: "unzen",
-    name: "雲仙岳",
-    category: "volcano",
-    icon: "assets/icons/volcano.svg",
-    x: 38,
-    y: 38,
-    side: "left"
-  },
-  {
-    id: "sakurajima",
-    name: "桜島",
-    category: "volcano",
-    icon: "assets/icons/volcano.svg",
-    x: 50,
-    y: 76,
-    side: "left"
-  },
-  {
-    id: "shirasu-plateau",
-    name: "シラス台地",
-    category: "plateau",
-    icon: "assets/icons/plateau.svg",
-    x: 57,
-    y: 71,
-    side: "left"
-  },
+const KYUSHU_LIFE_ITEMS = [
+  {id:"rice-double-cropping",name:"米・二毛作",category:"agriculture",icon:"assets/icons/agriculture.svg",x:43,y:24,side:"left"},
+  {id:"forcing-culture",name:"促成栽培",category:"greenhouse",icon:"assets/icons/greenhouse.svg",x:67,y:57,side:"left"},
+  {id:"kitakyushu-steel",name:"北九州・製鉄",category:"industry",icon:"assets/icons/industry.svg",x:40,y:15,side:"left"},
+  {id:"semiconductor",name:"半導体",category:"hightech",icon:"assets/icons/hightech.svg",x:51,y:38,side:"left"},
+  {id:"nori-aquaculture",name:"のり養殖",category:"fishery",icon:"assets/icons/fishery.svg",x:39,y:34,side:"left"},
 
-  {
-    id: "chikushi-plain",
-    name: "筑紫平野",
-    category: "plain",
-    icon: "assets/icons/plain.svg",
-    x: 43,
-    y: 24,
-    side: "right"
-  },
-  {
-    id: "ariake-sea",
-    name: "有明海",
-    category: "bay",
-    icon: "assets/icons/bay.svg",
-    x: 39,
-    y: 34,
-    side: "right"
-  },
-  {
-    id: "miyazaki-plain",
-    name: "宮崎平野",
-    category: "plain",
-    icon: "assets/icons/plain.svg",
-    x: 67,
-    y: 57,
-    side: "right"
-  },
-  {
-    id: "kumagawa",
-    name: "球磨川",
-    category: "river",
-    icon: "assets/icons/river.svg",
-    x: 49,
-    y: 52,
-    side: "right"
-  },
-  {
-    id: "yatsushiro-plain",
-    name: "八代平野",
-    category: "plain",
-    icon: "assets/icons/plain.svg",
-    x: 43,
-    y: 49,
-    side: "right"
-  }
+  {id:"igusa",name:"い草",category:"agriculture",icon:"assets/icons/agriculture.svg",x:43,y:49,side:"right"},
+  {id:"sugarcane",name:"さとうきび",category:"agriculture",icon:"assets/icons/agriculture.svg",x:84,y:78,side:"right"},
+  {id:"kurume-kasuri",name:"久留米がすり",category:"traditional",icon:"assets/icons/traditional.svg",x:40,y:28,side:"right"},
+  {id:"sweet-potato-livestock",name:"薩摩芋・畜産",category:"livestock",icon:"assets/icons/livestock.svg",x:54,y:70,side:"right"},
+  {id:"industrial-complex",name:"コンビナート",category:"industry",icon:"assets/icons/industry.svg",x:69,y:32,side:"right"}
 ];
-
-// Backward-compatible alias for the current Geo Explorer level loader.
-const KYUSHU_OKINAWA_ITEMS = KYUSHU_NATURE_ITEMS;
