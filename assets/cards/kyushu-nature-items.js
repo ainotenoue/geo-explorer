@@ -91,6 +91,3 @@ const KYUSHU_NATURE_ITEMS = [
     side: "right"
   }
 ];
-
-// Backward-compatible alias for the current Geo Explorer level loader.
-const KYUSHU_OKINAWA_ITEMS = KYUSHU_NATURE_ITEMS;
