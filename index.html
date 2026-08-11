@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.2</title>
+<title>Geo Explorer v4.3</title>
 <style>
 :root{
   --ink:#18364b;
@@ -504,6 +504,142 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .layer-button:active{transform:scale(.97)}
 
+
+/* --- v4.3 Achievement badges / medals: 九州・沖縄 only --- */
+.area-center{
+  display:grid;
+  justify-items:center;
+  gap:5px;
+}
+.layer-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.layer-button.completed::after{
+  content:" ✓";
+  font-weight:1000;
+}
+.layer-button.completed:not(.active){
+  box-shadow:inset 0 0 0 1.5px rgba(38,123,99,.28);
+  color:#2e725e;
+}
+#lifeLayerButton.active{
+  background:#d88435;
+  color:#fff;
+}
+#lifeLayerButton.completed:not(.active){
+  box-shadow:inset 0 0 0 1.5px rgba(216,132,53,.32);
+  color:#a45f21;
+}
+.region-clear-badge{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  padding:5px 11px;
+  border-radius:999px;
+  border:1px solid #e6c65c;
+  background:#fff7d6;
+  color:#8e6810;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+  box-shadow:0 4px 10px rgba(113,87,22,.10);
+}
+.region-clear-badge.show{display:flex}
+
+.achievement-medal{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:8;
+  width:116px;
+  height:116px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  opacity:0;
+  transform:scale(.72);
+  pointer-events:none;
+  transition:opacity .22s ease, transform .32s cubic-bezier(.2,.85,.25,1.18);
+}
+.achievement-medal.show{
+  opacity:1;
+  transform:scale(1);
+}
+.achievement-medal.nature{
+  background:linear-gradient(145deg,#e4f6e8,#bfe7c8);
+  border:4px solid #65a979;
+  box-shadow:0 12px 28px rgba(60,130,83,.22), inset 0 0 0 3px rgba(255,255,255,.65);
+  color:#2d7550;
+}
+.achievement-medal.life{
+  background:linear-gradient(145deg,#fff0df,#f4c692);
+  border:4px solid #d88435;
+  box-shadow:0 12px 28px rgba(185,108,42,.22), inset 0 0 0 3px rgba(255,255,255,.65);
+  color:#a25a1f;
+}
+.achievement-medal.region{
+  background:linear-gradient(145deg,#fff6be,#efc84f);
+  border:4px solid #c99316;
+  box-shadow:0 12px 30px rgba(167,124,15,.28), inset 0 0 0 3px rgba(255,255,255,.70);
+  color:#805c0b;
+}
+.achievement-medal-inner{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  display:grid;
+  grid-template-rows:34px auto auto;
+  align-content:center;
+  justify-items:center;
+  text-align:center;
+  background:rgba(255,255,255,.38);
+}
+.achievement-medal-icon{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+}
+.achievement-medal-icon svg{
+  width:30px;
+  height:30px;
+  display:block;
+}
+.achievement-medal-title{
+  font-size:14px;
+  line-height:1.05;
+  font-weight:1000;
+  white-space:nowrap;
+}
+.achievement-medal-sub{
+  margin-top:2px;
+  font-size:10px;
+  line-height:1;
+  font-weight:900;
+  opacity:.82;
+}
+@media(max-width:700px){
+  .achievement-medal{
+    width:96px;
+    height:96px;
+    top:12px;
+    right:12px;
+  }
+  .achievement-medal-inner{
+    width:72px;
+    height:72px;
+    grid-template-rows:28px auto auto;
+  }
+  .achievement-medal-icon svg{width:25px;height:25px}
+  .achievement-medal-title{font-size:12px}
+  .achievement-medal-sub{font-size:9px}
+  .region-clear-badge{font-size:10px;padding:4px 8px}
+}
+
 </style>
 </head>
 <body>
@@ -512,7 +648,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.2</span>
+      <span class="version">v4.3</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -607,13 +743,16 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.2</span>
+      <span class="version">v4.3</span>
     </div>
-    <div style="display:grid;justify-items:center;gap:5px">
+    <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
-      <div class="layer-switch" id="layerSwitch" aria-label="九州・沖縄の学習レイヤー">
-        <button class="layer-button active" id="natureLayerButton" type="button">自然</button>
-        <button class="layer-button" id="lifeLayerButton" type="button">暮らし</button>
+      <div class="layer-row">
+        <div class="layer-switch" id="layerSwitch" aria-label="九州・沖縄の学習レイヤー">
+          <button class="layer-button active" id="natureLayerButton" type="button">自然</button>
+          <button class="layer-button" id="lifeLayerButton" type="button">暮らし</button>
+        </div>
+        <div class="region-clear-badge" id="regionClearBadge" aria-label="地方クリア">★ 地方クリア</div>
       </div>
     </div>
     <div class="status-wrap">
@@ -625,6 +764,13 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     <section class="card-column" id="leftCards" aria-label="左側のカード"></section>
     <section class="map-panel" aria-label="地図">
       <div class="complete-banner" id="completeBanner">できた！</div>
+      <div class="achievement-medal" id="achievementMedal" aria-hidden="true">
+        <div class="achievement-medal-inner">
+          <div class="achievement-medal-icon" id="achievementMedalIcon"></div>
+          <div class="achievement-medal-title" id="achievementMedalTitle"></div>
+          <div class="achievement-medal-sub" id="achievementMedalSub">できた！</div>
+        </div>
+      </div>
       <div class="map-stage" id="mapStage">
         <div class="map-wrap" id="mapWrap">
           <img class="map" id="mapImage" alt="">
@@ -709,6 +855,11 @@ const homeMessage=$("homeMessage");
 const layerSwitch=$("layerSwitch");
 const natureLayerButton=$("natureLayerButton");
 const lifeLayerButton=$("lifeLayerButton");
+const regionClearBadge=$("regionClearBadge");
+const achievementMedal=$("achievementMedal");
+const achievementMedalIcon=$("achievementMedalIcon");
+const achievementMedalTitle=$("achievementMedalTitle");
+const achievementMedalSub=$("achievementMedalSub");
 
 function currentLevel(){return LEVELS[state.levelIndex]}
 
@@ -727,13 +878,75 @@ function currentItems(){
 
 function updateLayerSwitch(){
   const isKyushu=currentLevel().id==="kyushu";
+  const natureDone=state.completed.has("kyushu:nature");
+  const lifeDone=state.completed.has("kyushu:life");
+  const regionDone=natureDone&&lifeDone;
+
   layerSwitch.classList.toggle("show",isKyushu);
   natureLayerButton.classList.toggle("active",state.layer==="nature");
   lifeLayerButton.classList.toggle("active",state.layer==="life");
+  natureLayerButton.classList.toggle("completed",isKyushu&&natureDone);
+  lifeLayerButton.classList.toggle("completed",isKyushu&&lifeDone);
+  regionClearBadge.classList.toggle("show",isKyushu&&regionDone);
+}
+
+
+function medalIcon(type){
+  if(type==="nature"){
+    return `<svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M36 9C24 10 14 16 12 29c8 3 19 0 24-20Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13 33c7-8 13-12 22-17" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+  if(type==="life"){
+    return `<svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M10 23 24 11l14 12v15H10Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19 38V27h10v11" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 48 48" aria-hidden="true">
+    <path d="m24 6 5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1Z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+let medalTimer=0;
+let medalPromoteTimer=0;
+
+function hideAchievementMedal(){
+  clearTimeout(medalTimer);
+  clearTimeout(medalPromoteTimer);
+  achievementMedal.classList.remove("show");
+}
+
+function setAchievementMedal(type){
+  achievementMedal.className=`achievement-medal ${type}`;
+  achievementMedalIcon.innerHTML=medalIcon(type);
+  achievementMedalTitle.textContent=
+    type==="nature" ? "自然" :
+    type==="life" ? "暮らし" : "地方クリア";
+  achievementMedalSub.textContent=
+    type==="region" ? "九州・沖縄" : "できた！";
+  requestAnimationFrame(()=>achievementMedal.classList.add("show"));
+}
+
+function showAchievementMedal(type,regionComplete=false){
+  hideAchievementMedal();
+  setAchievementMedal(type);
+
+  if(regionComplete){
+    medalPromoteTimer=setTimeout(()=>{
+      achievementMedal.classList.remove("show");
+      setTimeout(()=>setAchievementMedal("region"),180);
+    },900);
+    medalTimer=setTimeout(()=>achievementMedal.classList.remove("show"),3200);
+  }else{
+    medalTimer=setTimeout(()=>achievementMedal.classList.remove("show"),2100);
+  }
 }
 
 function switchLayer(nextLayer){
   if(currentLevel().id!=="kyushu" || state.layer===nextLayer)return;
+  hideAchievementMedal();
   if(state.dragging)cancelDrag();
   state.layer=nextLayer;
   updateLayerSwitch();
@@ -886,9 +1099,20 @@ function updateHome(){
   const layer=ensureStarLayer();
   if(layer)layer.replaceChildren();
 
-  state.completed.forEach(addCompletionStar);
-  homeMessage.textContent=state.completed.size
-    ? `${state.completed.size}つの地方を完成！ 次はどこへ行こう？`
+  const completedRegions=new Set(
+    [...state.completed].filter(key=>!key.includes(":"))
+  );
+
+  if(
+    state.completed.has("kyushu:nature") &&
+    state.completed.has("kyushu:life")
+  ){
+    completedRegions.add("kyushu");
+  }
+
+  completedRegions.forEach(addCompletionStar);
+  homeMessage.textContent=completedRegions.size
+    ? `${completedRegions.size}つの地方を完成！ 次はどこへ行こう？`
     : "行きたい場所を選ぼう";
 }
 
@@ -977,7 +1201,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.2 — 10-question layout TEST
+   Geo Explorer v4.3 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -1043,6 +1267,7 @@ function expandToTenForLayoutTest(sourceItems){
 }
 
 function loadLevel(index){
+  hideAchievementMedal();
   state.levelIndex=index;
   const level=currentLevel();
   const sourceItems=currentItems();
@@ -1233,16 +1458,27 @@ function showCompletedState(playSound=true){
   completeBanner.classList.add("show");
   message.style.display="none";
   completionActions.classList.add("show");
+  updateLayerSwitch();
 }
 
 function complete(){
   showCompletedState(true);
+
+  if(currentLevel().id==="kyushu"){
+    const currentType=state.layer==="nature" ? "nature" : "life";
+    const regionComplete=
+      state.completed.has("kyushu:nature") &&
+      state.completed.has("kyushu:life");
+    showAchievementMedal(currentType,regionComplete);
+  }
 }
 
 function replayCurrentLevel(){
-  const level=currentLevel();
-  state.levelProgress.set(level.id,new Set());
+  const key=currentProgressKey();
+  state.levelProgress.set(key,new Set());
+  state.completed.delete(key);
   state.placed=new Set();
+  updateLayerSwitch();
   loadLevel(state.levelIndex);
 }
 
