@@ -11,5 +11,3 @@ const KYUSHU_LIFE_ITEMS = [
   {id:"sweet-potato-livestock",name:"薩摩芋・畜産",category:"livestock",icon:"assets/icons/livestock.svg",x:54,y:70,side:"right"},
   {id:"industrial-complex",name:"コンビナート",category:"industry",icon:"assets/icons/industry.svg",x:69,y:32,side:"right"}
 ];
-
-const KYUSHU_OKINAWA_ITEMS = KYUSHU_LIFE_ITEMS;
