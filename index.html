@@ -1031,17 +1031,17 @@ function addCompletionStar(regionId){
   badge.setAttribute("transform",`translate(${cx} ${cy})`);
 
   const outer=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  outer.setAttribute("r","44");
+  outer.setAttribute("r","60");
   outer.setAttribute("class","completion-medal");
 
   const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  inner.setAttribute("r","34");
+  inner.setAttribute("r","48");
   inner.setAttribute("class","completion-medal-inner");
 
   const star=document.createElementNS("http://www.w3.org/2000/svg","path");
   star.setAttribute("class","completion-medal-star");
   star.setAttribute("d","M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z");
-  star.setAttribute("transform","scale(1.8)");
+  star.setAttribute("transform","scale(2.4)");
 
   badge.append(outer,inner,star);
   layer.appendChild(badge);
