@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.6</title>
+<title>Geo Explorer v4.7</title>
 <style>
 :root{
   --ink:#18364b;
@@ -124,7 +124,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .completion-medal{
   fill:#fff2b8;
   stroke:#c99316;
-  stroke-width:5;
+  stroke-width:6;
   paint-order:stroke fill;
   pointer-events:none;
   filter:url(#completion-star-glow);
@@ -132,7 +132,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .completion-medal-inner{
   fill:none;
   stroke:#e5bd43;
-  stroke-width:2.5;
+  stroke-width:3;
   pointer-events:none;
 }
 .completion-medal-star{
@@ -231,7 +231,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   border:1px solid var(--line);
   border-radius:22px;
   box-shadow:var(--shadow);
-  overflow:hidden;
+  overflow:visible;
 }
 .area-title{
   justify-self:center;
@@ -510,8 +510,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 
 .achievement-medal{
   position:absolute;
-  top:18px;
-  right:18px;
+  top:-24px;
+  right:-28px;
   z-index:8;
   width:116px;
   height:116px;
@@ -571,8 +571,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   .achievement-medal{
     width:96px;
     height:96px;
-    top:12px;
-    right:12px;
+    top:-18px;
+    right:-20px;
   }
   .achievement-medal-inner{
     width:72px;
@@ -590,7 +590,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.6</span>
+      <span class="version">v4.7</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -685,7 +685,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.6</span>
+      <span class="version">v4.7</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -720,7 +720,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   </main>
 
   <footer class="game-footer">
-    <div class="message" id="message">カードを地図の場所へドラッグしよう</div>
+    <div class="message" id="message">「自然」の地図をつくろう</div>
     <div class="completion-actions" id="completionActions">
       <button class="replay-button" id="replayButton" type="button">もう一度</button>
       <button class="return-button" id="returnButton" type="button">日本地図へ戻る</button>
@@ -812,6 +812,15 @@ function currentItems(){
   return level.items || [];
 }
 
+function mapBuildMessage(){
+  if(currentLevel().id==="kyushu"){
+    return state.layer==="life"
+      ? "「暮らし」の地図をつくろう"
+      : "「自然」の地図をつくろう";
+  }
+  return "「自然」の地図をつくろう";
+}
+
 function updateLayerSwitch(){
   const isKyushu=currentLevel().id==="kyushu";
   layerSwitch.classList.toggle("show",isKyushu);
@@ -830,8 +839,17 @@ function medalIcon(type){
   }
   if(type==="life"){
     return `<svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M10 23 24 11l14 12v15H10Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M19 38V27h10v11" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="24" cy="9.5" rx="4.2" ry="8"/>
+        <ellipse cx="24" cy="38.5" rx="4.2" ry="8"/>
+        <ellipse cx="9.5" cy="24" rx="8" ry="4.2"/>
+        <ellipse cx="38.5" cy="24" rx="8" ry="4.2"/>
+        <ellipse cx="13.8" cy="13.8" rx="4.1" ry="7.4" transform="rotate(-45 13.8 13.8)"/>
+        <ellipse cx="34.2" cy="13.8" rx="4.1" ry="7.4" transform="rotate(45 34.2 13.8)"/>
+        <ellipse cx="13.8" cy="34.2" rx="4.1" ry="7.4" transform="rotate(45 13.8 34.2)"/>
+        <ellipse cx="34.2" cy="34.2" rx="4.1" ry="7.4" transform="rotate(-45 34.2 34.2)"/>
+        <circle cx="24" cy="24" r="8.2"/>
+      </g>
     </svg>`;
   }
   return `<svg viewBox="0 0 48 48" aria-hidden="true">
@@ -1013,16 +1031,17 @@ function addCompletionStar(regionId){
   badge.setAttribute("transform",`translate(${cx} ${cy})`);
 
   const outer=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  outer.setAttribute("r","22");
+  outer.setAttribute("r","44");
   outer.setAttribute("class","completion-medal");
 
   const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  inner.setAttribute("r","16");
+  inner.setAttribute("r","34");
   inner.setAttribute("class","completion-medal-inner");
 
   const star=document.createElementNS("http://www.w3.org/2000/svg","path");
   star.setAttribute("class","completion-medal-star");
   star.setAttribute("d","M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z");
+  star.setAttribute("transform","scale(1.8)");
 
   badge.append(outer,inner,star);
   layer.appendChild(badge);
@@ -1134,7 +1153,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.6 — 10-question layout TEST
+   Geo Explorer v4.7 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -1217,7 +1236,7 @@ function loadLevel(index){
   mapImage.src=level.map;
   mapImage.alt=`${level.name}の地図`;
   message.style.display="";
-  message.textContent="カードを地図の場所へドラッグしよう";
+  message.textContent=mapBuildMessage();
   completionActions.classList.remove("show");
 
   mapStage.classList.add("switching");
@@ -1344,7 +1363,7 @@ function end(e){
     message.textContent="おしい！ 地図をよく見て、もう一度";
     closeSound();
   }else{
-    message.textContent="カードを地図の枠へ運ぼう";
+    message.textContent=mapBuildMessage();
   }
 
   state.dragging=null;
