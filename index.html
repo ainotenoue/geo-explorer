@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.4</title>
+<title>Geo Explorer v4.5</title>
 <style>
 :root{
   --ink:#18364b;
@@ -389,25 +389,6 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .next-button:active{transform:scale(.96)}
 .next-button.show{display:block}
-.complete-banner{
-  position:absolute;
-  left:50%;
-  top:12px;
-  transform:translateX(-50%) translateY(-12px);
-  opacity:0;
-  background:#fffffff0;
-  border:1px solid #d9e9dd;
-  border-radius:999px;
-  padding:8px 18px;
-  font-weight:900;
-  box-shadow:var(--shadow);
-  transition:.35s ease;
-  z-index:4;
-}
-.complete-banner.show{
-  opacity:1;
-  transform:translateX(-50%);
-}
 @keyframes wobble{
   25%{transform:translate(-50%,-50%) rotate(-2deg)}
   65%{transform:translate(-50%,-50%) rotate(2deg)}
@@ -587,19 +568,6 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   height:30px;
   display:block;
 }
-.achievement-medal-title{
-  font-size:14px;
-  line-height:1.05;
-  font-weight:1000;
-  white-space:nowrap;
-}
-.achievement-medal-sub{
-  margin-top:2px;
-  font-size:10px;
-  line-height:1;
-  font-weight:900;
-  opacity:.82;
-}
 @media(max-width:700px){
   .achievement-medal{
     width:96px;
@@ -613,9 +581,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     grid-template-rows:28px auto auto;
   }
   .achievement-medal-icon svg{width:25px;height:25px}
-  .achievement-medal-title{font-size:12px}
-  .achievement-medal-sub{font-size:9px}
-}
+    }
 
 </style>
 </head>
@@ -625,7 +591,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.4</span>
+      <span class="version">v4.5</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -720,7 +686,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.4</span>
+      <span class="version">v4.5</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -739,12 +705,10 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <main class="game">
     <section class="card-column" id="leftCards" aria-label="左側のカード"></section>
     <section class="map-panel" aria-label="地図">
-      <div class="complete-banner" id="completeBanner">できた！</div>
       <div class="achievement-medal" id="achievementMedal" aria-hidden="true">
         <div class="achievement-medal-inner">
           <div class="achievement-medal-icon" id="achievementMedalIcon"></div>
-          <div class="achievement-medal-title" id="achievementMedalTitle"></div>
-          <div class="achievement-medal-sub" id="achievementMedalSub">できた！</div>
+          <div class="achievement-medal-label" id="achievementMedalLabel">できた！</div>
         </div>
       </div>
       <div class="map-stage" id="mapStage">
@@ -823,7 +787,6 @@ const progress=$("progress");
 const areaTitle=$("areaTitle");
 const message=$("message");
 const nextButton=$("nextButton");
-const completeBanner=$("completeBanner");
 const completionActions=$("completionActions");
 const replayButton=$("replayButton");
 const returnButton=$("returnButton");
@@ -833,8 +796,7 @@ const natureLayerButton=$("natureLayerButton");
 const lifeLayerButton=$("lifeLayerButton");
 const achievementMedal=$("achievementMedal");
 const achievementMedalIcon=$("achievementMedalIcon");
-const achievementMedalTitle=$("achievementMedalTitle");
-const achievementMedalSub=$("achievementMedalSub");
+const achievementMedalLabel=$("achievementMedalLabel");
 
 function currentLevel(){return LEVELS[state.levelIndex]}
 
@@ -888,11 +850,7 @@ function hideAchievementMedal(){
 function setAchievementMedal(type){
   achievementMedal.className=`achievement-medal ${type}`;
   achievementMedalIcon.innerHTML=medalIcon(type);
-  achievementMedalTitle.textContent=
-    type==="nature" ? "自然" :
-    type==="life" ? "暮らし" : "地方クリア";
-  achievementMedalSub.textContent=
-    type==="region" ? "九州・沖縄" : "できた！";
+  achievementMedalLabel.textContent="できた！";
   requestAnimationFrame(()=>achievementMedal.classList.add("show"));
 }
 
@@ -1188,7 +1146,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.4 — 10-question layout TEST
+   Geo Explorer v4.5 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -1273,7 +1231,6 @@ function loadLevel(index){
   message.style.display="";
   message.textContent="カードを地図の場所へドラッグしよう";
   completionActions.classList.remove("show");
-  completeBanner.classList.remove("show");
 
   mapStage.classList.add("switching");
   fitMap();
@@ -1442,7 +1399,6 @@ function showCompletedState(playSound=true){
     currentProgressKey(),
     new Set(state.items.map(item=>item.id))
   );
-  completeBanner.classList.add("show");
   message.style.display="none";
   completionActions.classList.add("show");
   updateLayerSwitch();
