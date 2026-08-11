@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.5</title>
+<title>Geo Explorer v4.6</title>
 <style>
 :root{
   --ink:#18364b;
@@ -121,25 +121,24 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   transform:scale(.985);
   opacity:.88;
 }
-.completion-star{
-  fill:url(#completion-star-gold);
-  stroke:#d99400;
-  stroke-width:7;
+.completion-medal{
+  fill:#fff2b8;
+  stroke:#c99316;
+  stroke-width:5;
   paint-order:stroke fill;
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
-  font-weight:900;
-  text-anchor:middle;
-  dominant-baseline:central;
   pointer-events:none;
   filter:url(#completion-star-glow);
 }
-.completion-sparkle{
-  fill:#fff8c7;
-  stroke:#f2b400;
+.completion-medal-inner{
+  fill:none;
+  stroke:#e5bd43;
   stroke-width:2.5;
-  paint-order:stroke fill;
   pointer-events:none;
-  filter:url(#completion-star-glow);
+}
+.completion-medal-star{
+  fill:#c99316;
+  stroke:none;
+  pointer-events:none;
 }
 .home-footer{
   text-align:center;
@@ -564,8 +563,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   place-items:center;
 }
 .achievement-medal-icon svg{
-  width:30px;
-  height:30px;
+  width:36px;
+  height:36px;
   display:block;
 }
 @media(max-width:700px){
@@ -580,7 +579,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     height:72px;
     grid-template-rows:28px auto auto;
   }
-  .achievement-medal-icon svg{width:25px;height:25px}
+  .achievement-medal-icon svg{width:30px;height:30px}
     }
 
 </style>
@@ -591,7 +590,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.5</span>
+      <span class="version">v4.6</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -686,7 +685,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.5</span>
+      <span class="version">v4.6</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -860,7 +859,6 @@ function medalStateForCurrentView(){
   const natureDone=state.completed.has("kyushu:nature");
   const lifeDone=state.completed.has("kyushu:life");
 
-  if(natureDone&&lifeDone)return "region";
   if(state.layer==="nature"&&natureDone)return "nature";
   if(state.layer==="life"&&lifeDone)return "life";
   return null;
@@ -878,16 +876,9 @@ function refreshPersistentMedal(){
   setAchievementMedal(type);
 }
 
-function showAchievementMedal(type,regionComplete=false){
+function showAchievementMedal(type){
   clearTimeout(medalPromoteTimer);
   setAchievementMedal(type);
-
-  if(regionComplete){
-    medalPromoteTimer=setTimeout(()=>{
-      achievementMedal.classList.remove("show");
-      setTimeout(()=>setAchievementMedal("region"),180);
-    },900);
-  }
 }
 
 function switchLayer(nextLayer){
@@ -1019,24 +1010,21 @@ function addCompletionStar(regionId){
   const badge=document.createElementNS("http://www.w3.org/2000/svg","g");
   badge.dataset.region=regionId;
   badge.setAttribute("aria-hidden","true");
+  badge.setAttribute("transform",`translate(${cx} ${cy})`);
 
-  const star=document.createElementNS("http://www.w3.org/2000/svg","text");
-  star.classList.add("completion-star");
-  star.setAttribute("x",String(cx));
-  star.setAttribute("y",String(cy));
-  star.setAttribute("font-size","118");
-  star.textContent="★";
+  const outer=document.createElementNS("http://www.w3.org/2000/svg","circle");
+  outer.setAttribute("r","22");
+  outer.setAttribute("class","completion-medal");
 
-  const sparkle=document.createElementNS("http://www.w3.org/2000/svg","text");
-  sparkle.classList.add("completion-sparkle");
-  sparkle.setAttribute("x",String(cx+57));
-  sparkle.setAttribute("y",String(cy-55));
-  sparkle.setAttribute("font-size","42");
-  sparkle.setAttribute("text-anchor","middle");
-  sparkle.setAttribute("dominant-baseline","central");
-  sparkle.textContent="✦";
+  const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
+  inner.setAttribute("r","16");
+  inner.setAttribute("class","completion-medal-inner");
 
-  badge.append(star,sparkle);
+  const star=document.createElementNS("http://www.w3.org/2000/svg","path");
+  star.setAttribute("class","completion-medal-star");
+  star.setAttribute("d","M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z");
+
+  badge.append(outer,inner,star);
   layer.appendChild(badge);
 }
 
@@ -1146,7 +1134,7 @@ function clearLevelDom(){
 
 
 /* =========================================================
-   Geo Explorer v4.5 — 10-question layout TEST
+   Geo Explorer v4.6 — 10-question layout TEST
    ---------------------------------------------------------
    Purpose:
    - Keep all existing real 6 questions unchanged.
@@ -1409,15 +1397,8 @@ function complete(){
 
   if(currentLevel().id==="kyushu"){
     const currentType=state.layer==="nature" ? "nature" : "life";
-    const regionComplete=
-      state.completed.has("kyushu:nature") &&
-      state.completed.has("kyushu:life");
-
-    // Completion animation:
-    // 1) show the just-earned layer medal
-    // 2) if both layers are complete, promote it to the gold region medal
     achievementMedal.classList.remove("show");
-    setTimeout(()=>showAchievementMedal(currentType,regionComplete),80);
+    setTimeout(()=>showAchievementMedal(currentType),80);
   }
 }
 
