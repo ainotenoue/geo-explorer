@@ -484,14 +484,6 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .layer-button:active{transform:scale(.97)}
 
-
-/* --- v4.4 Persistent medals: 九州・沖縄 only ---
-   - no completion checkmarks in the layer switch
-   - no "地方クリア" header badge
-   - nature medal stays on Nature view after completion
-   - life medal stays on Life view after completion
-   - when both are complete, both views show the gold region medal
-*/
 .area-center{
   display:grid;
   justify-items:center;
@@ -590,7 +582,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.7</span>
+      <span class="version">v4.9</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -1035,7 +1027,7 @@ function addCompletionStar(regionId){
   outer.setAttribute("class","completion-medal");
 
   const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  inner.setAttribute("r","68");
+  inner.setAttribute("r","66");
   inner.setAttribute("class","completion-medal-inner");
 
   const star=document.createElementNS("http://www.w3.org/2000/svg","path");
