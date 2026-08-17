@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v4.9</title>
+<title>Geo Explorer v5.0</title>
 <style>
 :root{
   --ink:#18364b;
@@ -484,6 +484,14 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .layer-button:active{transform:scale(.97)}
 
+
+/* --- v4.4 Persistent medals: 九州・沖縄 only ---
+   - no completion checkmarks in the layer switch
+   - no "地方クリア" header badge
+   - nature medal stays on Nature view after completion
+   - life medal stays on Life view after completion
+   - when both are complete, both views show the gold region medal
+*/
 .area-center{
   display:grid;
   justify-items:center;
@@ -574,6 +582,50 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   .achievement-medal-icon svg{width:30px;height:30px}
     }
 
+
+/* --- v5.0 Drag Hint Box --- */
+.hint-box{
+  position:absolute;
+  top:14px;
+  left:50%;
+  z-index:7;
+  width:min(66%,620px);
+  min-height:44px;
+  padding:9px 18px;
+  transform:translate(-50%,-8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px solid rgba(92,126,139,.24);
+  border-radius:15px;
+  background:rgba(255,253,248,.94);
+  box-shadow:0 8px 18px rgba(28,66,86,.10);
+  color:#35586a;
+  font-size:clamp(13px,1.45vw,17px);
+  font-weight:800;
+  line-height:1.35;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .14s ease,transform .14s ease,visibility 0s linear .14s;
+}
+.hint-box.show{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+  transition-delay:0s;
+}
+@media(max-width:700px){
+  .hint-box{
+    top:10px;
+    width:min(64%,480px);
+    min-height:40px;
+    padding:7px 12px;
+    font-size:clamp(11px,2vw,14px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -582,7 +634,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v4.9</span>
+      <span class="version">v5.0</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -677,7 +729,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v4.7</span>
+      <span class="version">v5.0</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -696,6 +748,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <main class="game">
     <section class="card-column" id="leftCards" aria-label="左側のカード"></section>
     <section class="map-panel" aria-label="地図">
+      <div class="hint-box" id="hintBox" aria-live="polite"></div>
       <div class="achievement-medal" id="achievementMedal" aria-hidden="true">
         <div class="achievement-medal-inner">
           <div class="achievement-medal-icon" id="achievementMedalIcon"></div>
@@ -728,8 +781,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 <script src="assets/cards/kinki-items.js?v=250"></script>
 <script src="assets/cards/chugoku-items.js?v=250"></script>
 <script src="assets/cards/shikoku-items.js?v=250"></script>
-<script src="assets/cards/kyushu-nature-items.js?v=420"></script>
-<script src="assets/cards/kyushu-life-items.js?v=420"></script>
+<script src="assets/cards/kyushu-nature-items.js?v=500"></script>
+<script src="assets/cards/kyushu-life-items.js?v=500"></script>
 <script>
 const HOKKAIDO_ITEMS=[
   {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=250",x:38,y:54,side:"left"},
@@ -788,6 +841,7 @@ const lifeLayerButton=$("lifeLayerButton");
 const achievementMedal=$("achievementMedal");
 const achievementMedalIcon=$("achievementMedalIcon");
 const achievementMedalLabel=$("achievementMedalLabel");
+const hintBox=$("hintBox");
 
 function currentLevel(){return LEVELS[state.levelIndex]}
 
@@ -891,8 +945,23 @@ function showAchievementMedal(type){
   setAchievementMedal(type);
 }
 
+
+function showHint(item){
+  if(!item?.hint){
+    hideHint();
+    return;
+  }
+  hintBox.textContent=item.hint;
+  hintBox.classList.add("show");
+}
+
+function hideHint(){
+  hintBox.classList.remove("show");
+}
+
 function switchLayer(nextLayer){
   if(currentLevel().id!=="kyushu" || state.layer===nextLayer)return;
+  hideHint();
   if(state.dragging)cancelDrag();
   state.layer=nextLayer;
   updateLayerSwitch();
@@ -921,6 +990,7 @@ async function travelToGame(levelId){
 
 async function travelHome(){
   if(state.transitioning)return;
+  hideHint();
   state.transitioning=true;
   if(state.dragging)cancelDrag();
 
@@ -1027,7 +1097,7 @@ function addCompletionStar(regionId){
   outer.setAttribute("class","completion-medal");
 
   const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  inner.setAttribute("r","66");
+  inner.setAttribute("r","68");
   inner.setAttribute("class","completion-medal-inner");
 
   const star=document.createElementNS("http://www.w3.org/2000/svg","path");
@@ -1211,6 +1281,7 @@ function expandToTenForLayoutTest(sourceItems){
 }
 
 function loadLevel(index){
+  hideHint();
   achievementMedal.classList.remove("show");
   state.levelIndex=index;
   const level=currentLevel();
@@ -1291,6 +1362,7 @@ function startDrag(e){
   if(!item||state.placed.has(item.id))return;
 
   e.preventDefault();
+  showHint(item);
   pickup();
 
   const ghost=card.cloneNode(true);
@@ -1340,6 +1412,7 @@ function zoneAt(x,y){
 function end(e){
   if(!state.dragging)return;
 
+  hideHint();
   const {item,card,ghost}=state.dragging;
   const hit=zoneAt(e.clientX,e.clientY);
 
@@ -1367,6 +1440,7 @@ function end(e){
 }
 
 function cancelDrag(){
+  hideHint();
   if(!state.dragging)return;
   state.dragging.ghost.remove();
   state.dragging.card.classList.remove("lifted");
