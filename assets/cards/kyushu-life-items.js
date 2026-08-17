@@ -1,13 +1,112 @@
 const KYUSHU_LIFE_ITEMS = [
-  {id:"rice-double-cropping",name:"米・二毛作",category:"agriculture",icon:"assets/icons/agriculture.svg",x:43,y:24,side:"left"},
-  {id:"forcing-culture",name:"促成栽培",category:"greenhouse",icon:"assets/icons/greenhouse.svg",x:67,y:57,side:"left"},
-  {id:"kitakyushu-steel",name:"北九州・製鉄",category:"industry",icon:"assets/icons/industry.svg",x:40,y:15,side:"left"},
-  {id:"semiconductor",name:"半導体",category:"hightech",icon:"assets/icons/hightech.svg",x:51,y:38,side:"left"},
-  {id:"nori-aquaculture",name:"のり養殖",category:"fishery",icon:"assets/icons/fishery.svg",x:39,y:34,side:"left"},
-
-  {id:"igusa",name:"い草",category:"agriculture",icon:"assets/icons/agriculture.svg",x:43,y:49,side:"right"},
-  {id:"sugarcane",name:"さとうきび",category:"agriculture",icon:"assets/icons/agriculture.svg",x:84,y:78,side:"right"},
-  {id:"kurume-kasuri",name:"久留米がすり",category:"traditional",icon:"assets/icons/traditional.svg",x:40,y:28,side:"right"},
-  {id:"sweet-potato-livestock",name:"薩摩芋・畜産",category:"livestock",icon:"assets/icons/livestock.svg",x:54,y:70,side:"right"},
-  {id:"industrial-complex",name:"コンビナート",category:"industry",icon:"assets/icons/industry.svg",x:69,y:32,side:"right"}
+  {
+    id: "08-L-01",
+    name: "米・二毛作",
+    hint: "同じ田畑で年に2種類の作物を栽培",
+    category: "agriculture",
+    icon: "assets/icons/agriculture.svg",
+    x: 43,
+    y: 24,
+    side: "left",
+    order: 1
+  },
+  {
+    id: "08-L-02",
+    name: "促成栽培",
+    hint: "暖かい気候を生かして出荷時期を早める",
+    category: "greenhouse",
+    icon: "assets/icons/greenhouse.svg",
+    x: 67,
+    y: 57,
+    side: "left",
+    order: 2
+  },
+  {
+    id: "08-L-03",
+    name: "北九州・製鉄",
+    hint: "八幡製鉄所を中心に発展した工業",
+    category: "industry",
+    icon: "assets/icons/industry.svg",
+    x: 40,
+    y: 15,
+    side: "left",
+    order: 3
+  },
+  {
+    id: "08-L-04",
+    name: "半導体",
+    hint: "熊本県を中心に関連工場が集まる",
+    category: "hightech",
+    icon: "assets/icons/hightech.svg",
+    x: 51,
+    y: 38,
+    side: "left",
+    order: 4
+  },
+  {
+    id: "08-L-05",
+    name: "のり養殖",
+    hint: "有明海の干満差を生かして盛ん",
+    category: "fishery",
+    icon: "assets/icons/fishery.svg",
+    x: 39,
+    y: 34,
+    side: "left",
+    order: 5
+  },
+  {
+    id: "08-L-06",
+    name: "い草",
+    hint: "湿地や水田で栽培される畳の原料",
+    category: "agriculture",
+    icon: "assets/icons/agriculture.svg",
+    x: 43,
+    y: 49,
+    side: "right",
+    order: 1
+  },
+  {
+    id: "08-L-07",
+    name: "さとうきび",
+    hint: "暖かい沖縄の気候に適した作物",
+    category: "agriculture",
+    icon: "assets/icons/agriculture.svg",
+    x: 84,
+    y: 78,
+    side: "right",
+    order: 2
+  },
+  {
+    id: "08-L-08",
+    name: "久留米がすり",
+    hint: "伝統織物　足袋・ゴム産業につながる",
+    category: "traditional",
+    icon: "assets/icons/traditional.svg",
+    x: 40,
+    y: 28,
+    side: "right",
+    order: 3
+  },
+  {
+    id: "08-L-09",
+    name: "薩摩芋・畜産",
+    hint: "鹿児島　芋は生産量が全国一",
+    category: "livestock",
+    icon: "assets/icons/livestock.svg",
+    x: 54,
+    y: 70,
+    side: "right",
+    order: 4
+  },
+  {
+    id: "08-L-10",
+    name: "コンビナート",
+    hint: "企業が集まる工業団地　九州では大分",
+    category: "industry",
+    icon: "assets/icons/industry.svg",
+    x: 69,
+    y: 32,
+    side: "right",
+    order: 5
+  }
 ];
