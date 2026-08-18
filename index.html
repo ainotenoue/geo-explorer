@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v5.1</title>
+<title>Geo Explorer v6.0</title>
 <style>
 :root{
   --ink:#18364b;
@@ -454,7 +454,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 
 
-/* --- v4.2 Layer switch: 九州・沖縄 only --- */
+/* --- v4.2 Layer switch: layered regions --- */
 .layer-switch{
   display:none;
   justify-self:center;
@@ -485,7 +485,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .layer-button:active{transform:scale(.97)}
 
 
-/* --- v4.4 Persistent medals: 九州・沖縄 only ---
+/* --- v4.4 Persistent medals: layered regions ---
    - no completion checkmarks in the layer switch
    - no "地方クリア" header badge
    - nature medal stays on Nature view after completion
@@ -583,8 +583,9 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     }
 
 
-/* --- v5.1 Drag Hint Box --- */
+/* --- v6.0 Drag Hint Box --- */
 .hint-box{
+  white-space:pre-line;
   position:absolute;
   top:-47px;
   left:50%;
@@ -634,7 +635,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v5.1</span>
+      <span class="version">v6.0</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -729,7 +730,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v5.1</span>
+      <span class="version">v6.0</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -775,26 +776,118 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<script src="assets/cards/hokkaido-nature-items.js?v=510"></script>
-<script src="assets/cards/hokkaido-life-items.js?v=510"></script>
+<!-- v6.0: two-layer-ready card loading.
+     Missing future nature/life files are non-fatal; the old *-items.js remains the fallback. -->
+<script src="assets/cards/hokkaido-nature-items.js?v=600"></script>
+<script src="assets/cards/hokkaido-life-items.js?v=600"></script>
+
+<script src="assets/cards/tohoku-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/tohoku-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/tohoku-items.js?v=250"></script>
+
+<script src="assets/cards/kanto-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/kanto-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/kanto-items.js?v=250"></script>
+
+<script src="assets/cards/chubu-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/chubu-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/chubu-items.js?v=250"></script>
+
+<script src="assets/cards/kinki-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/kinki-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/kinki-items.js?v=250"></script>
+
+<script src="assets/cards/chugoku-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/chugoku-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/chugoku-items.js?v=250"></script>
+
+<script src="assets/cards/shikoku-nature-items.js?v=600" onerror="this.remove()"></script>
+<script src="assets/cards/shikoku-life-items.js?v=600" onerror="this.remove()"></script>
 <script src="assets/cards/shikoku-items.js?v=250"></script>
-<script src="assets/cards/kyushu-nature-items.js?v=500"></script>
-<script src="assets/cards/kyushu-life-items.js?v=500"></script>
+
+<script src="assets/cards/kyushu-nature-items.js?v=600"></script>
+<script src="assets/cards/kyushu-life-items.js?v=600"></script>
+
 <script>
+function buildLayerSets(natureItems,lifeItems){
+  const natureReady=Array.isArray(natureItems)&&natureItems.length>0;
+  const lifeReady=Array.isArray(lifeItems)&&lifeItems.length>0;
+  return natureReady&&lifeReady ? {nature:natureItems,life:lifeItems} : null;
+}
+
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=250",mapWidth:1000,mapHeight:700,displayScale:1.24,sets:{nature:typeof HOKKAIDO_NATURE_ITEMS!=="undefined"?HOKKAIDO_NATURE_ITEMS:[],life:typeof HOKKAIDO_LIFE_ITEMS!=="undefined"?HOKKAIDO_LIFE_ITEMS:[]}},
-  {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=250",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
-  {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=250",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]},
-  {id:"chubu",name:"中部",map:"assets/maps/chubu.svg?v=250",mapWidth:573.88,mapHeight:740.47,displayScale:1.05,items:typeof CHUBU_ITEMS!=="undefined"?CHUBU_ITEMS:[]},
-  {id:"kinki",name:"近畿",map:"assets/maps/kinki.svg?v=250",mapWidth:458.42,mapHeight:428.93,displayScale:1.08,items:typeof KINKI_ITEMS!=="undefined"?KINKI_ITEMS:[]},
-  {id:"chugoku",name:"中国",map:"assets/maps/chugoku.svg?v=250",mapWidth:539.55,mapHeight:380.15,displayScale:1.08,items:typeof CHUGOKU_ITEMS!=="undefined"?CHUGOKU_ITEMS:[]},
-  {id:"shikoku",name:"四国",map:"assets/maps/shikoku.svg?v=250",mapWidth:425.16,mapHeight:337.08,displayScale:1.10,items:typeof SHIKOKU_ITEMS!=="undefined"?SHIKOKU_ITEMS:[]},
-  {id:"kyushu",name:"九州・沖縄",map:"assets/maps/kyushu-okinawa.svg?v=451",mapWidth:661.55,mapHeight:650.00,displayScale:1.04,sets:{nature:typeof KYUSHU_NATURE_ITEMS!=="undefined"?KYUSHU_NATURE_ITEMS:[],life:typeof KYUSHU_LIFE_ITEMS!=="undefined"?KYUSHU_LIFE_ITEMS:[]}}
+  {
+    id:"hokkaido",name:"北海道",
+    map:"assets/maps/hokkaido.svg?v=250",mapWidth:1000,mapHeight:700,displayScale:1.24,
+    sets:buildLayerSets(
+      typeof HOKKAIDO_NATURE_ITEMS!=="undefined"?HOKKAIDO_NATURE_ITEMS:null,
+      typeof HOKKAIDO_LIFE_ITEMS!=="undefined"?HOKKAIDO_LIFE_ITEMS:null
+    ),
+    items:[]
+  },
+  {
+    id:"tohoku",name:"東北",
+    map:"assets/maps/tohoku.svg?v=250",mapWidth:760,mapHeight:1200,displayScale:1,
+    sets:buildLayerSets(
+      typeof TOHOKU_NATURE_ITEMS!=="undefined"?TOHOKU_NATURE_ITEMS:null,
+      typeof TOHOKU_LIFE_ITEMS!=="undefined"?TOHOKU_LIFE_ITEMS:null
+    ),
+    items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]
+  },
+  {
+    id:"kanto",name:"関東",
+    map:"assets/maps/kanto.svg?v=250",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,
+    sets:buildLayerSets(
+      typeof KANTO_NATURE_ITEMS!=="undefined"?KANTO_NATURE_ITEMS:null,
+      typeof KANTO_LIFE_ITEMS!=="undefined"?KANTO_LIFE_ITEMS:null
+    ),
+    items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]
+  },
+  {
+    id:"chubu",name:"中部",
+    map:"assets/maps/chubu.svg?v=250",mapWidth:573.88,mapHeight:740.47,displayScale:1.05,
+    sets:buildLayerSets(
+      typeof CHUBU_NATURE_ITEMS!=="undefined"?CHUBU_NATURE_ITEMS:null,
+      typeof CHUBU_LIFE_ITEMS!=="undefined"?CHUBU_LIFE_ITEMS:null
+    ),
+    items:typeof CHUBU_ITEMS!=="undefined"?CHUBU_ITEMS:[]
+  },
+  {
+    id:"kinki",name:"近畿",
+    map:"assets/maps/kinki.svg?v=250",mapWidth:458.42,mapHeight:428.93,displayScale:1.08,
+    sets:buildLayerSets(
+      typeof KINKI_NATURE_ITEMS!=="undefined"?KINKI_NATURE_ITEMS:null,
+      typeof KINKI_LIFE_ITEMS!=="undefined"?KINKI_LIFE_ITEMS:null
+    ),
+    items:typeof KINKI_ITEMS!=="undefined"?KINKI_ITEMS:[]
+  },
+  {
+    id:"chugoku",name:"中国",
+    map:"assets/maps/chugoku.svg?v=250",mapWidth:539.55,mapHeight:380.15,displayScale:1.08,
+    sets:buildLayerSets(
+      typeof CHUGOKU_NATURE_ITEMS!=="undefined"?CHUGOKU_NATURE_ITEMS:null,
+      typeof CHUGOKU_LIFE_ITEMS!=="undefined"?CHUGOKU_LIFE_ITEMS:null
+    ),
+    items:typeof CHUGOKU_ITEMS!=="undefined"?CHUGOKU_ITEMS:[]
+  },
+  {
+    id:"shikoku",name:"四国",
+    map:"assets/maps/shikoku.svg?v=250",mapWidth:425.16,mapHeight:337.08,displayScale:1.10,
+    sets:buildLayerSets(
+      typeof SHIKOKU_NATURE_ITEMS!=="undefined"?SHIKOKU_NATURE_ITEMS:null,
+      typeof SHIKOKU_LIFE_ITEMS!=="undefined"?SHIKOKU_LIFE_ITEMS:null
+    ),
+    items:typeof SHIKOKU_ITEMS!=="undefined"?SHIKOKU_ITEMS:[]
+  },
+  {
+    id:"kyushu",name:"九州・沖縄",
+    map:"assets/maps/kyushu-okinawa.svg?v=451",mapWidth:661.55,mapHeight:650.00,displayScale:1.04,
+    sets:buildLayerSets(
+      typeof KYUSHU_NATURE_ITEMS!=="undefined"?KYUSHU_NATURE_ITEMS:null,
+      typeof KYUSHU_LIFE_ITEMS!=="undefined"?KYUSHU_LIFE_ITEMS:null
+    ),
+    items:typeof KYUSHU_OKINAWA_ITEMS!=="undefined"?KYUSHU_OKINAWA_ITEMS:[]
+  }
 ];
 
 const state={
@@ -846,7 +939,8 @@ function currentProgressKey(){
 function currentItems(){
   const level=currentLevel();
   if(level.sets){
-    return level.sets[state.layer] || [];
+    const layerItems=level.sets[state.layer];
+    if(Array.isArray(layerItems)&&layerItems.length)return layerItems;
   }
   return level.items || [];
 }
@@ -945,7 +1039,7 @@ function showHint(item){
     hideHint();
     return;
   }
-  hintBox.textContent=item.hint;
+  hintBox.textContent=String(item.hint).replaceAll("｜","\n");
   hintBox.classList.add("show");
 }
 
