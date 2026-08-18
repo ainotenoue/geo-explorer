@@ -734,7 +734,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
       <div class="layer-row">
-        <div class="layer-switch" id="layerSwitch" aria-label="九州・沖縄の学習レイヤー">
+        <div class="layer-switch" id="layerSwitch" aria-label="自然・暮らしの学習レイヤー">
           <button class="layer-button active" id="natureLayerButton" type="button">自然</button>
           <button class="layer-button" id="lifeLayerButton" type="button">暮らし</button>
         </div>
@@ -775,6 +775,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
+<script src="assets/cards/hokkaido-nature-items.js?v=510"></script>
+<script src="assets/cards/hokkaido-life-items.js?v=510"></script>
 <script src="assets/cards/tohoku-items.js?v=250"></script>
 <script src="assets/cards/kanto-items.js?v=250"></script>
 <script src="assets/cards/chubu-items.js?v=250"></script>
@@ -784,17 +786,8 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 <script src="assets/cards/kyushu-nature-items.js?v=500"></script>
 <script src="assets/cards/kyushu-life-items.js?v=500"></script>
 <script>
-const HOKKAIDO_ITEMS=[
-  {id:"ishikari-plain",name:"石狩平野",category:"plain",icon:"assets/icons/plain.svg?v=250",x:38,y:54,side:"left"},
-  {id:"tokachi-plain",name:"十勝平野",category:"plain",icon:"assets/icons/plain.svg?v=250",x:67,y:74,side:"right"},
-  {id:"kitami-mountains",name:"北見山地",category:"mountain",icon:"assets/icons/mountain-area.svg?v=250",x:66,y:37,side:"right"},
-  {id:"hidaka-range",name:"日高山脈",category:"mountain",icon:"assets/icons/mountain-range.svg?v=250",x:54,y:69,side:"left"},
-  {id:"ishikari-river",name:"石狩川",category:"river",icon:"assets/icons/river.svg?v=250",x:42,y:43,side:"left"},
-  {id:"lake-kussharo",name:"屈斜路湖",category:"lake",icon:"assets/icons/lake.svg?v=250",x:77,y:49,side:"right"}
-];
-
 const LEVELS=[
-  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=250",mapWidth:1000,mapHeight:700,displayScale:1.24,items:HOKKAIDO_ITEMS},
+  {id:"hokkaido",name:"北海道",map:"assets/maps/hokkaido.svg?v=250",mapWidth:1000,mapHeight:700,displayScale:1.24,sets:{nature:typeof HOKKAIDO_NATURE_ITEMS!=="undefined"?HOKKAIDO_NATURE_ITEMS:[],life:typeof HOKKAIDO_LIFE_ITEMS!=="undefined"?HOKKAIDO_LIFE_ITEMS:[]}},
   {id:"tohoku",name:"東北",map:"assets/maps/tohoku.svg?v=250",mapWidth:760,mapHeight:1200,displayScale:1,items:typeof TOHOKU_ITEMS!=="undefined"?TOHOKU_ITEMS:[]},
   {id:"kanto",name:"関東",map:"assets/maps/kanto.svg?v=250",mapWidth:396.28,mapHeight:428.39,displayScale:1.08,items:typeof KANTO_ITEMS!=="undefined"?KANTO_ITEMS:[]},
   {id:"chubu",name:"中部",map:"assets/maps/chubu.svg?v=250",mapWidth:573.88,mapHeight:740.47,displayScale:1.05,items:typeof CHUBU_ITEMS!=="undefined"?CHUBU_ITEMS:[]},
@@ -847,19 +840,19 @@ function currentLevel(){return LEVELS[state.levelIndex]}
 
 function currentProgressKey(){
   const level=currentLevel();
-  return level.id==="kyushu" ? `${level.id}:${state.layer}` : level.id;
+  return level.sets ? `${level.id}:${state.layer}` : level.id;
 }
 
 function currentItems(){
   const level=currentLevel();
-  if(level.id==="kyushu" && level.sets){
+  if(level.sets){
     return level.sets[state.layer] || [];
   }
   return level.items || [];
 }
 
 function mapBuildMessage(){
-  if(currentLevel().id==="kyushu"){
+  if(currentLevel().sets){
     return state.layer==="life"
       ? "「暮らし」の地図をつくろう"
       : "「自然」の地図をつくろう";
@@ -868,8 +861,8 @@ function mapBuildMessage(){
 }
 
 function updateLayerSwitch(){
-  const isKyushu=currentLevel().id==="kyushu";
-  layerSwitch.classList.toggle("show",isKyushu);
+  const hasLayers=Boolean(currentLevel().sets);
+  layerSwitch.classList.toggle("show",hasLayers);
   natureLayerButton.classList.toggle("active",state.layer==="nature");
   lifeLayerButton.classList.toggle("active",state.layer==="life");
   refreshPersistentMedal();
@@ -918,10 +911,11 @@ function setAchievementMedal(type){
 }
 
 function medalStateForCurrentView(){
-  if(currentLevel().id!=="kyushu")return null;
+  const level=currentLevel();
+  if(!level.sets)return null;
 
-  const natureDone=state.completed.has("kyushu:nature");
-  const lifeDone=state.completed.has("kyushu:life");
+  const natureDone=state.completed.has(`${level.id}:nature`);
+  const lifeDone=state.completed.has(`${level.id}:life`);
 
   if(state.layer==="nature"&&natureDone)return "nature";
   if(state.layer==="life"&&lifeDone)return "life";
@@ -960,7 +954,7 @@ function hideHint(){
 }
 
 function switchLayer(nextLayer){
-  if(currentLevel().id!=="kyushu" || state.layer===nextLayer)return;
+  if(!currentLevel().sets || state.layer===nextLayer)return;
   hideHint();
   if(state.dragging)cancelDrag();
   state.layer=nextLayer;
@@ -982,6 +976,7 @@ async function travelToGame(levelId){
   homeScreen.classList.remove("active","leaving");
   gameScreen.classList.add("active");
   document.body.style.touchAction="none";
+  if(LEVELS[index]?.sets)state.layer="nature";
   loadLevel(index);
 
   await wait(260);
@@ -1117,12 +1112,14 @@ function updateHome(){
     [...state.completed].filter(key=>!key.includes(":"))
   );
 
-  if(
-    state.completed.has("kyushu:nature") &&
-    state.completed.has("kyushu:life")
-  ){
-    completedRegions.add("kyushu");
-  }
+  LEVELS.filter(level=>level.sets).forEach(level=>{
+    if(
+      state.completed.has(`${level.id}:nature`) &&
+      state.completed.has(`${level.id}:life`)
+    ){
+      completedRegions.add(level.id);
+    }
+  });
 
   completedRegions.forEach(addCompletionStar);
   homeMessage.textContent=completedRegions.size
@@ -1480,7 +1477,7 @@ function showCompletedState(playSound=true){
 function complete(){
   showCompletedState(true);
 
-  if(currentLevel().id==="kyushu"){
+  if(currentLevel().sets){
     const currentType=state.layer==="nature" ? "nature" : "life";
     achievementMedal.classList.remove("show");
     setTimeout(()=>showAchievementMedal(currentType),80);
