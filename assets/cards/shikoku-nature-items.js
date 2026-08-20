@@ -15,7 +15,7 @@ const SHIKOKU_NATURE_ITEMS = [
     name: "石鎚山",
     hint: "愛媛県にある｜西日本で最も高い山",
     category: "mountain",
-    icon: "assets/icons/mountain.svg",
+    icon: "assets/icons/mountain-range.svg",
     x: 42,
     y: 43,
     side: "left",
