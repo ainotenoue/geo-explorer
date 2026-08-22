@@ -5,8 +5,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "石狩川が運んだ土砂でできた北海道最大の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 28,
-    y: 60,
+    x: 34,
+    y: 62,
     side: "left",
     order: 1
   },
@@ -27,8 +27,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "大雪山系から石狩平野を流れ日本海へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 36,
-    y: 51,
+    x: 40,
+    y: 52,
     side: "left",
     order: 3
   },
@@ -39,7 +39,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 46,
-    y: 44,
+    y: 45,
     side: "left",
     order: 4
   },
@@ -50,7 +50,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "wetland",
     icon: "assets/icons/wetland.svg",
     x: 64,
-    y: 52,
+    y: 55,
     side: "left",
     order: 5
   },
@@ -83,7 +83,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 66,
-    y: 49,
+    y: 48,
     side: "right",
     order: 3
   },
@@ -93,7 +93,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "冷涼で広大な土地を生かし酪農がさかんな台地",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 82,
+    x: 75,
     y: 55,
     side: "right",
     order: 4
@@ -104,8 +104,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "豊かな自然が残る世界自然遺産の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 82,
-    y: 30,
+    x: 70,
+    y: 31,
     side: "right",
     order: 5
   }
