@@ -5,8 +5,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "夏に太平洋側から吹く冷たい北東風｜冷害の原因になる",
     category: "wind",
     icon: "assets/icons/wind.svg",
-    x: 73,
-    y: 40,
+    x: 75,
+    y: 14,
     side: "left",
     order: 1
   },
@@ -38,8 +38,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "冷涼な気候を生かして栽培｜青森県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 42,
-    y: 16,
+    x: 60,
+    y: 23,
     side: "left",
     order: 4
   },
@@ -49,12 +49,11 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "盆地の気候を生かして栽培｜山形県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 47,
-    y: 72,
+    x: 38,
+    y: 64,
     side: "left",
     order: 5
   },
-
   {
     id: "02-L-06",
     name: "養殖漁業",
@@ -72,8 +71,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 84,
-    y: 54,
+    x: 90,
+    y: 60,
     side: "right",
     order: 2
   },
@@ -94,8 +93,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "岩手県盛岡市などでつくられる｜伝統的な鉄の鋳物",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 60,
-    y: 42,
+    x: 74,
+    y: 35,
     side: "right",
     order: 4
   },
@@ -105,8 +104,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "高速道路沿いなどに工場が進出｜東北の電子工業を支える",
     category: "hightech",
     icon: "assets/icons/hightech.svg",
-    x: 57,
-    y: 71,
+    x: 62,
+    y: 51,
     side: "right",
     order: 5
   }

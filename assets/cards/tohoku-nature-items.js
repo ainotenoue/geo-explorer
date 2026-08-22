@@ -5,8 +5,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "東北地方の中央を南北に走る｜東北の背骨となる山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 48,
-    y: 50,
+    x: 49,
+    y: 36,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県東部に広がる｜なだらかな高地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 67,
-    y: 45,
+    x: 38,
+    y: 37,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "ブナの原生林が広がる｜世界自然遺産の山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 37,
-    y: 23,
+    x: 41,
+    y: 24,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 77,
-    y: 51,
+    x: 86,
+    y: 54,
     side: "left",
     order: 4
   },
@@ -49,12 +49,11 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "青森県西部に広がる｜りんご栽培がさかんな平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 42,
-    y: 16,
+    x: 60,
+    y: 23,
     side: "left",
     order: 5
   },
-
   {
     id: "02-N-06",
     name: "庄内平野",
@@ -62,7 +61,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 34,
-    y: 66,
+    y: 60,
     side: "right",
     order: 1
   },
@@ -83,8 +82,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "山形県を流れ日本海へ注ぐ｜日本三大急流の一つ",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 42,
-    y: 69,
+    x: 40,
+    y: 63,
     side: "right",
     order: 3
   },
