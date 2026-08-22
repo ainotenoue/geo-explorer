@@ -5,8 +5,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "石狩川が運んだ土砂でできた北海道最大の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 38,
-    y: 54,
+    x: 28,
+    y: 60,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道の中央南部を南北に連なる山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 54,
+    x: 48,
     y: 69,
     side: "left",
     order: 2
@@ -27,8 +27,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "大雪山系から石狩平野を流れ日本海へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 42,
-    y: 43,
+    x: 36,
+    y: 51,
     side: "left",
     order: 3
   },
@@ -38,7 +38,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道中央部にそびえる「北海道の屋根」",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 55,
+    x: 46,
     y: 44,
     side: "left",
     order: 4
@@ -49,20 +49,19 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "釧路川流域に広がる日本最大の湿原",
     category: "wetland",
     icon: "assets/icons/wetland.svg",
-    x: 76,
-    y: 67,
+    x: 64,
+    y: 52,
     side: "left",
     order: 5
   },
-
   {
     id: "01-N-06",
     name: "十勝平野",
     hint: "冷涼な気候を生かし大規模な畑作がさかんな平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 67,
-    y: 74,
+    x: 56,
+    y: 64,
     side: "right",
     order: 1
   },
@@ -72,8 +71,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道北東部に広がるオホーツク海側の山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 66,
-    y: 37,
+    x: 48,
+    y: 32,
     side: "right",
     order: 2
   },
@@ -83,7 +82,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "火山活動によってできた国内最大のカルデラ湖",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 77,
+    x: 66,
     y: 49,
     side: "right",
     order: 3
@@ -95,7 +94,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "plateau",
     icon: "assets/icons/plateau.svg",
     x: 82,
-    y: 62,
+    y: 55,
     side: "right",
     order: 4
   },
@@ -105,8 +104,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "豊かな自然が残る世界自然遺産の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 89,
-    y: 40,
+    x: 82,
+    y: 30,
     side: "right",
     order: 5
   }
