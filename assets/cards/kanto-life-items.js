@@ -6,7 +6,7 @@ const KANTO_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 70,
-    y: 75,
+    y: 78,
     side: "left",
     order: 1
   },
@@ -27,8 +27,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "徳川家康をまつる社寺｜栃木県日光市にある",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 49,
-    y: 21,
+    x: 46,
+    y: 16,
     side: "left",
     order: 3
   },
@@ -38,7 +38,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 45,
+    x: 43,
     y: 71,
     side: "left",
     order: 4
@@ -60,7 +60,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "高速道路沿いなどに発達｜内陸型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 51,
+    x: 53,
     y: 39,
     side: "right",
     order: 1
@@ -94,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 62,
+    y: 59,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KANTO_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 50,
-    y: 62,
+    y: 60,
     side: "right",
     order: 5
   }
