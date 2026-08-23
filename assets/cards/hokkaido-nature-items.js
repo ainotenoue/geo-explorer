@@ -104,8 +104,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "豊かな自然が残る世界自然遺産の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 70,
-    y: 31,
+    x: 84,
+    y: 44,
     side: "right",
     order: 5
   }

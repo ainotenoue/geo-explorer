@@ -6,7 +6,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 49,
-    y: 36,
+    y: 43,
     side: "left",
     order: 1
   },
@@ -17,7 +17,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 38,
-    y: 37,
+    y: 47,
     side: "left",
     order: 2
   },
@@ -38,8 +38,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 86,
-    y: 54,
+    x: 88,
+    y: 52,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "青森県西部に広がる｜りんご栽培がさかんな平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 60,
-    y: 23,
+    x: 59,
+    y: 22,
     side: "left",
     order: 5
   },

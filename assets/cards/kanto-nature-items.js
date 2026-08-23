@@ -6,7 +6,7 @@ const KANTO_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 52,
-    y: 56,
+    y: 54,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東平野の西側を囲む｜山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 31,
-    y: 45,
+    x: 26,
+    y: 50,
     side: "left",
     order: 2
   },
@@ -38,8 +38,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東平野を流れ｜東京湾へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 47,
-    y: 55,
+    x: 49,
+    y: 62,
     side: "left",
     order: 4
   },
@@ -54,15 +54,14 @@ const KANTO_NATURE_ITEMS = [
     side: "left",
     order: 5
   },
-
   {
     id: "03-N-06",
     name: "東京湾",
     hint: "関東南部に広がる湾｜港や工業が集まる",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 58,
-    y: 72,
+    x: 61,
+    y: 69,
     side: "right",
     order: 1
   },
@@ -72,8 +71,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "千葉県の大部分を占める｜太平洋に突き出す半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 76,
-    y: 72,
+    x: 78,
+    y: 88,
     side: "right",
     order: 2
   },
@@ -83,8 +82,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "神奈川県南東部から｜東京湾口へ突き出す半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 48,
-    y: 77,
+    x: 45,
+    y: 80,
     side: "right",
     order: 3
   },
@@ -94,8 +93,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "房総半島東岸に続く｜長い砂浜海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 84,
-    y: 60,
+    x: 85,
+    y: 72,
     side: "right",
     order: 4
   },

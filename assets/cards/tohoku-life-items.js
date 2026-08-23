@@ -38,8 +38,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "冷涼な気候を生かして栽培｜青森県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 60,
-    y: 23,
+    x: 59,
+    y: 22,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "盆地の気候を生かして栽培｜山形県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 38,
-    y: 64,
+    x: 47,
+    y: 72,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "三陸海岸の入り江を生かし｜かき・わかめなどを育てる",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 77,
-    y: 51,
+    x: 88,
+    y: 52,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 90,
+    x: 92,
     y: 60,
     side: "right",
     order: 2

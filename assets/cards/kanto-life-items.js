@@ -5,8 +5,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "大都市の近くで新鮮な野菜などを生産｜輸送時間を短くできる",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 56,
-    y: 48,
+    x: 70,
+    y: 75,
     side: "left",
     order: 1
   },
@@ -27,8 +27,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "徳川家康をまつる社寺｜栃木県日光市にある",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 46,
-    y: 26,
+    x: 49,
+    y: 21,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 53,
-    y: 68,
+    x: 45,
+    y: 71,
     side: "left",
     order: 4
   },
@@ -49,12 +49,11 @@ const KANTO_LIFE_ITEMS = [
     hint: "千葉県の東京湾岸に発達｜石油化学や鉄鋼がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 68,
+    x: 71,
     y: 66,
     side: "left",
     order: 5
   },
-
   {
     id: "03-L-06",
     name: "北関東工業地域",
@@ -72,8 +71,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "茨城県の鹿島港周辺に発達｜臨海型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 79,
-    y: 45,
+    x: 89,
+    y: 46,
     side: "right",
     order: 2
   },
@@ -95,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 52,
+    y: 62,
     side: "right",
     order: 4
   },
@@ -105,7 +104,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "都市の気温が周辺より高くなる現象｜東京などで見られる",
     category: "city",
     icon: "assets/icons/city-heat.svg",
-    x: 55,
+    x: 50,
     y: 62,
     side: "right",
     order: 5
