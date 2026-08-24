@@ -6,7 +6,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 48,
-    y: 38,
+    y: 45,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "中央アルプスともよばれる｜長野県南部の山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 48,
-    y: 55,
+    x: 52,
+    y: 58,
     side: "left",
     order: 2
   },
@@ -28,7 +28,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 58,
-    y: 58,
+    y: 70,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "日本海へ大きく突き出す｜石川県北部の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 28,
-    y: 24,
+    x: 48,
+    y: 40,
     side: "left",
     order: 4
   },
@@ -54,15 +54,14 @@ const CHUBU_NATURE_ITEMS = [
     side: "left",
     order: 5
   },
-
   {
     id: "04-N-06",
     name: "濃尾平野",
     hint: "木曽三川の下流に広がる｜東海地方の大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 40,
-    y: 70,
+    x: 32,
+    y: 75,
     side: "right",
     order: 1
   },
@@ -73,7 +72,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "basin",
     icon: "assets/icons/basin.svg",
     x: 68,
-    y: 59,
+    y: 65,
     side: "right",
     order: 2
   },
@@ -95,7 +94,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 72,
-    y: 70,
+    y: 78,
     side: "right",
     order: 4
   },
@@ -105,8 +104,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "木曽・長良・揖斐の3河川｜濃尾平野を流れる",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 39,
-    y: 66,
+    x: 37,
+    y: 68,
     side: "right",
     order: 5
   }

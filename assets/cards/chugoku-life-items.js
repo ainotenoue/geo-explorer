@@ -54,7 +54,6 @@ const CHUGOKU_LIFE_ITEMS = [
     side: "left",
     order: 5
   },
-
   {
     id: "06-L-06",
     name: "瀬戸内工業地域",

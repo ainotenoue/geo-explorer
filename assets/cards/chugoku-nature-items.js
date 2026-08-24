@@ -5,8 +5,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "山陰と山陽を分ける｜中国地方の骨格となる山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 48,
-    y: 44,
+    x: 49,
+    y: 42,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "日本海沿岸に広がる｜日本を代表する砂丘",
     category: "dune",
     icon: "assets/icons/dune.svg",
-    x: 72,
-    y: 24,
+    x: 73,
+    y: 22,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "海水と淡水が混じる汽水湖｜島根県東部にある",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 39,
-    y: 27,
+    x: 61,
+    y: 22,
     side: "left",
     order: 3
   },
@@ -39,7 +39,7 @@ const CHUGOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 61,
-    y: 31,
+    y: 30,
     side: "left",
     order: 4
   },
@@ -54,15 +54,14 @@ const CHUGOKU_NATURE_ITEMS = [
     side: "left",
     order: 5
   },
-
   {
     id: "06-N-06",
     name: "広島平野",
     hint: "太田川下流に広がる｜広島市を支える平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 44,
-    y: 59,
+    x: 43,
+    y: 60,
     side: "right",
     order: 1
   },
@@ -72,8 +71,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "中国山地から広島湾へ流れる｜広島を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 45,
-    y: 52,
+    x: 39,
+    y: 51,
     side: "right",
     order: 2
   },
@@ -83,8 +82,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "本州と四国の間に広がる海｜温暖で雨が少ない",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 58,
-    y: 69,
+    x: 57,
+    y: 79,
     side: "right",
     order: 3
   },
@@ -94,8 +93,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "石灰岩が広がるカルスト台地｜秋芳洞でも有名",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 20,
-    y: 53,
+    x: 13,
+    y: 60,
     side: "right",
     order: 4
   },
@@ -105,8 +104,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "岡山県南部の湾｜干拓で農地が広げられた",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 66,
-    y: 62,
+    x: 62,
+    y: 72,
     side: "right",
     order: 5
   }

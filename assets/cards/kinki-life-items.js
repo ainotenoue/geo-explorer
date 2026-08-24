@@ -5,7 +5,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "大阪・神戸を中心に発達｜近畿を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 42,
+    x: 48,
     y: 54,
     side: "left",
     order: 1
@@ -16,8 +16,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "東大阪などに工場が集積｜ものづくりを支える",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 46,
-    y: 57,
+    x: 49,
+    y: 50,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "京阪神の大市場に近い利点を生かし｜野菜などを生産",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 50,
-    y: 55,
+    x: 35,
+    y: 38,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "温暖な気候と斜面を生かして栽培｜和歌山県が有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 52,
-    y: 72,
+    x: 50,
+    y: 82,
     side: "left",
     order: 4
   },
@@ -49,12 +49,11 @@ const KINKI_LIFE_ITEMS = [
     hint: "志摩半島の入り江を利用｜真珠の養殖がさかん",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 73,
-    y: 60,
+    x: 88,
+    y: 70,
     side: "left",
     order: 5
   },
-
   {
     id: "05-L-06",
     name: "吉野杉",
@@ -73,7 +72,7 @@ const KINKI_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 52,
-    y: 42,
+    y: 33,
     side: "right",
     order: 2
   },
@@ -84,7 +83,7 @@ const KINKI_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 44,
-    y: 48,
+    y: 43,
     side: "right",
     order: 3
   },
@@ -94,7 +93,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "奈良県斑鳩町にある｜世界最古級の木造建築群",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 52,
+    x: 56,
     y: 56,
     side: "right",
     order: 4
@@ -106,7 +105,7 @@ const KINKI_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 38,
-    y: 64,
+    y: 58,
     side: "right",
     order: 5
   }
