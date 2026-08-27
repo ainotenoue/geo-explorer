@@ -5,8 +5,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "北アルプスともよばれる｜中部北部の高い山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 48,
-    y: 45,
+    x: 45,
+    y: 47,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "中央アルプスともよばれる｜長野県南部の山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 52,
-    y: 58,
+    x: 50,
+    y: 60,
     side: "left",
     order: 2
   },
@@ -39,7 +39,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 48,
-    y: 40,
+    y: 36,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "信濃川下流に広がる｜稲作がさかんな大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 67,
-    y: 20,
+    x: 73,
+    y: 28,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "木曽三川の下流に広がる｜東海地方の大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 32,
-    y: 75,
+    x: 31,
+    y: 76,
     side: "right",
     order: 1
   },
@@ -82,8 +82,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "長野から新潟へ流れる｜日本で最も長い川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 63,
-    y: 30,
+    x: 70,
+    y: 33,
     side: "right",
     order: 3
   },

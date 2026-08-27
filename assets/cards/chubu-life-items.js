@@ -5,8 +5,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "堤防で集落や農地を囲み｜水害から暮らしを守る",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 32,
-    y: 75,
+    x: 31,
+    y: 76,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "新潟の雪国で育った織物｜雪を利用して布をさらす",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 68,
-    y: 40,
+    x: 73,
+    y: 28,
     side: "left",
     order: 2
   },
@@ -49,8 +49,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 42,
-    y: 80,
+    x: 40,
+    y: 81,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "hightech",
     icon: "assets/icons/hightech.svg",
     x: 52,
-    y: 58,
+    y: 60,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "静岡県を中心に広がる｜輸送用機械などがさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 63,
-    y: 82,
+    x: 60,
+    y: 85,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "石川県輪島市で受け継がれる｜伝統的な漆器",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 30,
-    y: 35,
+    x: 33,
+    y: 32,
     side: "right",
     order: 3
   },
@@ -105,7 +105,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "snow",
     icon: "assets/icons/snow.svg",
     x: 50,
-    y: 43,
+    y: 40,
     side: "right",
     order: 5
   }

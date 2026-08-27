@@ -5,7 +5,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "大阪・神戸を中心に発達｜近畿を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 48,
+    x: 49,
     y: 54,
     side: "left",
     order: 1
@@ -16,8 +16,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "東大阪などに工場が集積｜ものづくりを支える",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 49,
-    y: 50,
+    x: 52,
+    y: 47,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "京阪神の大市場に近い利点を生かし｜野菜などを生産",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 35,
-    y: 38,
+    x: 33,
+    y: 36,
     side: "left",
     order: 3
   },
@@ -39,7 +39,7 @@ const KINKI_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 50,
-    y: 82,
+    y: 85,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "志摩半島の入り江を利用｜真珠の養殖がさかん",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 88,
-    y: 70,
+    x: 87,
+    y: 69,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const KINKI_LIFE_ITEMS = [
     category: "forestry",
     icon: "assets/icons/forestry.svg",
     x: 59,
-    y: 67,
+    y: 48,
     side: "right",
     order: 1
   },
@@ -72,7 +72,7 @@ const KINKI_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 52,
-    y: 33,
+    y: 30,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const KINKI_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 44,
-    y: 43,
+    y: 41,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "奈良県斑鳩町にある｜世界最古級の木造建築群",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 56,
-    y: 56,
+    x: 58,
+    y: 58,
     side: "right",
     order: 4
   },
@@ -104,7 +104,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "大阪湾の人工島につくられた｜国際空港",
     category: "airport",
     icon: "assets/icons/airport.svg",
-    x: 38,
+    x: 37,
     y: 58,
     side: "right",
     order: 5
