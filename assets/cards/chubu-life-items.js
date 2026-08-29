@@ -17,7 +17,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 73,
-    y: 28,
+    y: 33,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "盆地の寒暖差を生かして栽培｜山梨県が有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 68,
-    y: 70,
+    x: 70,
+    y: 63,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "温暖な気候と台地を生かし｜静岡県で茶を栽培",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 65,
-    y: 78,
+    x: 66,
+    y: 77,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 40,
-    y: 81,
+    x: 35,
+    y: 88,
     side: "left",
     order: 5
   },
@@ -60,7 +60,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "諏訪盆地周辺で発達｜時計や電子機器などを生産",
     category: "hightech",
     icon: "assets/icons/hightech.svg",
-    x: 52,
+    x: 53,
     y: 60,
     side: "right",
     order: 1
@@ -72,7 +72,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 60,
-    y: 85,
+    y: 90,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 33,
-    y: 32,
+    y: 30,
     side: "right",
     order: 3
   },
@@ -105,7 +105,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "snow",
     icon: "assets/icons/snow.svg",
     x: 50,
-    y: 40,
+    y: 37,
     side: "right",
     order: 5
   }

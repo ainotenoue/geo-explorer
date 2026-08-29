@@ -16,8 +16,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "森林資源や港を生かして発達した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 33,
-    y: 77,
+    x: 34,
+    y: 78,
     side: "left",
     order: 2
   },
@@ -49,8 +49,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "アイヌ民族が北海道を中心に受け継いできた文化",
     category: "culture",
     icon: "assets/icons/ainu-culture.svg",
-    x: 46,
-    y: 58,
+    x: 48,
+    y: 54,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "冷涼な気候と広い土地を生かし乳牛を育てる農業",
     category: "livestock",
     icon: "assets/icons/livestock.svg",
-    x: 70,
-    y: 54,
+    x: 68,
+    y: 55,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "魚介類を育てて放流し大きくなってからとる漁業",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 73,
+    x: 74,
     y: 70,
     side: "right",
     order: 2
@@ -82,7 +82,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "自然を守りながら自然や文化を体験する観光",
     category: "tourism",
     icon: "assets/icons/eco-tourism.svg",
-    x: 70,
+    x: 72,
     y: 31,
     side: "right",
     order: 3
@@ -93,8 +93,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "北海道の東を南へ流れる寒流。親潮ともよぶ",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 68,
-    y: 80,
+    x: 70,
+    y: 82,
     side: "right",
     order: 4
   },
@@ -104,7 +104,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "択捉・国後・色丹・歯舞からなる日本固有の領土",
     category: "territory",
     icon: "assets/icons/territory.svg",
-    x: 84,
+    x: 85,
     y: 20,
     side: "right",
     order: 5

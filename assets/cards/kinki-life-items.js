@@ -16,8 +16,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "東大阪などに工場が集積｜ものづくりを支える",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 52,
-    y: 47,
+    x: 53,
+    y: 46,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "京阪神の大市場に近い利点を生かし｜野菜などを生産",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 33,
-    y: 36,
+    x: 32,
+    y: 35,
     side: "left",
     order: 3
   },
@@ -61,7 +61,7 @@ const KINKI_LIFE_ITEMS = [
     category: "forestry",
     icon: "assets/icons/forestry.svg",
     x: 59,
-    y: 48,
+    y: 58,
     side: "right",
     order: 1
   },
@@ -83,7 +83,7 @@ const KINKI_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 44,
-    y: 41,
+    y: 38,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const KINKI_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 58,
-    y: 58,
+    y: 70,
     side: "right",
     order: 4
   },

@@ -6,7 +6,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 45,
-    y: 47,
+    y: 49,
     side: "left",
     order: 1
   },
@@ -39,7 +39,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 48,
-    y: 36,
+    y: 33,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "信濃川下流に広がる｜稲作がさかんな大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 73,
+    x: 76,
     y: 28,
     side: "left",
     order: 5
@@ -71,7 +71,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "山々に囲まれ寒暖差が大きい｜果樹栽培がさかん",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 68,
+    x: 70,
     y: 65,
     side: "right",
     order: 2
@@ -82,7 +82,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "長野から新潟へ流れる｜日本で最も長い川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 70,
+    x: 73,
     y: 33,
     side: "right",
     order: 3
@@ -104,7 +104,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "木曽・長良・揖斐の3河川｜濃尾平野を流れる",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 37,
+    x: 39,
     y: 68,
     side: "right",
     order: 5

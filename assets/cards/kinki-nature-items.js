@@ -5,8 +5,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "近畿南部に広がる山地｜雨が多く森林が豊か",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 68,
-    y: 88,
+    x: 58,
+    y: 73,
     side: "left",
     order: 1
   },
@@ -17,7 +17,7 @@ const KINKI_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 66,
-    y: 27,
+    y: 29,
     side: "left",
     order: 2
   },
@@ -27,7 +27,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "琵琶湖から大阪湾へ流れる｜京阪神を支える川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 55,
+    x: 57,
     y: 41,
     side: "left",
     order: 3
@@ -38,7 +38,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾の東に広がる｜人口と産業が集中する平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 50,
+    x: 51,
     y: 49,
     side: "left",
     order: 4
@@ -60,7 +60,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "奈良県北部の盆地｜古代から都や集落が発達",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 58,
+    x: 59,
     y: 58,
     side: "right",
     order: 1
@@ -72,7 +72,7 @@ const KINKI_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 68,
-    y: 88,
+    y: 90,
     side: "right",
     order: 2
   },
@@ -94,7 +94,7 @@ const KINKI_NATURE_ITEMS = [
     category: "bay",
     icon: "assets/icons/bay.svg",
     x: 53,
-    y: 14,
+    y: 13,
     side: "right",
     order: 4
   },
@@ -104,7 +104,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾と瀬戸内海の間にある｜兵庫県の大きな島",
     category: "island",
     icon: "assets/icons/island.svg",
-    x: 23,
+    x: 21,
     y: 61,
     side: "right",
     order: 5

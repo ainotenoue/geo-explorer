@@ -6,7 +6,7 @@ const KANTO_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 70,
-    y: 78,
+    y: 75,
     side: "left",
     order: 1
   },
@@ -27,8 +27,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "徳川家康をまつる社寺｜栃木県日光市にある",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 46,
-    y: 16,
+    x: 51,
+    y: 21,
     side: "left",
     order: 3
   },
@@ -38,7 +38,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 43,
+    x: 45,
     y: 71,
     side: "left",
     order: 4
@@ -49,7 +49,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "千葉県の東京湾岸に発達｜石油化学や鉄鋼がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 71,
+    x: 89,
     y: 66,
     side: "left",
     order: 5
@@ -60,7 +60,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "高速道路沿いなどに発達｜内陸型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 53,
+    x: 51,
     y: 39,
     side: "right",
     order: 1
@@ -71,7 +71,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "茨城県の鹿島港周辺に発達｜臨海型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 89,
+    x: 90,
     y: 46,
     side: "right",
     order: 2
@@ -82,8 +82,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "明治時代の官営模範工場｜日本の近代化を支えた",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 30,
-    y: 34,
+    x: 28,
+    y: 36,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 59,
+    y: 62,
     side: "right",
     order: 4
   },

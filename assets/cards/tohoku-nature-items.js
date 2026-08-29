@@ -5,7 +5,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "東北地方の中央を南北に走る｜東北の背骨となる山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 49,
+    x: 53,
     y: 43,
     side: "left",
     order: 1
@@ -16,8 +16,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県東部に広がる｜なだらかな高地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 38,
-    y: 47,
+    x: 63,
+    y: 35,
     side: "left",
     order: 2
   },
@@ -27,7 +27,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "ブナの原生林が広がる｜世界自然遺産の山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 41,
+    x: 42,
     y: 24,
     side: "left",
     order: 3
@@ -38,8 +38,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 88,
-    y: 52,
+    x: 91,
+    y: 50,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "青森県西部に広がる｜りんご栽培がさかんな平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 59,
-    y: 22,
+    x: 60,
+    y: 21,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 34,
-    y: 60,
+    y: 59,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "秋田県にある湖で｜大規模な干拓が行われた",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 38,
-    y: 36,
+    x: 36,
+    y: 34,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 40,
-    y: 63,
+    y: 66,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県から宮城県へ流れる｜東北を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 61,
-    y: 58,
+    x: 62,
+    y: 55,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "basin",
     icon: "assets/icons/basin.svg",
     x: 47,
-    y: 72,
+    y: 75,
     side: "right",
     order: 5
   }
