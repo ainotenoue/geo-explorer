@@ -5,8 +5,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "九州中央部の大きな骨格",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 57,
-    y: 46,
+    x: 53,
+    y: 42,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "世界最大級のカルデラを持つ火山",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 58,
+    x: 50,
     y: 35,
     side: "left",
     order: 2
@@ -27,8 +27,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "長崎、島原半島の火山群",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 38,
-    y: 38,
+    x: 30,
+    y: 42,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "現在も噴火を続ける活火山",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 50,
-    y: 76,
+    x: 38,
+    y: 80,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "火山灰が厚く積もってできた台地",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 57,
+    x: 55,
     y: 71,
     side: "left",
     order: 5
@@ -60,8 +60,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "筑後川流域に広がる九州北部の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 43,
-    y: 24,
+    x: 30,
+    y: 16,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "干潟・養殖へつながる海",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 39,
-    y: 34,
+    x: 34,
+    y: 33,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "温暖な気候と農業への橋渡し",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 67,
-    y: 57,
+    x: 57,
+    y: 56,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "最上川・富士川とならぶ三大急流",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 49,
-    y: 52,
+    x: 45,
+    y: 58,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "九州西部の農業との接続点",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 43,
-    y: 49,
+    x: 41,
+    y: 52,
     side: "right",
     order: 5
   }

@@ -5,7 +5,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "岡山県と香川県を結ぶ｜道路と鉄道が通る橋",
     category: "bridge",
     icon: "assets/icons/bridge.svg",
-    x: 68,
+    x: 76,
     y: 69,
     side: "left",
     order: 1
@@ -16,8 +16,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "雨の少ない地域で水をたくわえ｜農業用水に利用",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 64,
-    y: 55,
+    x: 80,
+    y: 70,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "温暖な気候を生かして栽培｜岡山県が有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 64,
-    y: 52,
+    x: 81,
+    y: 48,
     side: "left",
     order: 3
   },
@@ -39,7 +39,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "fishery",
     icon: "assets/icons/fishery.svg",
     x: 45,
-    y: 65,
+    y: 66,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "瀬戸内海沿岸に発達｜石油化学工業が集まる",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 54,
-    y: 64,
+    x: 68,
+    y: 69,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 57,
-    y: 64,
+    y: 80,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島県を中心に発達｜輸送用機械を生産",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 44,
-    y: 58,
+    x: 45,
+    y: 50,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "砂鉄と木炭を使う伝統的な製鉄｜中国山地で発達",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 43,
-    y: 40,
+    x: 44,
+    y: 39,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 28,
-    y: 38,
+    y: 50,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島県宮島にある｜海上の大鳥居で知られる神社",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 43,
-    y: 66,
+    x: 40,
+    y: 68,
     side: "right",
     order: 5
   }

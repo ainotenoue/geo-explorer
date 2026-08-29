@@ -6,7 +6,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 54,
-    y: 52,
+    y: 45,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "愛媛県にある｜西日本で最も高い山",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 42,
-    y: 43,
+    x: 40,
+    y: 45,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "四国山地から徳島県へ流れる｜四国を代表する大きな川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 65,
-    y: 42,
+    x: 82,
+    y: 30,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県西部を流れる｜大きく曲がりながら太平洋へ注ぐ",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 29,
-    y: 68,
+    x: 35,
+    y: 75,
     side: "left",
     order: 4
   },
@@ -49,20 +49,19 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "香川県に広がる｜雨が少なくため池が多い平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 58,
-    y: 25,
+    x: 66,
+    y: 20,
     side: "left",
     order: 5
   },
-
   {
     id: "07-N-06",
     name: "高知平野",
     hint: "高知県中央部に広がる｜温暖な気候を生かした農業がさかん",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 58,
-    y: 65,
+    x: 54,
+    y: 50,
     side: "right",
     order: 1
   },
@@ -72,8 +71,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "四国の北側に広がる｜島が多く波がおだやかな海",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 49,
-    y: 14,
+    x: 30,
+    y: 5,
     side: "right",
     order: 2
   },
@@ -84,7 +83,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "cape",
     icon: "assets/icons/cape.svg",
     x: 82,
-    y: 73,
+    y: 70,
     side: "right",
     order: 3
   },
@@ -94,8 +93,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県西南部の先端｜四国南西部を代表する岬",
     category: "cape",
     icon: "assets/icons/cape.svg",
-    x: 24,
-    y: 83,
+    x: 40,
+    y: 88,
     side: "right",
     order: 4
   },
@@ -105,8 +104,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "徳島県と淡路島の間の鳴門海峡｜潮の流れで大きな渦ができる",
     category: "sea",
     icon: "assets/icons/uzushio.svg",
-    x: 91,
-    y: 30,
+    x: 93,
+    y: 27,
     side: "right",
     order: 5
   }

@@ -5,8 +5,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "同じ田畑で年に2種類の作物を栽培",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 43,
-    y: 24,
+    x: 30,
+    y: 16,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "暖かい気候を生かして出荷時期を早める",
     category: "greenhouse",
     icon: "assets/icons/greenhouse.svg",
-    x: 67,
+    x: 62,
     y: 57,
     side: "left",
     order: 2
@@ -27,8 +27,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "八幡製鉄所を中心に発展した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 40,
-    y: 15,
+    x: 46,
+    y: 8,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "熊本県を中心に関連工場が集まる",
     category: "hightech",
     icon: "assets/icons/hightech.svg",
-    x: 51,
-    y: 38,
+    x: 49,
+    y: 40,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "有明海の干満差を生かして盛ん",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 39,
-    y: 34,
+    x: 34,
+    y: 33,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "湿地や水田で栽培される畳の原料",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 43,
-    y: 49,
+    x: 41,
+    y: 52,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "暖かい沖縄の気候に適した作物",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 84,
-    y: 78,
+    x: 82,
+    y: 83,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const KYUSHU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 40,
-    y: 28,
+    y: 25,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "鹿児島　芋は生産量が全国一",
     category: "livestock",
     icon: "assets/icons/livestock.svg",
-    x: 54,
-    y: 70,
+    x: 35,
+    y: 86,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "企業が集まる工業団地　九州では大分",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 69,
-    y: 32,
+    x: 73,
+    y: 31,
     side: "right",
     order: 5
   }
