@@ -27,7 +27,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "異なる作物を順番につくり連作障害を防ぐ農法",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 48,
+    x: 57,
     y: 64,
     side: "left",
     order: 3
@@ -71,8 +71,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "魚介類を育てて放流し大きくなってからとる漁業",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 74,
-    y: 70,
+    x: 78,
+    y: 68,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "自然を守りながら自然や文化を体験する観光",
     category: "tourism",
     icon: "assets/icons/eco-tourism.svg",
-    x: 72,
-    y: 31,
+    x: 74,
+    y: 30,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "北海道の東を南へ流れる寒流。親潮ともよぶ",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 70,
-    y: 82,
+    x: 72,
+    y: 84,
     side: "right",
     order: 4
   },

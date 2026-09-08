@@ -5,8 +5,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "日本最大の平野｜首都圏の広がりを支える",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 50,
-    y: 54,
+    x: 49,
+    y: 53,
     side: "left",
     order: 1
   },
@@ -27,8 +27,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "流域面積が日本最大｜関東を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 57,
-    y: 37,
+    x: 81,
+    y: 58,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東平野を流れ｜東京湾へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 49,
-    y: 63,
+    x: 50,
+    y: 64,
     side: "left",
     order: 4
   },
@@ -50,7 +50,7 @@ const KANTO_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 74,
-    y: 43,
+    y: 45,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const KANTO_NATURE_ITEMS = [
     category: "bay",
     icon: "assets/icons/bay.svg",
     x: 61,
-    y: 69,
+    y: 68,
     side: "right",
     order: 1
   },
@@ -72,7 +72,7 @@ const KANTO_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 76,
-    y: 90,
+    y: 92,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const KANTO_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 46,
-    y: 87,
+    y: 89,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "房総半島東岸に続く｜長い砂浜海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 86,
-    y: 72,
+    x: 87,
+    y: 73,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KANTO_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 27,
-    y: 30,
+    y: 18,
     side: "right",
     order: 5
   }

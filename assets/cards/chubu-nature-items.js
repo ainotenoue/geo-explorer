@@ -28,7 +28,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 58,
-    y: 70,
+    y: 71,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "日本海へ大きく突き出す｜石川県北部の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 48,
-    y: 33,
+    x: 33,
+    y: 30,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "信濃川下流に広がる｜稲作がさかんな大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 76,
+    x: 80,
     y: 28,
     side: "left",
     order: 5
@@ -61,7 +61,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 31,
-    y: 76,
+    y: 77,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "山々に囲まれ寒暖差が大きい｜果樹栽培がさかん",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 70,
-    y: 65,
+    x: 71,
+    y: 67,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "長野から新潟へ流れる｜日本で最も長い川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 73,
-    y: 33,
+    x: 74,
+    y: 36,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 72,
-    y: 78,
+    y: 77,
     side: "right",
     order: 4
   },

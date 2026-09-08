@@ -5,8 +5,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "夏に太平洋側から吹く冷たい北東風｜冷害の原因になる",
     category: "wind",
     icon: "assets/icons/wind.svg",
-    x: 78,
-    y: 14,
+    x: 82,
+    y: 13,
     side: "left",
     order: 1
   },
@@ -16,19 +16,19 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "広い平野と豊かな水を生かした｜東北を代表する農業",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 34,
+    x: 35,
     y: 59,
     side: "left",
     order: 2
   },
   {
     id: "02-L-03",
-    name: "品種改良",
-    hint: "寒さに強い米などをつくり｜冷害を克服してきた工夫",
+    name: "会津塗",
+    hint: "福島県会津地方の伝統的漆器｜実用性と高度な装飾技術が特徴",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 45,
-    y: 56,
+    x: 42,
+    y: 83,
     side: "left",
     order: 3
   },
@@ -39,7 +39,7 @@ const TOHOKU_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 59,
-    y: 22,
+    y: 19,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "盆地の気候を生かして栽培｜山形県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 47,
-    y: 75,
+    x: 49,
+    y: 77,
     side: "left",
     order: 5
   },
@@ -60,7 +60,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "三陸海岸の入り江を生かし｜かき・わかめなどを育てる",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 90,
+    x: 95,
     y: 52,
     side: "right",
     order: 1
@@ -71,8 +71,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 96,
-    y: 62,
+    x: 100,
+    y: 66,
     side: "right",
     order: 2
   },
@@ -82,7 +82,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "湖や浅い海の水を抜いて｜新しい陸地や農地をつくる",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 36,
+    x: 35,
     y: 34,
     side: "right",
     order: 3
@@ -105,7 +105,7 @@ const TOHOKU_LIFE_ITEMS = [
     category: "hightech",
     icon: "assets/icons/hightech.svg",
     x: 61,
-    y: 48,
+    y: 47,
     side: "right",
     order: 5
   }

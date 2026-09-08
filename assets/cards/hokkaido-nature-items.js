@@ -5,7 +5,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "石狩川が運んだ土砂でできた北海道最大の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 24,
+    x: 34,
     y: 62,
     side: "left",
     order: 1
@@ -28,7 +28,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 40,
-    y: 53,
+    y: 54,
     side: "left",
     order: 3
   },
@@ -83,7 +83,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 66,
-    y: 47,
+    y: 46,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "plateau",
     icon: "assets/icons/plateau.svg",
     x: 75,
-    y: 55,
+    y: 54,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "豊かな自然が残る世界自然遺産の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 84,
-    y: 42,
+    x: 74,
+    y: 30,
     side: "right",
     order: 5
   }

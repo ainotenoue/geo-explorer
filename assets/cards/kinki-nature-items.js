@@ -27,7 +27,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "琵琶湖から大阪湾へ流れる｜京阪神を支える川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 57,
+    x: 58,
     y: 41,
     side: "left",
     order: 3
@@ -38,7 +38,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾の東に広がる｜人口と産業が集中する平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 51,
+    x: 50,
     y: 49,
     side: "left",
     order: 4
@@ -61,7 +61,7 @@ const KINKI_NATURE_ITEMS = [
     category: "basin",
     icon: "assets/icons/basin.svg",
     x: 59,
-    y: 58,
+    y: 59,
     side: "right",
     order: 1
   },
@@ -72,7 +72,7 @@ const KINKI_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 68,
-    y: 90,
+    y: 92,
     side: "right",
     order: 2
   },
@@ -82,7 +82,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 89,
+    x: 92,
     y: 69,
     side: "right",
     order: 3
@@ -93,7 +93,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "日本海側に広がる湾｜リアス海岸が発達",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 53,
+    x: 55,
     y: 13,
     side: "right",
     order: 4
@@ -104,8 +104,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾と瀬戸内海の間にある｜兵庫県の大きな島",
     category: "island",
     icon: "assets/icons/island.svg",
-    x: 21,
-    y: 61,
+    x: 23,
+    y: 70,
     side: "right",
     order: 5
   }

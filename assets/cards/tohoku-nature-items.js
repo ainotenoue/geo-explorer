@@ -16,8 +16,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県東部に広がる｜なだらかな高地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 63,
-    y: 35,
+    x: 65,
+    y: 34,
     side: "left",
     order: 2
   },
@@ -28,7 +28,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 42,
-    y: 24,
+    y: 23,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 91,
-    y: 50,
+    x: 95,
+    y: 52,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "青森県西部に広がる｜りんご栽培がさかんな平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 60,
-    y: 21,
+    x: 59,
+    y: 19,
     side: "left",
     order: 5
   },
@@ -71,7 +71,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "秋田県にある湖で｜大規模な干拓が行われた",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 36,
+    x: 35,
     y: 34,
     side: "right",
     order: 2
@@ -83,7 +83,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 40,
-    y: 66,
+    y: 67,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県から宮城県へ流れる｜東北を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 62,
-    y: 55,
+    x: 64,
+    y: 53,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "山々に囲まれ寒暖差が大きい｜果樹栽培がさかんな盆地",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 47,
-    y: 75,
+    x: 49,
+    y: 77,
     side: "right",
     order: 5
   }

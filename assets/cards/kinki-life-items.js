@@ -17,7 +17,7 @@ const KINKI_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 53,
-    y: 46,
+    y: 47,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "京阪神の大市場に近い利点を生かし｜野菜などを生産",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 32,
-    y: 35,
+    x: 31,
+    y: 34,
     side: "left",
     order: 3
   },
@@ -49,7 +49,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "志摩半島の入り江を利用｜真珠の養殖がさかん",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 87,
+    x: 92,
     y: 69,
     side: "left",
     order: 5
@@ -61,7 +61,7 @@ const KINKI_LIFE_ITEMS = [
     category: "forestry",
     icon: "assets/icons/forestry.svg",
     x: 59,
-    y: 58,
+    y: 71,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "京都で受け継がれる｜高級な絹織物の伝統産業",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 52,
+    x: 53,
     y: 30,
     side: "right",
     order: 2
@@ -82,8 +82,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "大都市の人口増加に対応して整備｜郊外に広がる住宅地",
     category: "city",
     icon: "assets/icons/city-heat.svg",
-    x: 44,
-    y: 38,
+    x: 41,
+    y: 39,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "奈良県斑鳩町にある｜世界最古級の木造建築群",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 58,
-    y: 70,
+    x: 59,
+    y: 58,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KINKI_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 37,
-    y: 58,
+    y: 59,
     side: "right",
     order: 5
   }

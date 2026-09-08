@@ -16,7 +16,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "新潟の雪国で育った織物｜雪を利用して布をさらす",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 73,
+    x: 77,
     y: 33,
     side: "left",
     order: 2
@@ -27,8 +27,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "盆地の寒暖差を生かして栽培｜山梨県が有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 70,
-    y: 63,
+    x: 71,
+    y: 67,
     side: "left",
     order: 3
   },
@@ -49,8 +49,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 35,
-    y: 88,
+    x: 37,
+    y: 83,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "諏訪盆地周辺で発達｜時計や電子機器などを生産",
     category: "hightech",
     icon: "assets/icons/hightech.svg",
-    x: 53,
-    y: 60,
+    x: 51,
+    y: 62,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "静岡県を中心に広がる｜輸送用機械などがさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 60,
-    y: 90,
+    x: 58,
+    y: 86,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 33,
-    y: 30,
+    y: 31,
     side: "right",
     order: 3
   },
@@ -104,8 +104,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "冬の季節風で日本海側に大雪｜北陸の暮らしに影響",
     category: "snow",
     icon: "assets/icons/snow.svg",
-    x: 50,
-    y: 37,
+    x: 51,
+    y: 33,
     side: "right",
     order: 5
   }

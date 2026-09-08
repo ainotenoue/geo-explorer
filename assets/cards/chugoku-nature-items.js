@@ -17,7 +17,7 @@ const CHUGOKU_NATURE_ITEMS = [
     category: "dune",
     icon: "assets/icons/dune.svg",
     x: 77,
-    y: 20,
+    y: 18,
     side: "left",
     order: 2
   },
@@ -49,8 +49,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "瀬戸内海側に広がる｜岡山県南部の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 65,
-    y: 59,
+    x: 77,
+    y: 52,
     side: "left",
     order: 5
   },
@@ -60,7 +60,7 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "太田川下流に広がる｜広島市を支える平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 41,
+    x: 43,
     y: 62,
     side: "right",
     order: 1
@@ -71,8 +71,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "中国山地から広島湾へ流れる｜広島を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 44,
-    y: 52,
+    x: 45,
+    y: 53,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "本州と四国の間に広がる海｜温暖で雨が少ない",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 57,
-    y: 79,
+    x: 65,
+    y: 82,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "石灰岩が広がるカルスト台地｜秋芳洞でも有名",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 13,
-    y: 60,
+    x: 16,
+    y: 70,
     side: "right",
     order: 4
   },
@@ -104,8 +104,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "岡山県南部の湾｜干拓で農地が広げられた",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 80,
-    y: 70,
+    x: 88,
+    y: 62,
     side: "right",
     order: 5
   }

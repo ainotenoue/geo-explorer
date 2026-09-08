@@ -6,7 +6,7 @@ const KANTO_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 70,
-    y: 75,
+    y: 76,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "夏の涼しい気候を生かして栽培｜嬬恋村のキャベツが有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 37,
-    y: 28,
+    x: 36,
+    y: 26,
     side: "left",
     order: 2
   },
@@ -27,7 +27,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "徳川家康をまつる社寺｜栃木県日光市にある",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 51,
+    x: 53,
     y: 21,
     side: "left",
     order: 3
@@ -39,7 +39,7 @@ const KANTO_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 45,
-    y: 71,
+    y: 72,
     side: "left",
     order: 4
   },
@@ -49,8 +49,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "千葉県の東京湾岸に発達｜石油化学や鉄鋼がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 89,
-    y: 66,
+    x: 71,
+    y: 68,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "高速道路沿いなどに発達｜内陸型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 51,
-    y: 39,
+    x: 54,
+    y: 40,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "茨城県の鹿島港周辺に発達｜臨海型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 90,
-    y: 46,
+    x: 92,
+    y: 45,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "明治時代の官営模範工場｜日本の近代化を支えた",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 28,
-    y: 36,
+    x: 26,
+    y: 35,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 62,
+    y: 52,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KANTO_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 50,
-    y: 60,
+    y: 59,
     side: "right",
     order: 5
   }
