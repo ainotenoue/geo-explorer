@@ -39,7 +39,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 33,
-    y: 25 ,
+    y: 24,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "信濃川下流に広がる｜稲作がさかんな大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 81 ,
+    x: 82,
     y: 26 ,
     side: "left",
     order: 5
@@ -60,8 +60,8 @@ const CHUBU_NATURE_ITEMS = [
     hint: "木曽三川の下流に広がる｜東海地方の大平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 31,
-    y: 76 ,
+    x: 32,
+    y: 76,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "山々に囲まれ寒暖差が大きい｜果樹栽培がさかん",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 70 ,
+    x: 71,
     y: 67,
     side: "right",
     order: 2
@@ -83,7 +83,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 75 ,
-    y: 36,
+    y: 75,
     side: "right",
     order: 3
   },

@@ -16,7 +16,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "エゾマツなど豊富な森林資源を生かして｜北海道で発達した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 34,
+    x: 36,
     y: 78,
     side: "left",
     order: 2
@@ -49,7 +49,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "アイヌ民族が北海道を中心に｜受け継いできた文化",
     category: "culture",
     icon: "assets/icons/ainu-culture.svg",
-    x: 48,
+    x: 47,
     y: 54,
     side: "left",
     order: 5
@@ -61,7 +61,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     category: "livestock",
     icon: "assets/icons/livestock.svg",
     x: 68,
-    y: 55,
+    y: 54,
     side: "right",
     order: 1
   },
@@ -82,7 +82,7 @@ const HOKKAIDO_LIFE_ITEMS = [
     hint: "自然を守りながら自然や文化を｜体験する観光。知床半島",
     category: "tourism",
     icon: "assets/icons/eco-tourism.svg",
-    x: 74,
+    x: 73,
     y: 28 ,
     side: "right",
     order: 3

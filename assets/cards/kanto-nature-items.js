@@ -38,7 +38,7 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東平野を流れ｜東京湾へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 50,
+    x: 49,
     y: 64,
     side: "left",
     order: 4
@@ -60,8 +60,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東南部に広がる湾｜港や工業が集まる",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 60 ,
-    y: 69 ,
+    x: 61,
+    y: 68,
     side: "right",
     order: 1
   },
@@ -72,7 +72,7 @@ const KANTO_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 76,
-    y: 92,
+    y: 93,
     side: "right",
     order: 2
   },
@@ -105,7 +105,7 @@ const KANTO_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
     x: 26 ,
-    y: 19 ,
+    y: 18,
     side: "right",
     order: 5
   }

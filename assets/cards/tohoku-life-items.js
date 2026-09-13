@@ -71,7 +71,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 100 ,
+    x: 100,
     y: 70 ,
     side: "right",
     order: 2
@@ -82,7 +82,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "湖や浅い海の水を抜いて｜新しい陸地や農地をつくる",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 37 ,
+    x: 38,
     y: 34,
     side: "right",
     order: 3

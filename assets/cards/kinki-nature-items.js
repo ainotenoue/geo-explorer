@@ -39,7 +39,7 @@ const KINKI_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 51 ,
-    y: 49,
+    y: 48,
     side: "left",
     order: 4
   },
@@ -105,7 +105,7 @@ const KINKI_NATURE_ITEMS = [
     category: "island",
     icon: "assets/icons/island.svg",
     x: 18 ,
-    y: 67 ,
+    y: 69,
     side: "right",
     order: 5
   }

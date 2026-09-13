@@ -17,7 +17,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 77,
-    y: 33,
+    y: 34,
     side: "left",
     order: 2
   },
@@ -38,7 +38,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "温暖な気候と台地を生かし｜静岡県で茶を栽培",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 65 ,
+    x: 64,
     y: 77,
     side: "left",
     order: 4
@@ -49,7 +49,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 26 ,
+    x: 23,
     y: 88 ,
     side: "left",
     order: 5
@@ -71,7 +71,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "静岡県を中心に広がる｜輸送用機械などがさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 57 ,
+    x: 55,
     y: 85 ,
     side: "right",
     order: 2
@@ -94,7 +94,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "hydropower",
     icon: "assets/icons/hydropower.svg",
     x: 48,
-    y: 48,
+    y: 49,
     side: "right",
     order: 4
   },

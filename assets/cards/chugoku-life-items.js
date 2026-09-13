@@ -5,8 +5,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "岡山県と香川県を結ぶ｜道路と鉄道が通る橋",
     category: "bridge",
     icon: "assets/icons/bridge.svg",
-    x: 76,
-    y: 70 ,
+    x: 77,
+    y: 71,
     side: "left",
     order: 1
   },
@@ -17,7 +17,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 88,
-    y: 63 ,
+    y: 64,
     side: "left",
     order: 2
   },
@@ -38,7 +38,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島湾の穏やかな海を利用｜全国有数の生産地",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 80 ,
+    x: 45,
     y: 78 ,
     side: "left",
     order: 4
@@ -50,7 +50,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66,
-    y: 60 ,
+    y: 59,
     side: "left",
     order: 5
   },
@@ -61,7 +61,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 65,
-    y: 83 ,
+    y: 85,
     side: "right",
     order: 1
   },
@@ -105,7 +105,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 42,
-    y: 69 ,
+    y: 71,
     side: "right",
     order: 5
   }

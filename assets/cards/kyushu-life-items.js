@@ -5,8 +5,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "同じ田畑で年に｜2種類の作物を栽培",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 33 ,
-    y: 18 ,
+    x: 34,
+    y: 19,
     side: "left",
     order: 1
   },
@@ -50,7 +50,7 @@ const KYUSHU_LIFE_ITEMS = [
     category: "fishery",
     icon: "assets/icons/fishery.svg",
     x: 29 ,
-    y: 33,
+    y: 34,
     side: "left",
     order: 5
   },
@@ -71,7 +71,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "暖かい沖縄の｜気候に適した作物",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 90 ,
+    x: 92,
     y: 84 ,
     side: "right",
     order: 2
@@ -104,7 +104,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "企業が集まる工業団地　九州では大分",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 79 ,
+    x: 81,
     y: 31,
     side: "right",
     order: 5

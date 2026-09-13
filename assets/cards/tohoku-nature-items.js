@@ -71,7 +71,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "秋田県にある湖｜大規模な干拓が行われた",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 37 ,
+    x: 38,
     y: 34,
     side: "right",
     order: 2

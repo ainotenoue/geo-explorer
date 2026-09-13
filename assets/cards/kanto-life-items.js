@@ -16,8 +16,8 @@ const KANTO_LIFE_ITEMS = [
     hint: "夏の涼しい気候を生かして栽培｜嬬恋村のキャベツが有名",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 36,
-    y: 25 ,
+    x: 35,
+    y: 24,
     side: "left",
     order: 2
   },
@@ -28,7 +28,7 @@ const KANTO_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 53,
-    y: 21,
+    y: 20,
     side: "left",
     order: 3
   },
@@ -38,7 +38,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 42 ,
+    x: 41,
     y: 72,
     side: "left",
     order: 4
@@ -61,7 +61,7 @@ const KANTO_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 54,
-    y: 41 ,
+    y: 40,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "茨城県の鹿島港周辺に発達｜臨海型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 96 ,
+    x: 97,
     y: 45,
     side: "right",
     order: 2
@@ -83,7 +83,7 @@ const KANTO_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 25 ,
-    y: 35,
+    y: 34,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 54 ,
+    y: 55,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KANTO_LIFE_ITEMS = [
     category: "city",
     icon: "assets/icons/city-heat.svg",
     x: 50,
-    y: 59,
+    y: 58,
     side: "right",
     order: 5
   }

@@ -27,7 +27,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "長崎、島原半島の火山群",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 27 ,
+    x: 26,
     y: 44 ,
     side: "left",
     order: 3
@@ -39,7 +39,7 @@ const KYUSHU_NATURE_ITEMS = [
     category: "volcano",
     icon: "assets/icons/volcano.svg",
     x: 37 ,
-    y: 79 ,
+    y: 78,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "火山灰が厚く積もってできた台地",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 47 ,
+    x: 49,
     y: 71,
     side: "left",
     order: 5
@@ -60,7 +60,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "筑後川流域に広がる｜九州北部の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 33 ,
+    x: 34,
     y: 18 ,
     side: "right",
     order: 1
@@ -72,7 +72,7 @@ const KYUSHU_NATURE_ITEMS = [
     category: "bay",
     icon: "assets/icons/bay.svg",
     x: 28 ,
-    y: 33,
+    y: 34,
     side: "right",
     order: 2
   },
@@ -94,7 +94,7 @@ const KYUSHU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 45,
-    y: 58,
+    y: 59,
     side: "right",
     order: 4
   },

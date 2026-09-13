@@ -6,7 +6,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 57 ,
-    y: 35 ,
+    y: 344,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "愛媛県にある｜西日本で最も高い山",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 35 ,
+    x: 34,
     y: 42 ,
     side: "left",
     order: 2
@@ -50,7 +50,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 68 ,
-    y: 17 ,
+    y: 16,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県中央部に広がる｜温暖な気候を生かした農業がさかん",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 52 ,
-    y: 47 ,
+    x: 51,
+    y: 46,
     side: "right",
     order: 1
   },

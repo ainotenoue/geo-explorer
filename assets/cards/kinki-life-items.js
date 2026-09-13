@@ -5,7 +5,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "大阪・神戸を中心に発達｜近畿を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 49,
+    x: 50,
     y: 55 ,
     side: "left",
     order: 1
@@ -82,7 +82,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "大都市の人口増加に対応して整備｜郊外に広がる住宅地",
     category: "city",
     icon: "assets/icons/city-heat.svg",
-    x: 40 ,
+    x: 39,
     y: 38 ,
     side: "right",
     order: 3
@@ -93,8 +93,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "奈良県斑鳩町にある｜世界最古級の木造建築群",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 61 ,
-    y: 58,
+    x: 62,
+    y: 57,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const KINKI_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 37,
-    y: 59,
+    y: 58,
     side: "right",
     order: 5
   }
