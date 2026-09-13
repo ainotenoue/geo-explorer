@@ -38,7 +38,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 97+,
+    x: 97,
     y: 52,
     side: "left",
     order: 4
