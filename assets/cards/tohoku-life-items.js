@@ -71,7 +71,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 103 ,
+    x: 100 ,
     y: 70 ,
     side: "right",
     order: 2
