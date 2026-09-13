@@ -49,8 +49,8 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 37,
-    y: 83,
+    x: 31 ,
+    y: 88 ,
     side: "left",
     order: 5
   },
@@ -72,7 +72,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 58,
-    y: 86,
+    y: 85 ,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const CHUBU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 33,
-    y: 31,
+    y: 26 ,
     side: "right",
     order: 3
   },

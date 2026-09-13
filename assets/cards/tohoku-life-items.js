@@ -5,8 +5,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "夏に太平洋側から吹く冷たい北東風｜冷害の原因になる",
     category: "wind",
     icon: "assets/icons/wind.svg",
-    x: 82,
-    y: 13,
+    x: 86 ,
+    y: 12 ,
     side: "left",
     order: 1
   },
@@ -28,7 +28,7 @@ const TOHOKU_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 42,
-    y: 83,
+    y: 86 ,
     side: "left",
     order: 3
   },
@@ -71,8 +71,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 100,
-    y: 66,
+    x: 102 ,
+    y: 69 ,
     side: "right",
     order: 2
   },
@@ -82,7 +82,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "湖や浅い海の水を抜いて｜新しい陸地や農地をつくる",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 35,
+    x: 36 ,
     y: 34,
     side: "right",
     order: 3

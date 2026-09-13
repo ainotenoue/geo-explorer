@@ -5,7 +5,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "近畿南部に広がる山地｜雨が多く森林が豊か",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 58,
+    x: 57 ,
     y: 73,
     side: "left",
     order: 1
@@ -38,7 +38,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾の東に広がる｜人口と産業が集中する平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 50,
+    x: 51 ,
     y: 49,
     side: "left",
     order: 4
@@ -49,8 +49,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "山々に囲まれた盆地｜古くから京都の町が発達",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 52,
-    y: 29,
+    x: 51 ,
+    y: 28 ,
     side: "left",
     order: 5
   },
@@ -104,8 +104,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾と瀬戸内海の間にある｜兵庫県の大きな島",
     category: "island",
     icon: "assets/icons/island.svg",
-    x: 23,
-    y: 70,
+    x: 19 ,
+    y: 66 ,
     side: "right",
     order: 5
   }

@@ -39,7 +39,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 33,
-    y: 30,
+    y: 28 ,
     side: "left",
     order: 4
   },
@@ -50,7 +50,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 80,
-    y: 28,
+    y: 26 ,
     side: "left",
     order: 5
   },

@@ -17,7 +17,7 @@ const KINKI_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 53,
-    y: 47,
+    y: 46 ,
     side: "left",
     order: 2
   },
@@ -27,8 +27,8 @@ const KINKI_LIFE_ITEMS = [
     hint: "京阪神の大市場に近い利点を生かし｜野菜などを生産",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 31,
-    y: 34,
+    x: 30 ,
+    y: 32 ,
     side: "left",
     order: 3
   },
@@ -93,7 +93,7 @@ const KINKI_LIFE_ITEMS = [
     hint: "奈良県斑鳩町にある｜世界最古級の木造建築群",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 59,
+    x: 60 ,
     y: 58,
     side: "right",
     order: 4

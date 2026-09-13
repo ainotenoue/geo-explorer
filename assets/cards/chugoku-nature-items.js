@@ -5,8 +5,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "山陰と山陽を分ける｜中国地方の骨格となる山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 49,
-    y: 42,
+    x: 53 ,
+    y: 44 ,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "日本海沿岸に広がる｜日本を代表する砂丘",
     category: "dune",
     icon: "assets/icons/dune.svg",
-    x: 77,
+    x: 86 ,
     y: 18,
     side: "left",
     order: 2
@@ -28,7 +28,7 @@ const CHUGOKU_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 61,
-    y: 21,
+    y: 20 ,
     side: "left",
     order: 3
   },
@@ -38,7 +38,7 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "中国地方の最高峰｜鳥取県西部にそびえる山",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 57,
+    x: 64 ,
     y: 32,
     side: "left",
     order: 4
@@ -60,8 +60,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "太田川下流に広がる｜広島市を支える平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 43,
-    y: 62,
+    x: 45 ,
+    y: 61 ,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "中国山地から広島湾へ流れる｜広島を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 45,
+    x: 40 ,
     y: 53,
     side: "right",
     order: 2
@@ -93,8 +93,8 @@ const CHUGOKU_NATURE_ITEMS = [
     hint: "石灰岩が広がるカルスト台地｜秋芳洞でも有名",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 16,
-    y: 70,
+    x: 14 ,
+    y: 71 ,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const CHUGOKU_NATURE_ITEMS = [
     category: "bay",
     icon: "assets/icons/bay.svg",
     x: 88,
-    y: 62,
+    y: 63 ,
     side: "right",
     order: 5
   }

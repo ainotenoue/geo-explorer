@@ -6,7 +6,7 @@ const KANTO_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 70,
-    y: 76,
+    y: 78 ,
     side: "left",
     order: 1
   },
@@ -17,7 +17,7 @@ const KANTO_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 36,
-    y: 26,
+    y: 25 ,
     side: "left",
     order: 2
   },
@@ -38,7 +38,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 45,
+    x: 43 ,
     y: 72,
     side: "left",
     order: 4
@@ -49,7 +49,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "千葉県の東京湾岸に発達｜石油化学や鉄鋼がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 71,
+    x: 72 ,
     y: 68,
     side: "left",
     order: 5
@@ -61,7 +61,7 @@ const KANTO_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 54,
-    y: 40,
+    y: 41 ,
     side: "right",
     order: 1
   },
@@ -82,7 +82,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "明治時代の官営模範工場｜日本の近代化を支えた",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 26,
+    x: 25 ,
     y: 35,
     side: "right",
     order: 3

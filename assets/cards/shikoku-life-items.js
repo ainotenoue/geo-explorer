@@ -5,8 +5,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "雨の少ない香川県に多い｜農業用の水をたくわえる",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 58,
-    y: 27,
+    x: 68 ,
+    y: 18 ,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "温暖な気候と斜面を生かして栽培｜愛媛県が有名",
     category: "agriculture",
     icon: "assets/icons/mikan.svg",
-    x: 27,
-    y: 46,
+    x: 24 ,
+    y: 51 ,
     side: "left",
     order: 2
   },
@@ -28,7 +28,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 54,
-    y: 50,
+    y: 47 ,
     side: "left",
     order: 3
   },
@@ -38,8 +38,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "愛媛県今治市で発達｜品質の高いタオルで知られる",
     category: "traditional",
     icon: "assets/icons/towel.svg",
-    x: 32,
-    y: 28,
+    x: 33 ,
+    y: 29 ,
     side: "left",
     order: 4
   },
@@ -60,7 +60,7 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "愛媛県四国中央市で発達｜紙製品をつくる工業がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 60,
+    x: 58 ,
     y: 31,
     side: "right",
     order: 1
@@ -71,8 +71,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "香川県の瀬戸内海沿岸に広がる｜工業が集まる地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 68,
-    y: 19,
+    x: 66 ,
+    y: 10 ,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "岡山県と香川県を結ぶ｜道路と鉄道が通る橋",
     category: "bridge",
     icon: "assets/icons/bridge.svg",
-    x: 61,
-    y: 19,
+    x: 56 ,
+    y: 14 ,
     side: "right",
     order: 3
   },
@@ -93,8 +93,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "今治と尾道を島づたいに結ぶ｜自転車でも渡れるルート",
     category: "transport",
     icon: "assets/icons/shimanami.svg",
-    x: 24,
-    y: 19,
+    x: 30 ,
+    y: 17 ,
     side: "right",
     order: 4
   },

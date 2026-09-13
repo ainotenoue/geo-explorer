@@ -6,7 +6,7 @@ const KANTO_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 49,
-    y: 53,
+    y: 52 ,
     side: "left",
     order: 1
   },
@@ -16,8 +16,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東平野の西側を囲む｜山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 25,
-    y: 49,
+    x: 26 ,
+    y: 48 ,
     side: "left",
     order: 2
   },
@@ -49,7 +49,7 @@ const KANTO_NATURE_ITEMS = [
     hint: "茨城県にある｜日本で2番目に大きい湖",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 74,
+    x: 75 ,
     y: 45,
     side: "left",
     order: 5

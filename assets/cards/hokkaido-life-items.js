@@ -2,7 +2,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-01",
     name: "客土",
-    hint: "泥炭地に別の土を入れ、農地に改良する方法",
+    hint: "ドロドロの泥炭地に遠くから土を運んで｜土地を改良する方法。石狩平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 34,
@@ -13,7 +13,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-02",
     name: "製紙・パルプ",
-    hint: "森林資源や港を生かして発達した工業",
+    hint: "エゾマツなど豊富な森林資源や港を生かして｜北海道で発達した工業。",
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 34,
@@ -24,7 +24,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-03",
     name: "輪作",
-    hint: "異なる作物を順番につくり連作障害を防ぐ農法",
+    hint: "異なる作物を順番につくり｜連作障害を防ぐ農法。十勝地方。",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 57,
@@ -35,7 +35,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-04",
     name: "食品工業",
-    hint: "豊富な農産物や水産物を原料に発達した工業",
+    hint: "乳製品、畜産品、水産缶詰、菓子｜北海道の産業の４割を占める",
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 55,
@@ -46,7 +46,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-05",
     name: "アイヌ文化",
-    hint: "アイヌ民族が北海道を中心に受け継いできた文化",
+    hint: "アイヌ民族が北海道を中心に｜受け継いできた文化",
     category: "culture",
     icon: "assets/icons/ainu-culture.svg",
     x: 48,
@@ -57,7 +57,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-06",
     name: "酪農",
-    hint: "冷涼な気候と広い土地を生かし乳牛を育てる農業",
+    hint: "冷涼な気候と広い土地を生かし｜乳牛を育てる農業。十勝平野",
     category: "livestock",
     icon: "assets/icons/livestock.svg",
     x: 68,
@@ -68,7 +68,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-07",
     name: "栽培漁業",
-    hint: "魚介類を育てて放流し大きくなってからとる漁業",
+    hint: "魚介類を育てて放流し大きくなってから採る｜鮭、ホタテ、ウニ、昆布",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
     x: 78,
@@ -83,14 +83,14 @@ const HOKKAIDO_LIFE_ITEMS = [
     category: "tourism",
     icon: "assets/icons/eco-tourism.svg",
     x: 74,
-    y: 30,
+    y: 29 ,
     side: "right",
     order: 3
   },
   {
     id: "01-L-09",
     name: "千島海流",
-    hint: "北海道の東を南へ流れる寒流。親潮ともよぶ",
+    hint: "北海道の東を南へ流れる寒流。｜親潮ともよぶ",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
     x: 72,
@@ -101,7 +101,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-10",
     name: "北方領土",
-    hint: "択捉・国後・色丹・歯舞からなる日本固有の領土",
+    hint: "択捉-えとろふ、国後-くなしり、色丹-しこたん｜歯舞-はぼまい。日本固有の領土",
     category: "territory",
     icon: "assets/icons/territory.svg",
     x: 85,

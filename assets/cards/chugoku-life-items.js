@@ -16,8 +16,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "雨の少ない地域で水をたくわえ｜農業用水に利用",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 80,
-    y: 70,
+    x: 88,
+    y: 63 ,
     side: "left",
     order: 2
   },
@@ -38,8 +38,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島湾の穏やかな海を利用｜全国有数の生産地",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 44,
-    y: 75,
+    x: 43 ,
+    y: 78 ,
     side: "left",
     order: 4
   },
@@ -50,7 +50,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66,
-    y: 75,
+    y: 73 ,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "瀬戸内海沿岸に広がる｜工業がさかんな地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 57,
-    y: 70,
+    x: 56 ,
+    y: 80 ,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島県を中心に発達｜輸送用機械を生産",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 50,
-    y: 66,
+    x: 45 ,
+    y: 61 ,
     side: "right",
     order: 2
   },
@@ -83,7 +83,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 49,
-    y: 42,
+    y: 36 ,
     side: "right",
     order: 3
   },
@@ -93,7 +93,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "島根県西部でつくられる｜赤褐色の伝統的な瓦",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 28,
+    x: 29 ,
     y: 56,
     side: "right",
     order: 4
@@ -105,7 +105,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 42,
-    y: 70,
+    y: 69 ,
     side: "right",
     order: 5
   }

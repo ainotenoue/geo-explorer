@@ -71,7 +71,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "秋田県にある湖で｜大規模な干拓が行われた",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 35,
+    x: 36 ,
     y: 34,
     side: "right",
     order: 2
@@ -93,7 +93,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "岩手県から宮城県へ流れる｜東北を代表する川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 64,
+    x: 65 ,
     y: 53,
     side: "right",
     order: 4
