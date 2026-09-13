@@ -2,7 +2,7 @@ const TOHOKU_LIFE_ITEMS = [
   {
     id: "02-L-01",
     name: "やませ",
-    hint: "夏に太平洋側から吹く冷たい北東風｜冷害の原因になる",
+    hint: "夏に太平洋側から吹く冷たい北東風｜冷害の原因",
     category: "wind",
     icon: "assets/icons/wind.svg",
     x: 86 ,
@@ -16,8 +16,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "広い平野と豊かな水を生かした｜東北を代表する農業",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 35,
-    y: 59,
+    x: 34,
+    y: 57 ,
     side: "left",
     order: 2
   },
@@ -28,7 +28,7 @@ const TOHOKU_LIFE_ITEMS = [
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 42,
-    y: 86 ,
+    y: 88 ,
     side: "left",
     order: 3
   },
@@ -49,7 +49,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "盆地の気候を生かして栽培｜山形県が全国有数の産地",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 49,
+    x: 35 ,
     y: 77,
     side: "left",
     order: 5
@@ -60,7 +60,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "三陸海岸の入り江を生かし｜かき・わかめなどを育てる",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 95,
+    x: 97 ,
     y: 52,
     side: "right",
     order: 1
@@ -71,8 +71,8 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "暖流と寒流が出会い｜魚が集まる豊かな漁場になる",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
-    x: 102 ,
-    y: 69 ,
+    x: 103 ,
+    y: 70 ,
     side: "right",
     order: 2
   },
@@ -82,7 +82,7 @@ const TOHOKU_LIFE_ITEMS = [
     hint: "湖や浅い海の水を抜いて｜新しい陸地や農地をつくる",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 36 ,
+    x: 37 ,
     y: 34,
     side: "right",
     order: 3

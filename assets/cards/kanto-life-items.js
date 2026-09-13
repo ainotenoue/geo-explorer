@@ -38,7 +38,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "東京・川崎・横浜を中心に発達｜日本を代表する工業地帯",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 43 ,
+    x: 42 ,
     y: 72,
     side: "left",
     order: 4
@@ -49,7 +49,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "千葉県の東京湾岸に発達｜石油化学や鉄鋼がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 72 ,
+    x: 73 ,
     y: 68,
     side: "left",
     order: 5
@@ -71,7 +71,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "茨城県の鹿島港周辺に発達｜臨海型の工業地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 92,
+    x: 96 ,
     y: 45,
     side: "right",
     order: 2
@@ -94,7 +94,7 @@ const KANTO_LIFE_ITEMS = [
     category: "airport",
     icon: "assets/icons/airport.svg",
     x: 76,
-    y: 52,
+    y: 54 ,
     side: "right",
     order: 4
   },

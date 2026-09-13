@@ -5,7 +5,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "近畿南部に広がる山地｜雨が多く森林が豊か",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 57 ,
+    x: 56 ,
     y: 73,
     side: "left",
     order: 1
@@ -71,8 +71,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "近畿南部へ大きく突き出す｜日本最大の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 68,
-    y: 92,
+    x: 69 ,
+    y: 93 ,
     side: "right",
     order: 2
   },
@@ -104,8 +104,8 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾と瀬戸内海の間にある｜兵庫県の大きな島",
     category: "island",
     icon: "assets/icons/island.svg",
-    x: 19 ,
-    y: 66 ,
+    x: 18 ,
+    y: 67 ,
     side: "right",
     order: 5
   }

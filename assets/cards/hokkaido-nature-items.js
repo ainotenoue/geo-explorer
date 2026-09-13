@@ -5,7 +5,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "石狩川が運んだ土砂でできた｜北海道最大の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 34,
+    x: 35 ,
     y: 62,
     side: "left",
     order: 1
@@ -16,8 +16,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道の中央南部を｜南北に連なる山脈",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 49,
-    y: 70,
+    x: 48 ,
+    y: 69 ,
     side: "left",
     order: 2
   },
@@ -27,7 +27,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "大雪山系から石狩平野を流れ｜日本海へ注ぐ川",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 40,
+    x: 41 ,
     y: 54,
     side: "left",
     order: 3
@@ -38,8 +38,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道中央部にそびえる｜「北海道の屋根」",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 46,
-    y: 46,
+    x: 48 ,
+    y: 45 ,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "釧路川流域に広がる｜日本最大の湿原",
     category: "wetland",
     icon: "assets/icons/wetland.svg",
-    x: 64,
+    x: 65 ,
     y: 56,
     side: "left",
     order: 5
@@ -71,8 +71,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "北海道北東部に広がる｜オホーツク海側の山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 48,
-    y: 32,
+    x: 50 ,
+    y: 31 ,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const HOKKAIDO_NATURE_ITEMS = [
     hint: "火山活動によってできた｜国内最大のカルデラ湖",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 66,
-    y: 46,
+    x: 67 ,
+    y: 45 ,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "plateau",
     icon: "assets/icons/plateau.svg",
     x: 75,
-    y: 54,
+    y: 53 ,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const HOKKAIDO_NATURE_ITEMS = [
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
     x: 74,
-    y: 29 ,
+    y: 28 ,
     side: "right",
     order: 5
   }

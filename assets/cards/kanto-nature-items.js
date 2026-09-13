@@ -5,7 +5,7 @@ const KANTO_NATURE_ITEMS = [
     hint: "日本最大の平野｜首都圏の広がりを支える",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 49,
+    x: 50 ,
     y: 52 ,
     side: "left",
     order: 1
@@ -17,7 +17,7 @@ const KANTO_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 26 ,
-    y: 48 ,
+    y: 47 ,
     side: "left",
     order: 2
   },
@@ -50,7 +50,7 @@ const KANTO_NATURE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 75 ,
-    y: 45,
+    y: 44 ,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "関東南部に広がる湾｜港や工業が集まる",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 61,
-    y: 68,
+    x: 60 ,
+    y: 69 ,
     side: "right",
     order: 1
   },
@@ -82,7 +82,7 @@ const KANTO_NATURE_ITEMS = [
     hint: "神奈川県南東部から｜東京湾口へ突き出す半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 46,
+    x: 45 ,
     y: 89,
     side: "right",
     order: 3
@@ -104,8 +104,8 @@ const KANTO_NATURE_ITEMS = [
     hint: "冬に湿った季節風がぶつかり｜新潟側に大雪を降らせる",
     category: "mountain",
     icon: "assets/icons/mountain-range.svg",
-    x: 27,
-    y: 18,
+    x: 26 ,
+    y: 19 ,
     side: "right",
     order: 5
   }

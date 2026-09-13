@@ -5,8 +5,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "同じ田畑で年に｜2種類の作物を栽培",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 32 ,
-    y: 17 ,
+    x: 33 ,
+    y: 18 ,
     side: "left",
     order: 1
   },
@@ -16,7 +16,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "暖かい気候を生かして｜出荷時期を早める",
     category: "greenhouse",
     icon: "assets/icons/greenhouse.svg",
-    x: 58 ,
+    x: 57 ,
     y: 57 ,
     side: "left",
     order: 2
@@ -27,7 +27,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "八幡製鉄所を中心に｜発展した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 44 ,
+    x: 43 ,
     y: 8,
     side: "left",
     order: 3
@@ -71,7 +71,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "暖かい沖縄の｜気候に適した作物",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 88 ,
+    x: 90 ,
     y: 84 ,
     side: "right",
     order: 2
@@ -82,8 +82,8 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "伝統織物｜足袋・ゴム産業につながる",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 41 ,
-    y: 24 ,
+    x: 43 ,
+    y: 25 ,
     side: "right",
     order: 3
   },
@@ -104,7 +104,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "企業が集まる工業団地　九州では大分",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 76 ,
+    x: 79 ,
     y: 31,
     side: "right",
     order: 5

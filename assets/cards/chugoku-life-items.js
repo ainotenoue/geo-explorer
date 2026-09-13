@@ -6,7 +6,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "bridge",
     icon: "assets/icons/bridge.svg",
     x: 76,
-    y: 69,
+    y: 70 ,
     side: "left",
     order: 1
   },
@@ -38,7 +38,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島湾の穏やかな海を利用｜全国有数の生産地",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 43 ,
+    x: 80 ,
     y: 78 ,
     side: "left",
     order: 4
@@ -50,7 +50,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66,
-    y: 73 ,
+    y: 60 ,
     side: "left",
     order: 5
   },
@@ -60,8 +60,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "瀬戸内海沿岸に広がる｜工業がさかんな地域",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 56 ,
-    y: 80 ,
+    x: 65,
+    y: 83 ,
     side: "right",
     order: 1
   },
@@ -71,8 +71,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島県を中心に発達｜輸送用機械を生産",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 45 ,
-    y: 61 ,
+    x: 47 ,
+    y: 59 ,
     side: "right",
     order: 2
   },
@@ -82,7 +82,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "砂鉄と木炭を使う伝統的な製鉄｜中国山地で発達",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 49,
+    x: 50 ,
     y: 36 ,
     side: "right",
     order: 3

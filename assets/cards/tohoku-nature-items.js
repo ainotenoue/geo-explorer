@@ -38,7 +38,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "入り江が複雑に入り組む｜リアス海岸",
     category: "coast",
     icon: "assets/icons/coast.svg",
-    x: 95,
+    x: 97+,
     y: 52,
     side: "left",
     order: 4
@@ -61,17 +61,17 @@ const TOHOKU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 34,
-    y: 59,
+    y: 57 ,
     side: "right",
     order: 1
   },
   {
     id: "02-N-07",
     name: "八郎潟",
-    hint: "秋田県にある湖で｜大規模な干拓が行われた",
+    hint: "秋田県にある湖｜大規模な干拓が行われた",
     category: "lake",
     icon: "assets/icons/lake.svg",
-    x: 36 ,
+    x: 37 ,
     y: 34,
     side: "right",
     order: 2
@@ -83,7 +83,7 @@ const TOHOKU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 40,
-    y: 67,
+    y: 66 ,
     side: "right",
     order: 3
   },
@@ -104,7 +104,7 @@ const TOHOKU_NATURE_ITEMS = [
     hint: "山々に囲まれ寒暖差が大きい｜果樹栽培がさかんな盆地",
     category: "basin",
     icon: "assets/icons/basin.svg",
-    x: 49,
+    x: 35 ,
     y: 77,
     side: "right",
     order: 5

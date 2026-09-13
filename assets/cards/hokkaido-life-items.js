@@ -2,10 +2,10 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-01",
     name: "客土",
-    hint: "ドロドロの泥炭地に遠くから土を運んで｜土地を改良する方法。石狩平野",
+    hint: "ドロドロの泥炭地に他から土を運んで｜土地を改良する方法。石狩平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 34,
+    x: 35 ,
     y: 62,
     side: "left",
     order: 1
@@ -13,7 +13,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-02",
     name: "製紙・パルプ",
-    hint: "エゾマツなど豊富な森林資源や港を生かして｜北海道で発達した工業。",
+    hint: "エゾマツなど豊富な森林資源を生かして｜北海道で発達した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 34,
@@ -24,7 +24,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-03",
     name: "輪作",
-    hint: "異なる作物を順番につくり｜連作障害を防ぐ農法。十勝地方。",
+    hint: "異なる作物を順番につくり｜連作障害を防ぐ。十勝地方。",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
     x: 57,
@@ -68,7 +68,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-07",
     name: "栽培漁業",
-    hint: "魚介類を育てて放流し大きくなってから採る｜鮭、ホタテ、ウニ、昆布",
+    hint: "魚介類を育てて放流、成長したら採る｜鮭、ホタテ、ウニ、昆布",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
     x: 78,
@@ -79,18 +79,18 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-08",
     name: "エコツーリズム",
-    hint: "自然を守りながら自然や文化を体験する観光",
+    hint: "自然を守りながら自然や文化を｜体験する観光。知床半島",
     category: "tourism",
     icon: "assets/icons/eco-tourism.svg",
     x: 74,
-    y: 29 ,
+    y: 28 ,
     side: "right",
     order: 3
   },
   {
     id: "01-L-09",
     name: "千島海流",
-    hint: "北海道の東を南へ流れる寒流。｜親潮ともよぶ",
+    hint: "北海道の東を南へ流れる寒流｜親潮",
     category: "current",
     icon: "assets/icons/ocean-current.svg",
     x: 72,
@@ -101,7 +101,7 @@ const HOKKAIDO_LIFE_ITEMS = [
   {
     id: "01-L-10",
     name: "北方領土",
-    hint: "択捉-えとろふ、国後-くなしり、色丹-しこたん｜歯舞-はぼまい。日本固有の領土",
+    hint: "択捉-えとろふ、国後-くなしり｜色丹-しこたん、歯舞-はぼまい",
     category: "territory",
     icon: "assets/icons/territory.svg",
     x: 85,

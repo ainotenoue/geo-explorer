@@ -5,7 +5,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "九州中央部の大きな骨格",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 52 ,
+    x: 53 ,
     y: 43 ,
     side: "left",
     order: 1
@@ -17,7 +17,7 @@ const KYUSHU_NATURE_ITEMS = [
     category: "volcano",
     icon: "assets/icons/volcano.svg",
     x: 48 ,
-    y: 35,
+    y: 34 ,
     side: "left",
     order: 2
   },
@@ -27,7 +27,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "長崎、島原半島の火山群",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 28 ,
+    x: 27 ,
     y: 44 ,
     side: "left",
     order: 3
@@ -39,7 +39,7 @@ const KYUSHU_NATURE_ITEMS = [
     category: "volcano",
     icon: "assets/icons/volcano.svg",
     x: 37 ,
-    y: 80,
+    y: 79 ,
     side: "left",
     order: 4
   },
@@ -49,7 +49,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "火山灰が厚く積もってできた台地",
     category: "plateau",
     icon: "assets/icons/plateau.svg",
-    x: 45 ,
+    x: 47 ,
     y: 71,
     side: "left",
     order: 5
@@ -60,8 +60,8 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "筑後川流域に広がる｜九州北部の平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 32 ,
-    y: 17 ,
+    x: 33 ,
+    y: 18 ,
     side: "right",
     order: 1
   },
@@ -71,7 +71,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "干潟・養殖へつながる海",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 29 ,
+    x: 28 ,
     y: 33,
     side: "right",
     order: 2

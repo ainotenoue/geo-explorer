@@ -27,7 +27,7 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "温暖な気候を生かして早く出荷｜高知平野でさかん",
     category: "agriculture",
     icon: "assets/icons/agriculture.svg",
-    x: 54,
+    x: 52 ,
     y: 47 ,
     side: "left",
     order: 3
@@ -49,7 +49,7 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "瀬戸内海沿岸で発達｜愛媛県今治市周辺が代表的",
     category: "industry",
     icon: "assets/icons/zosen.svg",
-    x: 40,
+    x: 41 ,
     y: 20,
     side: "left",
     order: 5
@@ -60,8 +60,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "愛媛県四国中央市で発達｜紙製品をつくる工業がさかん",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 58 ,
-    y: 31,
+    x: 57 ,
+    y: 32 ,
     side: "right",
     order: 1
   },
@@ -72,7 +72,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66 ,
-    y: 10 ,
+    y: 6 ,
     side: "right",
     order: 2
   },
@@ -94,7 +94,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "transport",
     icon: "assets/icons/shimanami.svg",
     x: 30 ,
-    y: 17 ,
+    y: 13 ,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 83,
-    y: 35,
+    y: 34 ,
     side: "right",
     order: 5
   }

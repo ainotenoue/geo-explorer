@@ -5,8 +5,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "四国の中央部を東西にのびる｜四国の地形の骨格となる山地",
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
-    x: 55 ,
-    y: 38 ,
+    x: 57 ,
+    y: 35 ,
     side: "left",
     order: 1
   },
@@ -38,7 +38,7 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県西部を流れる｜大きく曲がりながら太平洋へ注ぐ",
     category: "river",
     icon: "assets/icons/river.svg",
-    x: 30 ,
+    x: 31 ,
     y: 72 ,
     side: "left",
     order: 4
@@ -50,7 +50,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "plain",
     icon: "assets/icons/plain.svg",
     x: 68 ,
-    y: 18 ,
+    y: 17 ,
     side: "left",
     order: 5
   },
@@ -60,7 +60,7 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県中央部に広がる｜温暖な気候を生かした農業がさかん",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 54,
+    x: 52 ,
     y: 47 ,
     side: "right",
     order: 1
@@ -71,8 +71,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "四国の北側に広がる｜島が多く波がおだやかな海",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 51 ,
-    y: 17 ,
+    x: 50 ,
+    y: 13 ,
     side: "right",
     order: 2
   },
@@ -93,8 +93,8 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "高知県西南部の先端｜四国南西部を代表する岬",
     category: "cape",
     icon: "assets/icons/cape.svg",
-    x: 41 ,
-    y: 91 ,
+    x: 42 ,
+    y: 93 ,
     side: "right",
     order: 4
   },
