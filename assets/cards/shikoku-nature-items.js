@@ -6,7 +6,7 @@ const SHIKOKU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 57 ,
-    y: 344,
+    y: 34,
     side: "left",
     order: 1
   },
