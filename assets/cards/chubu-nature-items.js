@@ -83,7 +83,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "river",
     icon: "assets/icons/river.svg",
     x: 75 ,
-    y: 75,
+    y: 35,
     side: "right",
     order: 3
   },
@@ -94,7 +94,7 @@ const CHUBU_NATURE_ITEMS = [
     category: "mountain",
     icon: "assets/icons/mountain-area.svg",
     x: 72,
-    y: 35 ,
+    y: 75 ,
     side: "right",
     order: 4
   },
