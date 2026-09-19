@@ -93,7 +93,7 @@ const KANTO_LIFE_ITEMS = [
     hint: "国際線が発着する日本の玄関口｜千葉県に位置する",
     category: "airport",
     icon: "assets/icons/airport.svg",
-    x: 76,
+    x: 77,
     y: 55,
     side: "right",
     order: 4
