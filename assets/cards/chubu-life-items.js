@@ -49,7 +49,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "名古屋を中心に発達｜機械工業の割合が高い",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 23,
+    x: 22,
     y: 88 ,
     side: "left",
     order: 5
@@ -82,7 +82,7 @@ const CHUBU_LIFE_ITEMS = [
     hint: "石川県輪島市で受け継がれる｜伝統的な漆器",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 33,
+    x: 32,
     y: 25 ,
     side: "right",
     order: 3
