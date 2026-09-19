@@ -38,7 +38,7 @@ const CHUBU_NATURE_ITEMS = [
     hint: "日本海へ大きく突き出す｜石川県北部の半島",
     category: "peninsula",
     icon: "assets/icons/peninsula.svg",
-    x: 33,
+    x: 32,
     y: 24,
     side: "left",
     order: 4
