@@ -587,7 +587,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     }
 
 
-/* --- v7.1 Drag Hint Box --- */
+/* --- v7.0 Drag Hint Box --- */
 .hint-box{
   white-space:pre-line;
   position:absolute;
@@ -629,6 +629,196 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     padding:7px 12px;
     font-size:clamp(11px,2vw,14px);
   }
+}
+
+/* --- v7.1 Celebration: pale map, gathering stars, certificate --- */
+.japan-map .region-shape{transition:fill .7s ease}
+.japan-map.instant .region-shape{transition:none}
+.japan-map.celebrating{pointer-events:none}
+.japan-map .region.bloom{animation:region-bloom .5s ease}
+@keyframes region-bloom{
+  0%{transform:scale(1)}
+  40%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+
+.home-footer{gap:14px}
+.cert-button{
+  border:2px solid #c99316;
+  background:#fff2b8;
+  color:#7a5606;
+  border-radius:999px;
+  font-weight:900;
+  padding:8px 18px;
+  transition:transform .15s ease;
+}
+.cert-button[hidden]{display:none}
+.cert-button:active{transform:scale(.96)}
+
+.confetti{
+  position:fixed;
+  inset:0;
+  z-index:1100;
+  pointer-events:none;
+  overflow:hidden;
+}
+.confetti i{
+  position:absolute;
+  top:-24px;
+  left:var(--x);
+  width:var(--w);
+  height:var(--h);
+  background:var(--c);
+  border-radius:2px;
+  opacity:0;
+  animation:confetti-fall var(--dur) cubic-bezier(.3,.55,.45,1) var(--delay) forwards;
+}
+@keyframes confetti-fall{
+  0%{opacity:1;transform:translate3d(0,0,0) rotate(0)}
+  85%{opacity:1}
+  100%{opacity:0;transform:translate3d(var(--dx),108vh,0) rotate(var(--rot))}
+}
+
+.cert-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  background:rgba(24,54,75,.5);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  transition:opacity .26s ease;
+}
+.cert-overlay[hidden]{display:none}
+.cert-overlay.show{opacity:1}
+.cert-paper{
+  position:relative;
+  width:min(660px,100%);
+  max-height:100%;
+  overflow:auto;
+  padding:34px 34px 24px;
+  background:var(--panel);
+  border-radius:18px;
+  box-shadow:0 24px 60px rgba(14,36,52,.35);
+  text-align:center;
+  outline:none;
+  transform:translateY(14px) scale(.97);
+  transition:transform .32s cubic-bezier(.2,.8,.25,1);
+}
+.cert-overlay.show .cert-paper{transform:none}
+.cert-paper::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:12px;
+  background:var(--band,#c99316);
+}
+.cert-paper::after{
+  content:"";
+  position:absolute;
+  inset:22px 12px 12px;
+  border:2px solid #e5bd43;
+  border-radius:10px;
+  pointer-events:none;
+}
+.cert-title{
+  margin:8px 0 4px;
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:clamp(28px,6vw,42px);
+  font-weight:800;
+  letter-spacing:.14em;
+  color:var(--ink);
+}
+.cert-name-row{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:10px;
+  margin:14px 0 8px;
+}
+.cert-name{
+  width:min(11em,64vw);
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  font-size:28px;
+  font-weight:800;
+  line-height:1.4;
+  color:var(--ink);
+  text-align:center;
+  background:transparent;
+  border:0;
+  border-bottom:3px solid #e5bd43;
+  border-radius:0;
+  padding:2px 6px;
+  outline:none;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-user-select:text;
+  user-select:text;
+}
+.cert-name::placeholder{color:#a9bac3;font-weight:700}
+.cert-name:focus{border-bottom-color:var(--accent)}
+.cert-san{font-size:20px;font-weight:800}
+.cert-body{
+  margin:10px 0 16px;
+  font-size:17px;
+  line-height:1.9;
+  font-weight:700;
+}
+.cert-stamps{
+  list-style:none;
+  margin:0 auto 14px;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px 8px;
+  max-width:520px;
+}
+.cert-stamps li{display:grid;justify-items:center;gap:8px}
+.stamp-dot{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--c);
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 0 3px var(--panel),0 0 0 5px var(--c);
+}
+.stamp-dot svg{width:24px;height:24px}
+.stamp-dot path{fill:#fff}
+.stamp-name{font-size:13px;font-weight:800;color:#496b7a}
+.cert-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:6px 14px 12px;
+  text-align:left;
+}
+.cert-date{font-weight:800;font-size:16px}
+.cert-issuer{font-size:13px;font-weight:800;color:var(--muted)}
+.cert-seal{width:64px;height:64px;flex:none}
+.seal-outer{fill:#fff2b8;stroke:#c99316;stroke-width:3}
+.seal-inner{fill:none;stroke:#e5bd43;stroke-width:2}
+.seal-star{fill:#c99316}
+.cert-close{
+  background:var(--accent);
+  color:#fff;
+  border:2px solid var(--accent);
+  border-radius:999px;
+  font-weight:900;
+  padding:11px 34px;
+  transition:transform .15s ease;
+}
+.cert-close:active{transform:scale(.96)}
+@media(max-width:560px){
+  .cert-paper{padding:30px 18px 20px}
+  .cert-body{font-size:15px}
 }
 
 </style>
@@ -727,7 +917,10 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     </div>
   </main>
 
-  <footer class="home-footer" id="homeMessage">行きたい場所を選ぼう</footer>
+  <footer class="home-footer">
+    <span id="homeMessage">行きたい場所を選ぼう</span>
+    <button class="cert-button" id="certButton" type="button" hidden>★ 証明書を見る</button>
+  </footer>
 </section>
 
 <section class="screen" id="gameScreen">
@@ -780,7 +973,35 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<!-- v7.1: two-layer-ready card loading.
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<div class="cert-overlay" id="certOverlay" role="dialog" aria-modal="true" aria-labelledby="certTitle" hidden>
+  <div class="cert-paper" id="certPaper" tabindex="-1">
+    <h2 class="cert-title" id="certTitle">日本一周 達成証</h2>
+    <div class="cert-name-row">
+      <input class="cert-name" id="certName" type="text" maxlength="12"
+             placeholder="なまえを書いてね" aria-label="なまえ"
+             autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done">
+      <span class="cert-san">さん</span>
+    </div>
+    <p class="cert-body">北海道から九州・沖縄まで、<br>8つの地方の地図を ぜんぶ完成させました。<br>よく がんばりました！</p>
+    <ul class="cert-stamps" id="certStamps" aria-label="完成した8つの地方"></ul>
+    <div class="cert-foot">
+      <div>
+        <div class="cert-date" id="certDate"></div>
+        <div class="cert-issuer">Geo Explorer</div>
+      </div>
+      <svg class="cert-seal" viewBox="-40 -40 80 80" aria-hidden="true">
+        <circle class="seal-outer" r="36"></circle>
+        <circle class="seal-inner" r="29"></circle>
+        <path class="seal-star" d="M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z" transform="scale(2.4)"></path>
+      </svg>
+    </div>
+    <button class="cert-close" id="certClose" type="button">とじる</button>
+  </div>
+</div>
+
+<!-- v7.0: two-layer-ready card loading.
      Missing future nature/life files are non-fatal; the old *-items.js remains the fallback. -->
 <script src="assets/cards/hokkaido-nature-items.js?v=600"></script>
 <script src="assets/cards/hokkaido-life-items.js?v=600"></script>
@@ -906,7 +1127,10 @@ const state={
   pointerX:0,
   pointerY:0,
   transitioning:false,
-  layer:"nature"
+  layer:"nature",
+  playerName:"",
+  finishedOn:"",
+  celebrated:false
 };
 
 const $=id=>document.getElementById(id);
@@ -1170,6 +1394,30 @@ function ensureStarLayer(){
   return layer;
 }
 
+const SVG_NS="http://www.w3.org/2000/svg";
+const STAR_PATH="M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z";
+
+function createMedal(){
+  const badge=document.createElementNS(SVG_NS,"g");
+  badge.setAttribute("aria-hidden","true");
+
+  const outer=document.createElementNS(SVG_NS,"circle");
+  outer.setAttribute("r","80");
+  outer.setAttribute("class","completion-medal");
+
+  const inner=document.createElementNS(SVG_NS,"circle");
+  inner.setAttribute("r","68");
+  inner.setAttribute("class","completion-medal-inner");
+
+  const star=document.createElementNS(SVG_NS,"path");
+  star.setAttribute("class","completion-medal-star");
+  star.setAttribute("d",STAR_PATH);
+  star.setAttribute("transform","scale(4.2)");
+
+  badge.append(outer,inner,star);
+  return badge;
+}
+
 function addCompletionStar(regionId){
   const svg=document.querySelector("#japanMap svg");
   const region=svg?.querySelector(`#${regionId}`);
@@ -1180,49 +1428,64 @@ function addCompletionStar(regionId){
   const cx=box.x+box.width/2;
   const cy=box.y+box.height/2;
 
-  const badge=document.createElementNS("http://www.w3.org/2000/svg","g");
+  const badge=createMedal();
   badge.dataset.region=regionId;
-  badge.setAttribute("aria-hidden","true");
+  badge.dataset.x=cx;
+  badge.dataset.y=cy;
   badge.setAttribute("transform",`translate(${cx} ${cy})`);
-
-  const outer=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  outer.setAttribute("r","80");
-  outer.setAttribute("class","completion-medal");
-
-  const inner=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  inner.setAttribute("r","68");
-  inner.setAttribute("class","completion-medal-inner");
-
-  const star=document.createElementNS("http://www.w3.org/2000/svg","path");
-  star.setAttribute("class","completion-medal-star");
-  star.setAttribute("d","M0,-10 L2.9,-3.2 L10,-3.1 L4.3,1.2 L6.2,8 L0,4.1 L-6.2,8 L-4.3,1.2 L-10,-3.1 L-2.9,-3.2 Z");
-  star.setAttribute("transform","scale(4.2)");
-
-  badge.append(outer,inner,star);
   layer.appendChild(badge);
+}
+
+function getCompletedRegions(){
+  const done=new Set(
+    [...state.completed].filter(key=>!key.includes(":"))
+  );
+  LEVELS.filter(level=>level.sets).forEach(level=>{
+    if(
+      state.completed.has(`${level.id}:nature`) &&
+      state.completed.has(`${level.id}:life`)
+    ){
+      done.add(level.id);
+    }
+  });
+  return done;
 }
 
 function updateHome(){
   const layer=ensureStarLayer();
   if(layer)layer.replaceChildren();
 
-  const completedRegions=new Set(
-    [...state.completed].filter(key=>!key.includes(":"))
-  );
-
-  LEVELS.filter(level=>level.sets).forEach(level=>{
-    if(
-      state.completed.has(`${level.id}:nature`) &&
-      state.completed.has(`${level.id}:life`)
-    ){
-      completedRegions.add(level.id);
-    }
-  });
-
+  const completedRegions=getCompletedRegions();
   completedRegions.forEach(addCompletionStar);
-  homeMessage.textContent=completedRegions.size
-    ? `${completedRegions.size}つの地方を完成！ 次はどこへ行こう？`
-    : "行きたい場所を選ぼう";
+
+  const all=LEVELS.every(level=>completedRegions.has(level.id));
+  const showFull=all&&state.celebrated;
+
+  applyMapColors(showFull,true);
+  certButton.hidden=!showFull;
+
+  if(showFull){
+    homeMessage.textContent="日本一周 達成！ ぜんぶの地図が完成したよ";
+  }else{
+    homeMessage.textContent=completedRegions.size
+      ? `${completedRegions.size}つの地方を完成！ 次はどこへ行こう？`
+      : "行きたい場所を選ぼう";
+  }
+
+  if(all){
+    if(!state.finishedOn){
+      state.finishedOn=todayISO();
+      saveProgress();
+    }
+    if(!state.celebrated)queueCelebration();
+  }else{
+    clearTimeout(celebrationTimer);
+    if(state.celebrated||state.finishedOn){
+      state.celebrated=false;
+      state.finishedOn="";
+      saveProgress();
+    }
+  }
 }
 
 function prepareHomeRegions(){
@@ -1458,7 +1721,7 @@ function restorePlacedItems(){
 }
 
 /* =========================================================
-   Drag handling (v7.1 fixes)
+   Drag handling (v7.0 fixes)
    - 2本目の指・別ポインターは無視（カードが画面に残る不具合の修正）
    - 置き場所は「一番近いもの」を選ぶ
    - タッチ時はカードを指の少し上に持ち上げ、その位置で判定
@@ -1678,7 +1941,10 @@ function saveProgress(){
     localStorage.setItem(STORAGE_KEY,JSON.stringify({
       v:1,
       completed:[...state.completed],
-      progress
+      progress,
+      name:state.playerName,
+      finishedOn:state.finishedOn,
+      celebrated:state.celebrated
     }));
   }catch(err){/* 保存できない環境（プライベートブラウズ等）でもゲームは続行 */}
 }
@@ -1700,8 +1966,331 @@ function loadProgress(){
         if(Array.isArray(ids))state.levelProgress.set(key,new Set(ids));
       });
     }
+    if(typeof data.name==="string")state.playerName=data.name.slice(0,12);
+    if(typeof data.finishedOn==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(data.finishedOn)){
+      state.finishedOn=data.finishedOn;
+    }
+    state.celebrated=data.celebrated===true;
   }catch(err){/* 壊れたデータは無視して最初から */}
 }
+
+/* =========================================================
+   Celebration (v7.1): 全地方の完成
+   1) 地図は完成するまで淡い色。8地方そろうと北から順にフルカラーへ
+   2) 8つの星が地図の中心へ集まり、はじける
+   3) 「日本一周 達成証」を表示（なまえを入れられる）
+   ========================================================= */
+const PALE_UNTIL_COMPLETE=true;   // false にすると、最初から全地方がカラー表示（従来どおり）
+const PALE_MIX=.62;               // 淡さ（白との混ぜ具合。大きいほど淡い）
+
+const japanMap=$("japanMap");
+const certButton=$("certButton");
+const certOverlay=$("certOverlay");
+const certPaper=$("certPaper");
+const certName=$("certName");
+const certDate=$("certDate");
+const certClose=$("certClose");
+const certStamps=$("certStamps");
+const confettiLayer=$("confetti");
+
+const regionColors={};
+let celebrating=false;
+let celebrationSkip=false;
+let celebrationTimer=0;
+const skipWaiters=new Set();
+
+function initRegionColors(){
+  document.querySelectorAll("#japanMap svg .region").forEach(region=>{
+    region.querySelectorAll(".region-shape").forEach(path=>{
+      const color=path.getAttribute("fill");
+      path.dataset.color=color;
+      if(!regionColors[region.id])regionColors[region.id]=color;
+    });
+  });
+}
+
+function paleColor(hex){
+  const n=parseInt(hex.slice(1),16);
+  const mix=c=>Math.round(c*(1-PALE_MIX)+255*PALE_MIX);
+  return `rgb(${mix((n>>16)&255)},${mix((n>>8)&255)},${mix(n&255)})`;
+}
+
+function setRegionFill(regionId,full){
+  document.querySelectorAll(`#japanMap svg #${regionId} .region-shape`).forEach(path=>{
+    const color=path.dataset.color;
+    path.style.fill=(full||!PALE_UNTIL_COMPLETE)?color:paleColor(color);
+  });
+}
+
+// instant=true のときは色の変化をアニメーションさせない（読み込み時のチラつき防止）
+function applyMapColors(full,instant=true){
+  if(instant)japanMap.classList.add("instant");
+  LEVELS.forEach(level=>setRegionFill(level.id,full));
+  if(instant){
+    requestAnimationFrame(()=>requestAnimationFrame(()=>japanMap.classList.remove("instant")));
+  }
+}
+
+function todayISO(){
+  const d=new Date();
+  const p=n=>String(n).padStart(2,"0");
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+}
+
+function formatJaDate(iso){
+  const [y,m,d]=String(iso).split("-").map(Number);
+  return y&&m&&d?`${y}年${m}月${d}日`:"";
+}
+
+/* ---------- 証明書 ---------- */
+function buildCertificate(){
+  const colors=LEVELS.map(level=>regionColors[level.id]||"#c99316");
+  const step=100/colors.length;
+  certPaper.style.setProperty(
+    "--band",
+    `linear-gradient(90deg,${colors.map((c,i)=>`${c} ${i*step}% ${(i+1)*step}%`).join(",")})`
+  );
+  certStamps.innerHTML=LEVELS.map((level,i)=>
+    `<li style="--c:${colors[i]}"><span class="stamp-dot"><svg viewBox="-12 -12 24 24" aria-hidden="true"><path d="${STAR_PATH}"/></svg></span><span class="stamp-name">${level.name}</span></li>`
+  ).join("");
+}
+
+function openCertificate(){
+  certName.value=state.playerName;
+  certDate.textContent=formatJaDate(state.finishedOn||todayISO());
+  certOverlay.hidden=false;
+  requestAnimationFrame(()=>{
+    certOverlay.classList.add("show");
+    certPaper.focus({preventScroll:true});
+  });
+}
+
+function closeCertificate(){
+  certName.blur();
+  certOverlay.classList.remove("show");
+  setTimeout(()=>{
+    if(!certOverlay.classList.contains("show"))certOverlay.hidden=true;
+  },280);
+}
+
+certButton.addEventListener("click",openCertificate);
+certClose.addEventListener("click",closeCertificate);
+certName.addEventListener("input",()=>{
+  state.playerName=certName.value.trim().slice(0,12);
+  saveProgress();
+});
+certName.addEventListener("keydown",event=>{
+  if(event.key==="Enter"){
+    event.preventDefault();
+    certName.blur();
+  }
+});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&!certOverlay.hidden)closeCertificate();
+});
+
+/* ---------- アニメーションの道具 ---------- */
+const reducedMotion=()=>!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+const easeInOutCubic=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const easeOutCubic=t=>1-Math.pow(1-t,3);
+const easeOutBack=t=>{
+  const c1=1.70158,c3=c1+1;
+  return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);
+};
+
+// スキップできる待ち時間
+function cwait(ms){
+  return new Promise(resolve=>{
+    if(celebrationSkip){resolve();return}
+    const done=()=>{
+      clearTimeout(timer);
+      skipWaiters.delete(done);
+      resolve();
+    };
+    const timer=setTimeout(done,ms);
+    skipWaiters.add(done);
+  });
+}
+
+// スキップできるアニメーション（fn は 0→1 の値を受け取る）
+function ctween(ms,fn,ease=easeInOutCubic){
+  return new Promise(resolve=>{
+    const t0=performance.now();
+    const frame=now=>{
+      const t=celebrationSkip?1:Math.min(1,(now-t0)/ms);
+      fn(ease(t));
+      if(t<1)requestAnimationFrame(frame);
+      else resolve();
+    };
+    requestAnimationFrame(frame);
+  });
+}
+
+function skipCelebration(){
+  if(!celebrating||celebrationSkip)return;
+  celebrationSkip=true;
+  [...skipWaiters].forEach(fn=>fn());
+}
+homeScreen.addEventListener("pointerdown",skipCelebration);
+
+const gatherTick=i=>tone(660+i*70,.09,"sine",.022);
+const fanfare=()=>{
+  [523,659,784,1047].forEach((f,i)=>tone(f,.22,"sine",.04,i*.1));
+  [1047,1319,1568].forEach((f,i)=>tone(f,.5,"triangle",.03,.42+i*.06));
+};
+
+function spawnConfetti(){
+  const palette=[...Object.values(regionColors),"#ffc928"];
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  const frag=document.createDocumentFragment();
+  for(let i=0;i<56;i++){
+    const piece=document.createElement("i");
+    piece.style.setProperty("--x",`${rand(2,98).toFixed(1)}vw`);
+    piece.style.setProperty("--dx",`${rand(-14,14).toFixed(1)}vw`);
+    piece.style.setProperty("--w",`${rand(7,12).toFixed(1)}px`);
+    piece.style.setProperty("--h",`${rand(11,18).toFixed(1)}px`);
+    piece.style.setProperty("--c",palette[i%palette.length]);
+    piece.style.setProperty("--rot",`${Math.round(rand(360,1080))}deg`);
+    piece.style.setProperty("--dur",`${rand(2,3.2).toFixed(2)}s`);
+    piece.style.setProperty("--delay",`${rand(0,.8).toFixed(2)}s`);
+    frag.appendChild(piece);
+  }
+  confettiLayer.replaceChildren(frag);
+  setTimeout(()=>confettiLayer.replaceChildren(),4600);
+}
+
+/* ---------- 演出: 星が集まる → はじける → 北から順に色づく ---------- */
+async function playCelebration(){
+  const svg=document.querySelector("#japanMap svg");
+  const layer=ensureStarLayer();
+  if(!svg||!layer)return;
+
+  const order=LEVELS.map(level=>level.id);
+  const badges=[...layer.querySelectorAll("g[data-region]")]
+    .sort((a,b)=>order.indexOf(a.dataset.region)-order.indexOf(b.dataset.region));
+
+  const box=svg.querySelector("#map-regions").getBBox();
+  const cx=box.x+box.width/2;
+  const cy=box.y+box.height/2;
+
+  // 中心の大きな星（集まるほど大きくなる）
+  const big=createMedal();
+  layer.appendChild(big);
+  let bigScale=0;
+  let bigTarget=0;
+  let bigFollowing=true;
+  const drawBig=()=>big.setAttribute("transform",`translate(${cx} ${cy}) scale(${bigScale.toFixed(3)})`);
+  drawBig();
+  (function follow(){
+    if(!bigFollowing)return;
+    bigScale+=(bigTarget-bigScale)*.28;
+    drawBig();
+    requestAnimationFrame(follow);
+  })();
+
+  // 1) 8つの星が北から順に中心へ
+  const fly=async(badge,i)=>{
+    const x0=+badge.dataset.x;
+    const y0=+badge.dataset.y;
+    await cwait(250+i*110);
+    await ctween(820,e=>{
+      const x=x0+(cx-x0)*e;
+      const y=y0+(cy-y0)*e;
+      const sc=1-.35*e;
+      badge.setAttribute("transform",`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sc.toFixed(3)})`);
+    });
+    badge.style.visibility="hidden";
+    gatherTick(i);
+    bigTarget=.9+.17*(i+1);
+  };
+  await Promise.all(badges.map(fly));
+
+  // 2) はじける
+  await cwait(140);
+  bigTarget=3.4;
+  fanfare();
+  spawnConfetti();
+
+  const ring=document.createElementNS(SVG_NS,"circle");
+  ring.setAttribute("cx",cx);
+  ring.setAttribute("cy",cy);
+  ring.setAttribute("fill","none");
+  ring.setAttribute("stroke","#ffc928");
+  layer.appendChild(ring);
+  const ringDone=ctween(900,e=>{
+    ring.setAttribute("r",(120+380*e).toFixed(1));
+    ring.setAttribute("stroke-width",(18-14*e).toFixed(1));
+    ring.setAttribute("opacity",(1-e).toFixed(2));
+  },easeOutCubic);
+
+  // 3) 北から順に、淡い色がフルカラーへ
+  const bloom=Promise.all(order.map(async(id,j)=>{
+    await cwait(j*150);
+    setRegionFill(id,true);
+    const region=svg.querySelector(`#${id}`);
+    if(region){
+      region.classList.add("bloom");
+      setTimeout(()=>region.classList.remove("bloom"),520);
+    }
+  }));
+
+  // 4) 星がそれぞれの地方へ戻り、中心の星は消える
+  await cwait(900);
+  bigFollowing=false;
+  const back=Promise.all(badges.map(async(badge,i)=>{
+    await cwait(i*60);
+    const x=+badge.dataset.x;
+    const y=+badge.dataset.y;
+    badge.style.visibility="visible";
+    await ctween(420,e=>{
+      badge.setAttribute("transform",`translate(${x} ${y}) scale(${Math.max(e,0).toFixed(3)})`);
+    },easeOutBack);
+  }));
+  const fade=ctween(500,e=>big.setAttribute("opacity",(1-e).toFixed(2)),easeOutCubic);
+
+  await Promise.all([back,fade,bloom,ringDone]);
+  await cwait(400);
+  big.remove();
+  ring.remove();
+}
+
+async function runCelebration(){
+  if(celebrating||state.celebrated)return;
+  celebrating=true;
+  celebrationSkip=false;
+  japanMap.classList.add("celebrating");
+  try{
+    if(reducedMotion()){
+      applyMapColors(true,true);
+    }else{
+      await playCelebration();
+    }
+  }catch(err){
+    console.error(err);
+  }finally{
+    state.celebrated=true;
+    saveProgress();
+    japanMap.classList.remove("celebrating");
+    celebrating=false;
+    celebrationSkip=false;
+    skipWaiters.clear();
+    updateHome();        // 星と色を最終状態に整える
+    openCertificate();
+  }
+}
+
+function queueCelebration(delay=700){
+  clearTimeout(celebrationTimer);
+  celebrationTimer=setTimeout(()=>{
+    if(celebrating||state.celebrated)return;
+    if(!homeScreen.classList.contains("active"))return;   // 戻ってきたときに updateHome が再度呼ぶ
+    if(state.transitioning){queueCelebration(300);return}
+    runCelebration();
+  },delay);
+}
+
+initRegionColors();
+buildCertificate();
 
 function onLayoutChange(){
   fitMap();
