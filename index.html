@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v7.0</title>
+<title>Geo Explorer v7.1</title>
 <style>
 :root{
   --ink:#18364b;
@@ -360,13 +360,17 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .category-river .card-icon,.category-lake .card-icon{color:#247ba6;background:#e1f4fb}
 .drag-ghost{
   position:fixed;
+  left:0;
+  top:0;
   z-index:1000;
   pointer-events:none;
   width:170px;
   max-width:26vw;
-  transform:translate3d(-50%,-50%,0) scale(1.01);
   box-shadow:0 12px 24px rgba(22,57,76,.18);
-  will-change:left,top,transform;
+  will-change:transform;
+  /* 位置は transform だけで動かす（.card の transform 遷移を打ち消す）。
+     指の上へ持ち上げる動きだけ margin-top で滑らかに */
+  transition:margin-top .14s ease;
 }
 .game-footer{
   min-height:46px;
@@ -583,7 +587,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
     }
 
 
-/* --- v7.0 Drag Hint Box --- */
+/* --- v7.1 Drag Hint Box --- */
 .hint-box{
   white-space:pre-line;
   position:absolute;
@@ -635,7 +639,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v7.0</span>
+      <span class="version">v7.1</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -730,7 +734,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v7.0</span>
+      <span class="version">v7.1</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -776,7 +780,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 </section>
 
 
-<!-- v7.0: two-layer-ready card loading.
+<!-- v7.1: two-layer-ready card loading.
      Missing future nature/life files are non-fatal; the old *-items.js remains the fallback. -->
 <script src="assets/cards/hokkaido-nature-items.js?v=600"></script>
 <script src="assets/cards/hokkaido-life-items.js?v=600"></script>
@@ -1382,7 +1386,13 @@ function loadLevel(index){
     icon:item.icon.includes("?")?item.icon:`${item.icon}?v=420`
   }));
   const saved=state.levelProgress.get(currentProgressKey());
-  state.placed=new Set(saved ? saved : []);
+  const validIds=new Set(state.items.map(item=>item.id));
+  // 保存データにカードの増減があっても壊れないよう、存在するIDだけを復元
+  state.placed=new Set(saved ? [...saved].filter(id=>validIds.has(id)) : []);
+  if(state.completed.has(currentProgressKey())&&state.placed.size<state.items.length){
+    state.completed.delete(currentProgressKey());   // カードが増えていたら未完了に戻す
+    saveProgress();
+  }
   clearLevelDom();
 
   areaTitle.textContent=level.name;
@@ -1447,7 +1457,37 @@ function restorePlacedItems(){
   update();
 }
 
+/* =========================================================
+   Drag handling (v7.1 fixes)
+   - 2本目の指・別ポインターは無視（カードが画面に残る不具合の修正）
+   - 置き場所は「一番近いもの」を選ぶ
+   - タッチ時はカードを指の少し上に持ち上げ、その位置で判定
+   - ゴーストは transform のみで移動、置き場所の位置は開始時に1回だけ測定
+   ========================================================= */
+const TOUCH_DRAG_OFFSET_Y=64;  // タッチ時にカードを指より上へ持ち上げる量(px)
+const ZONE_MARGIN=18;          // 置き場所の周囲で許容する余白(px)
+
+function ghostTransform(x,y){
+  return `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(1.01)`;
+}
+
+function cacheDropZones(){
+  const d=state.dragging;
+  if(!d)return;
+  d.zones=[...mapWrap.querySelectorAll(".drop-zone:not(.filled)")].map(el=>{
+    const r=el.getBoundingClientRect();
+    return {
+      el,
+      left:r.left,right:r.right,top:r.top,bottom:r.bottom,
+      cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2
+    };
+  });
+}
+
 function startDrag(e){
+  if(state.dragging)return;                          // すでにドラッグ中なら無視
+  if(e.pointerType==="mouse"&&e.button!==0)return;   // マウスの右クリック等は無視
+
   const card=e.currentTarget;
   const item=state.items.find(value=>value.id===card.dataset.id);
   if(!item||state.placed.has(item.id))return;
@@ -1456,24 +1496,31 @@ function startDrag(e){
   showHint(item);
   pickup();
 
+  const offsetY=e.pointerType==="touch"?TOUCH_DRAG_OFFSET_Y:0;
+
   const ghost=card.cloneNode(true);
   ghost.classList.add("drag-ghost");
-  ghost.style.left=e.clientX+"px";
-  ghost.style.top=e.clientY+"px";
+  ghost.style.transform=ghostTransform(e.clientX,e.clientY);
   document.body.appendChild(ghost);
+  if(offsetY){
+    ghost.offsetWidth;                               // 初期状態を確定させてから持ち上げる
+    ghost.style.marginTop=`${-offsetY}px`;
+  }
 
   card.classList.add("lifted");
   state.pointerX=e.clientX;
   state.pointerY=e.clientY;
-  state.dragging={item,card,ghost};
+  state.dragging={item,card,ghost,pointerId:e.pointerId,offsetY,hot:null,zones:[]};
+  cacheDropZones();
 
   window.addEventListener("pointermove",move,{passive:false});
-  window.addEventListener("pointerup",end,{once:true});
-  window.addEventListener("pointercancel",end,{once:true});
+  window.addEventListener("pointerup",end);
+  window.addEventListener("pointercancel",onDragCancel);
 }
 
 function move(e){
-  if(!state.dragging)return;
+  const d=state.dragging;
+  if(!d||e.pointerId!==d.pointerId)return;
   e.preventDefault();
   state.pointerX=e.clientX;
   state.pointerY=e.clientY;
@@ -1481,35 +1528,66 @@ function move(e){
   if(state.raf)return;
   state.raf=requestAnimationFrame(()=>{
     state.raf=0;
-    if(!state.dragging)return;
+    const cur=state.dragging;
+    if(!cur)return;
 
-    state.dragging.ghost.style.left=state.pointerX+"px";
-    state.dragging.ghost.style.top=state.pointerY+"px";
-    document.querySelectorAll(".drop-zone").forEach(zone=>zone.classList.remove("hot"));
+    cur.ghost.style.transform=ghostTransform(state.pointerX,state.pointerY);
 
-    const target=zoneAt(state.pointerX,state.pointerY);
-    if(target)target.classList.add("hot");
+    const target=zoneAt(state.pointerX,state.pointerY-cur.offsetY);
+    if(target!==cur.hot){
+      if(cur.hot)cur.hot.classList.remove("hot");
+      if(target)target.classList.add("hot");
+      cur.hot=target;
+    }
   });
 }
 
+// 判定位置(x,y)に最も近い置き場所を返す（開始時に測ったキャッシュを使用）
 function zoneAt(x,y){
-  return [...document.querySelectorAll(".drop-zone:not(.filled)")].find(zone=>{
-    const rect=zone.getBoundingClientRect();
-    const margin=18;
-    return x>=rect.left-margin&&x<=rect.right+margin&&y>=rect.top-margin&&y<=rect.bottom+margin;
-  });
+  const zones=state.dragging&&state.dragging.zones;
+  if(!zones)return null;
+
+  let best=null,bestOut=Infinity,bestCenter=Infinity;
+  for(const z of zones){
+    const dx=Math.max(z.left-x,0,x-z.right);
+    const dy=Math.max(z.top-y,0,y-z.bottom);
+    if(dx>ZONE_MARGIN||dy>ZONE_MARGIN)continue;
+
+    const out=Math.hypot(dx,dy);                    // 枠の外側までの距離（枠内なら0）
+    const center=Math.hypot(x-z.cx,y-z.cy);        // 中心までの距離（同点のときの決め手）
+    if(out<bestOut||(out===bestOut&&center<bestCenter)){
+      best=z;bestOut=out;bestCenter=center;
+    }
+  }
+  return best?best.el:null;
+}
+
+function finishDrag(){
+  const d=state.dragging;
+  if(!d)return;
+
+  if(d.hot)d.hot.classList.remove("hot");
+  d.ghost.remove();
+  d.card.classList.remove("lifted");
+  state.dragging=null;
+
+  if(state.raf){
+    cancelAnimationFrame(state.raf);
+    state.raf=0;
+  }
+  window.removeEventListener("pointermove",move);
+  window.removeEventListener("pointerup",end);
+  window.removeEventListener("pointercancel",onDragCancel);
 }
 
 function end(e){
-  if(!state.dragging)return;
+  const d=state.dragging;
+  if(!d||e.pointerId!==d.pointerId)return;
 
+  const {item,card}=d;
+  const hit=zoneAt(e.clientX,e.clientY-d.offsetY);
+  finishDrag();
   hideHint();
-  const {item,card,ghost}=state.dragging;
-  const hit=zoneAt(e.clientX,e.clientY);
-
-  document.querySelectorAll(".drop-zone").forEach(zone=>zone.classList.remove("hot"));
-  ghost.remove();
-  card.classList.remove("lifted");
 
   if(hit&&hit.dataset.id===item.id){
     place(item,card,hit);
@@ -1521,27 +1599,22 @@ function end(e){
   }else{
     message.textContent=mapBuildMessage();
   }
+}
 
-  state.dragging=null;
-  if(state.raf){
-    cancelAnimationFrame(state.raf);
-    state.raf=0;
-  }
-  window.removeEventListener("pointermove",move);
+function onDragCancel(e){
+  if(!state.dragging||e.pointerId!==state.dragging.pointerId)return;
+  cancelDrag();
 }
 
 function cancelDrag(){
   hideHint();
-  if(!state.dragging)return;
-  state.dragging.ghost.remove();
-  state.dragging.card.classList.remove("lifted");
-  state.dragging=null;
-  window.removeEventListener("pointermove",move);
+  finishDrag();
 }
 
 function place(item,card,zone){
   state.placed.add(item.id);
   state.levelProgress.set(currentProgressKey(),new Set(state.placed));
+  saveProgress();
   zone.classList.add("filled");
   zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;
   card.classList.add("done");
@@ -1558,11 +1631,13 @@ function update(){
 
 function showCompletedState(playSound=true){
   if(playSound)clearSound();
+  const isNewCompletion=!state.completed.has(currentProgressKey());
   state.completed.add(currentProgressKey());
   state.levelProgress.set(
     currentProgressKey(),
     new Set(state.items.map(item=>item.id))
   );
+  if(isNewCompletion)saveProgress();
   message.style.display="none";
   completionActions.classList.add("show");
   updateLayerSwitch();
@@ -1583,6 +1658,7 @@ function replayCurrentLevel(){
   state.levelProgress.set(key,new Set());
   state.completed.delete(key);
   state.placed=new Set();
+  saveProgress();
   updateLayerSwitch();
   loadLevel(state.levelIndex);
 }
@@ -1590,8 +1666,51 @@ function replayCurrentLevel(){
 natureLayerButton.addEventListener("click",()=>switchLayer("nature"));
 lifeLayerButton.addEventListener("click",()=>switchLayer("life"));
 
-window.addEventListener("resize",fitMap);
-if("ResizeObserver"in window)new ResizeObserver(fitMap).observe(mapStage);
+/* =========================================================
+   Progress persistence (localStorage)
+   ========================================================= */
+const STORAGE_KEY="geoExplorer.progress.v1";
+
+function saveProgress(){
+  try{
+    const progress={};
+    state.levelProgress.forEach((ids,key)=>{progress[key]=[...ids]});
+    localStorage.setItem(STORAGE_KEY,JSON.stringify({
+      v:1,
+      completed:[...state.completed],
+      progress
+    }));
+  }catch(err){/* 保存できない環境（プライベートブラウズ等）でもゲームは続行 */}
+}
+
+function loadProgress(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw)return;
+    const data=JSON.parse(raw);
+    if(!data||data.v!==1)return;
+
+    if(Array.isArray(data.completed)){
+      data.completed.forEach(key=>{
+        if(typeof key==="string")state.completed.add(key);
+      });
+    }
+    if(data.progress&&typeof data.progress==="object"){
+      Object.entries(data.progress).forEach(([key,ids])=>{
+        if(Array.isArray(ids))state.levelProgress.set(key,new Set(ids));
+      });
+    }
+  }catch(err){/* 壊れたデータは無視して最初から */}
+}
+
+function onLayoutChange(){
+  fitMap();
+  cacheDropZones();   // ドラッグ中に画面サイズが変わったら置き場所を測り直す
+}
+
+window.addEventListener("resize",onLayoutChange);
+if("ResizeObserver"in window)new ResizeObserver(onLayoutChange).observe(mapStage);
+loadProgress();
 updateHome();
 </script>
 </body>
