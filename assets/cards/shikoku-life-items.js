@@ -6,7 +6,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "lake",
     icon: "assets/icons/lake.svg",
     x: 68 ,
-    y: 18 ,
+    y: 19 ,
     side: "left",
     order: 1
   },
@@ -72,7 +72,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66 ,
-    y: 4,
+    y: 2,
     side: "right",
     order: 2
   },
@@ -82,8 +82,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "岡山県と香川県を結ぶ｜道路と鉄道が通る橋",
     category: "bridge",
     icon: "assets/icons/bridge.svg",
-    x: 56 ,
-    y: 12,
+    x: 58 ,
+    y: 13,
     side: "right",
     order: 3
   },
@@ -105,7 +105,7 @@ const SHIKOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 83,
-    y: 34 ,
+    y: 35 ,
     side: "right",
     order: 5
   }
