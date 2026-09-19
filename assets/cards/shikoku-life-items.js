@@ -82,8 +82,8 @@ const SHIKOKU_LIFE_ITEMS = [
     hint: "岡山県と香川県を結ぶ｜道路と鉄道が通る橋",
     category: "bridge",
     icon: "assets/icons/bridge.svg",
-    x: 55 ,
-    y: 12,
+    x: 53 ,
+    y: 10,
     side: "right",
     order: 3
   },
