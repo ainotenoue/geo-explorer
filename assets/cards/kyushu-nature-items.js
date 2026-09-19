@@ -27,7 +27,7 @@ const KYUSHU_NATURE_ITEMS = [
     hint: "長崎、島原半島の火山群",
     category: "volcano",
     icon: "assets/icons/volcano.svg",
-    x: 26,
+    x: 25,
     y: 44 ,
     side: "left",
     order: 3
