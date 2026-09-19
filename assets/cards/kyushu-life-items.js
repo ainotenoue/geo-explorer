@@ -27,7 +27,7 @@ const KYUSHU_LIFE_ITEMS = [
     hint: "八幡製鉄所を中心に｜発展した工業",
     category: "industry",
     icon: "assets/icons/industry.svg",
-    x: 43 ,
+    x: 42 ,
     y: 8,
     side: "left",
     order: 3
@@ -105,7 +105,7 @@ const KYUSHU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 81,
-    y: 31,
+    y: 30,
     side: "right",
     order: 5
   }
