@@ -38,8 +38,8 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "広島湾の穏やかな海を利用｜全国有数の生産地",
     category: "fishery",
     icon: "assets/icons/fishery.svg",
-    x: 45,
-    y: 78 ,
+    x: 43,
+    y: 82 ,
     side: "left",
     order: 4
   },
