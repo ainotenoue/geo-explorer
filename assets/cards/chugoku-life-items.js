@@ -50,7 +50,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "industry",
     icon: "assets/icons/industry.svg",
     x: 66,
-    y: 59,
+    y: 58,
     side: "left",
     order: 5
   },
@@ -82,7 +82,7 @@ const CHUGOKU_LIFE_ITEMS = [
     hint: "砂鉄と木炭を使う伝統的な製鉄｜中国山地で発達",
     category: "traditional",
     icon: "assets/icons/traditional.svg",
-    x: 50 ,
+    x: 51 ,
     y: 36 ,
     side: "right",
     order: 3
@@ -94,7 +94,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 29 ,
-    y: 56,
+    y: 57,
     side: "right",
     order: 4
   },
@@ -105,7 +105,7 @@ const CHUGOKU_LIFE_ITEMS = [
     category: "traditional",
     icon: "assets/icons/traditional.svg",
     x: 42,
-    y: 71,
+    y: 73,
     side: "right",
     order: 5
   }
