@@ -93,7 +93,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "日本海側に広がる湾｜リアス海岸が発達",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 55,
+    x: 54,
     y: 13,
     side: "right",
     order: 4
@@ -105,7 +105,7 @@ const KINKI_NATURE_ITEMS = [
     category: "island",
     icon: "assets/icons/island.svg",
     x: 18 ,
-    y: 69,
+    y: 70,
     side: "right",
     order: 5
   }
