@@ -105,7 +105,7 @@ const CHUGOKU_NATURE_ITEMS = [
     category: "bay",
     icon: "assets/icons/bay.svg",
     x: 88,
-    y: 64,
+    y: 66,
     side: "right",
     order: 5
   }
