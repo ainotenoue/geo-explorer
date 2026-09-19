@@ -49,7 +49,7 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "香川県に広がる｜雨が少なくため池が多い平野",
     category: "plain",
     icon: "assets/icons/plain.svg",
-    x: 68 ,
+    x: 69 ,
     y: 16,
     side: "left",
     order: 5
@@ -71,7 +71,7 @@ const SHIKOKU_NATURE_ITEMS = [
     hint: "四国の北側に広がる｜島が多く波がおだやかな海",
     category: "bay",
     icon: "assets/icons/bay.svg",
-    x: 50 ,
+    x: 48 ,
     y: 13 ,
     side: "right",
     order: 2
