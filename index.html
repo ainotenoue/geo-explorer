@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v7.1</title>
+<title>Geo Explorer v7.2</title>
 <style>
 :root{
   --ink:#18364b;
@@ -190,6 +190,22 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   align-items:center;
   gap:8px;
   justify-self:end;
+}
+.reset-button{
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#ffffffc7;
+  color:#476575;
+  font-weight:900;
+  padding:7px 12px;
+  transition:transform .15s ease,background .15s ease;
+}
+.reset-button[hidden]{display:none}
+.reset-button:active{transform:scale(.96);background:#fff}
+.reset-button.confirm{
+  background:#ffe1b8;
+  border-color:#e0a24a;
+  color:#8a4b06;
 }
 .progress{
   text-align:center;
@@ -635,11 +651,11 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 .japan-map .region-shape{transition:fill .7s ease}
 .japan-map.instant .region-shape{transition:none}
 .japan-map.celebrating{pointer-events:none}
-.japan-map .region.bloom{animation:region-bloom .5s ease}
+.japan-map .region.bloom{animation:region-bloom .62s ease}
 @keyframes region-bloom{
-  0%{transform:scale(1)}
-  40%{transform:scale(1.05)}
-  100%{transform:scale(1)}
+  0%{transform:scale(1);filter:none}
+  40%{transform:scale(1.06);filter:brightness(1.22) saturate(1.3)}
+  100%{transform:scale(1);filter:none}
 }
 
 .home-footer{gap:14px}
@@ -829,7 +845,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v7.1</span>
+      <span class="version">v7.2</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -927,7 +943,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v7.1</span>
+      <span class="version">v7.2</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -939,6 +955,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
       </div>
     </div>
     <div class="status-wrap">
+      <button class="reset-button" id="resetButton" type="button" hidden>はじめから</button>
       <div class="progress" id="progress">0 / 10</div>
     </div>
   </header>
@@ -1147,6 +1164,7 @@ const message=$("message");
 const nextButton=$("nextButton");
 const completionActions=$("completionActions");
 const replayButton=$("replayButton");
+const resetButton=$("resetButton");
 const returnButton=$("returnButton");
 const homeMessage=$("homeMessage");
 const layerSwitch=$("layerSwitch");
@@ -1459,16 +1477,17 @@ function updateHome(){
   completedRegions.forEach(addCompletionStar);
 
   const all=LEVELS.every(level=>completedRegions.has(level.id));
-  const showFull=all&&state.celebrated;
 
-  applyMapColors(showFull,true);
-  certButton.hidden=!showFull;
+  // 完成した地方からカラーになる（未完成は淡い色のまま）
+  applyMapColors(completedRegions);
+  certButton.hidden=!(all&&state.celebrated);
 
-  if(showFull){
+  if(all){
     homeMessage.textContent="日本一周 達成！ ぜんぶの地図が完成したよ";
   }else{
+    const left=LEVELS.length-completedRegions.size;
     homeMessage.textContent=completedRegions.size
-      ? `${completedRegions.size}つの地方を完成！ 次はどこへ行こう？`
+      ? `${completedRegions.size}つの地方を完成！ のこり${left}つ`
       : "行きたい場所を選ぼう";
   }
 
@@ -1524,6 +1543,33 @@ activateRegion("kyushu");
 $("homeButton").addEventListener("click",travelHome);
 returnButton.addEventListener("click",travelHome);
 replayButton.addEventListener("click",replayCurrentLevel);
+
+/* --- v7.2: 途中でやり直すためのリセットボタン ---
+   1回目のタップで「ほんとに？」と確認し、2回目で実行する（誤タップ対策）。 */
+let resetArmed=0;
+function disarmReset(){
+  resetArmed=0;
+  resetButton.classList.remove("confirm");
+  resetButton.textContent="はじめから";
+}
+function updateResetButton(){
+  disarmReset();
+  // 1枚でも置いてあれば出す（完成後は「もう一度」があるので隠す）
+  resetButton.hidden=state.placed.size===0||state.completed.has(currentProgressKey());
+}
+resetButton.addEventListener("click",()=>{
+  if(Date.now()<resetArmed+6000&&resetArmed){
+    disarmReset();
+    replayCurrentLevel();
+    return;
+  }
+  resetArmed=Date.now();
+  resetButton.classList.add("confirm");
+  resetButton.textContent="ほんとに？";
+  setTimeout(()=>{
+    if(resetArmed&&Date.now()>=resetArmed+6000)disarmReset();
+  },6100);
+});
 
 function initAudio(){
   if(!state.audio)state.audio=new(window.AudioContext||window.webkitAudioContext)();
@@ -1671,6 +1717,7 @@ function loadLevel(index){
   build();
   restorePlacedItems();
 
+  updateResetButton();
   if(state.placed.size===state.items.length&&state.items.length){
     showCompletedState(false);
   }
@@ -1878,6 +1925,7 @@ function place(item,card,zone){
   state.placed.add(item.id);
   state.levelProgress.set(currentProgressKey(),new Set(state.placed));
   saveProgress();
+  updateResetButton();
   zone.classList.add("filled");
   zone.innerHTML=`<div class="placed"><img src="${item.icon}" alt=""><span>${item.name}</span></div>`;
   card.classList.add("done");
@@ -1903,6 +1951,7 @@ function showCompletedState(playSound=true){
   if(isNewCompletion)saveProgress();
   message.style.display="none";
   completionActions.classList.add("show");
+  updateResetButton();
   updateLayerSwitch();
 }
 
@@ -1981,7 +2030,7 @@ function loadProgress(){
    3) 「日本一周 達成証」を表示（なまえを入れられる）
    ========================================================= */
 const PALE_UNTIL_COMPLETE=true;   // false にすると、最初から全地方がカラー表示（従来どおり）
-const PALE_MIX=.62;               // 淡さ（白との混ぜ具合。大きいほど淡い）
+const PALE_MIX=.34;               // 未完成の地方の淡さ（白との混ぜ具合。大きいほど淡い）
 
 const japanMap=$("japanMap");
 const certButton=$("certButton");
@@ -2022,10 +2071,13 @@ function setRegionFill(regionId,full){
   });
 }
 
+// 完成した地方だけをカラーにする（残りは淡い色のまま）。
 // instant=true のときは色の変化をアニメーションさせない（読み込み時のチラつき防止）
-function applyMapColors(full,instant=true){
+let mapPainted=false;
+function applyMapColors(completedRegions,instant=!mapPainted){
   if(instant)japanMap.classList.add("instant");
-  LEVELS.forEach(level=>setRegionFill(level.id,full));
+  LEVELS.forEach(level=>setRegionFill(level.id,completedRegions.has(level.id)));
+  mapPainted=true;
   if(instant){
     requestAnimationFrame(()=>requestAnimationFrame(()=>japanMap.classList.remove("instant")));
   }
@@ -2223,14 +2275,14 @@ async function playCelebration(){
     ring.setAttribute("opacity",(1-e).toFixed(2));
   },easeOutCubic);
 
-  // 3) 北から順に、淡い色がフルカラーへ
+  // 3) 北から順に、地図が light を帯びて弾む（色はすでに完成時に付いている）
   const bloom=Promise.all(order.map(async(id,j)=>{
     await cwait(j*150);
     setRegionFill(id,true);
     const region=svg.querySelector(`#${id}`);
     if(region){
       region.classList.add("bloom");
-      setTimeout(()=>region.classList.remove("bloom"),520);
+      setTimeout(()=>region.classList.remove("bloom"),620);
     }
   }));
 
@@ -2261,7 +2313,7 @@ async function runCelebration(){
   japanMap.classList.add("celebrating");
   try{
     if(reducedMotion()){
-      applyMapColors(true,true);
+      applyMapColors(getCompletedRegions(),true);
     }else{
       await playCelebration();
     }
