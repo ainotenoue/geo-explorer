@@ -104,7 +104,7 @@ const KINKI_NATURE_ITEMS = [
     hint: "大阪湾と瀬戸内海の間にある｜兵庫県の大きな島",
     category: "island",
     icon: "assets/icons/island.svg",
-    x: 23,
+    x: 26,
     y: 70,
     side: "right",
     order: 5
