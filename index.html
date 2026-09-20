@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#e7f5f7">
-<title>Geo Explorer v7.2</title>
+<title>Geo Explorer v7.3</title>
 <style>
 :root{
   --ink:#18364b;
@@ -669,6 +669,84 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   transition:transform .15s ease;
 }
 .cert-button[hidden]{display:none}
+.home-reset-button{
+  border:1px solid var(--line);
+  background:#ffffffc7;
+  color:#7b93a0;
+  border-radius:999px;
+  font-weight:800;
+  font-size:14px;
+  padding:7px 14px;
+  transition:transform .15s ease,background .15s ease;
+}
+.home-reset-button[hidden]{display:none}
+.home-reset-button:active{transform:scale(.96);background:#fff}
+
+/* --- v7.3 確認ダイアログ --- */
+.ask-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  background:rgba(24,54,75,.5);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  transition:opacity .22s ease;
+}
+.ask-overlay[hidden]{display:none}
+.ask-overlay.show{opacity:1}
+.ask-box{
+  width:min(420px,100%);
+  padding:26px 24px 20px;
+  background:var(--panel);
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(14,36,52,.32);
+  text-align:center;
+  outline:none;
+  transform:translateY(10px) scale(.97);
+  transition:transform .26s cubic-bezier(.2,.8,.25,1);
+}
+.ask-overlay.show .ask-box{transform:none}
+.ask-title{
+  margin:0 0 10px;
+  font-size:21px;
+  font-weight:900;
+  color:var(--ink);
+}
+.ask-body{
+  margin:0 0 20px;
+  font-size:15px;
+  line-height:1.8;
+  font-weight:700;
+  color:#496b7a;
+}
+.ask-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.ask-cancel,.ask-ok{
+  border-radius:999px;
+  font-weight:900;
+  padding:11px 26px;
+  transition:transform .15s ease;
+}
+.ask-cancel{
+  background:#fff;
+  color:var(--accent);
+  border:2px solid var(--accent);
+}
+.ask-ok{
+  background:#d9773f;
+  color:#fff;
+  border:2px solid #d9773f;
+}
+.ask-cancel:active,.ask-ok:active{transform:scale(.96)}
 .cert-button:active{transform:scale(.96)}
 
 .confetti{
@@ -845,7 +923,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
-      <span class="version">v7.2</span>
+      <span class="version">v7.3</span>
     </div>
     <div class="home-copy">
       <strong>日本を旅しよう</strong>
@@ -936,6 +1014,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <footer class="home-footer">
     <span id="homeMessage">行きたい場所を選ぼう</span>
     <button class="cert-button" id="certButton" type="button" hidden>★ 証明書を見る</button>
+    <button class="home-reset-button" id="homeResetButton" type="button" hidden>はじめから</button>
   </footer>
 </section>
 
@@ -943,7 +1022,7 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
   <header class="game-header">
     <div class="game-title">
       <button class="home-button" id="homeButton" type="button">← 日本地図</button>
-      <span class="version">v7.2</span>
+      <span class="version">v7.3</span>
     </div>
     <div class="area-center">
       <div class="area-title" id="areaTitle">北海道</div>
@@ -991,6 +1070,17 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 
 
 <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<div class="ask-overlay" id="resetOverlay" role="dialog" aria-modal="true" aria-labelledby="resetAskTitle" hidden>
+  <div class="ask-box" id="resetBox" tabindex="-1">
+    <h2 class="ask-title" id="resetAskTitle">ぜんぶ はじめからにする？</h2>
+    <p class="ask-body" id="resetAskBody"></p>
+    <div class="ask-actions">
+      <button class="ask-cancel" id="resetCancel" type="button">やめる</button>
+      <button class="ask-ok" id="resetOk" type="button">ぜんぶ消す</button>
+    </div>
+  </div>
+</div>
 
 <div class="cert-overlay" id="certOverlay" role="dialog" aria-modal="true" aria-labelledby="certTitle" hidden>
   <div class="cert-paper" id="certPaper" tabindex="-1">
@@ -1481,6 +1571,8 @@ function updateHome(){
   // 完成した地方からカラーになる（未完成は淡い色のまま）
   applyMapColors(completedRegions);
   certButton.hidden=!(all&&state.celebrated);
+  // 記録が何もないときは出さない
+  homeResetButton.hidden=startedCount()===0&&!state.playerName;
 
   if(all){
     homeMessage.textContent="日本一周 達成！ ぜんぶの地図が完成したよ";
@@ -2041,6 +2133,12 @@ const certDate=$("certDate");
 const certClose=$("certClose");
 const certStamps=$("certStamps");
 const confettiLayer=$("confetti");
+const homeResetButton=$("homeResetButton");
+const resetOverlay=$("resetOverlay");
+const resetBox=$("resetBox");
+const resetAskBody=$("resetAskBody");
+const resetCancel=$("resetCancel");
+const resetOk=$("resetOk");
 
 const regionColors={};
 let celebrating=false;
@@ -2330,6 +2428,61 @@ async function runCelebration(){
     openCertificate();
   }
 }
+
+/* ---------- v7.3: TOP画面の「はじめから」（ぜんぶ消す） ---------- */
+function startedCount(){
+  let n=0;
+  state.levelProgress.forEach(ids=>{if(ids.size)n++});
+  return n;
+}
+
+function openResetAsk(){
+  const regions=getCompletedRegions().size;
+  const parts=[];
+  if(regions)parts.push(`完成した${regions}つの地方`);
+  if(state.playerName)parts.push("証明書のなまえ");
+  resetAskBody.textContent=parts.length
+    ? `${parts.join("と")}をふくめて、ぜんぶの記録が消えます。もとに戻せません。`
+    : "これまでの記録がぜんぶ消えます。もとに戻せません。";
+  resetOverlay.hidden=false;
+  requestAnimationFrame(()=>{
+    resetOverlay.classList.add("show");
+    resetCancel.focus({preventScroll:true});   // 既定は「やめる」側
+  });
+}
+
+function closeResetAsk(){
+  resetOverlay.classList.remove("show");
+  setTimeout(()=>{
+    if(!resetOverlay.classList.contains("show"))resetOverlay.hidden=true;
+  },240);
+}
+
+function resetEverything(){
+  state.levelProgress.clear();
+  state.completed.clear();
+  state.placed=new Set();
+  state.playerName="";
+  state.finishedOn="";
+  state.celebrated=false;
+  mapPainted=false;          // 色を一気に戻す（アニメーションさせない）
+  try{localStorage.removeItem(STORAGE_KEY)}catch(err){/* 保存できない環境でも続行 */}
+  certName.value="";
+  updateHome();
+}
+
+homeResetButton.addEventListener("click",openResetAsk);
+resetCancel.addEventListener("click",closeResetAsk);
+resetOk.addEventListener("click",()=>{
+  closeResetAsk();
+  resetEverything();
+});
+resetOverlay.addEventListener("click",event=>{
+  if(event.target===resetOverlay)closeResetAsk();   // 外側をタップしたら中止
+});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&!resetOverlay.hidden)closeResetAsk();
+});
 
 function queueCelebration(delay=700){
   clearTimeout(celebrationTimer);
