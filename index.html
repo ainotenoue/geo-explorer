@@ -1023,12 +1023,15 @@ h1{font-size:clamp(20px,2.5vw,30px);margin:0}
 }
 .home-reset-button.side:active{transform:translate(-50%,-50%) scale(.96)}
 
+.plaza{position:absolute;left:12px;bottom:12px;z-index:5;display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.92);border:2px solid #d9d4c8;color:#6b6760;font-size:13px;font-weight:800;text-decoration:none;font-family:inherit;line-height:1}
+.plaza:focus-visible{outline:3px solid #486b77;outline-offset:2px}
 </style>
 </head>
 <body>
 
 <!-- TOP画面の背景テーマ: data-theme を "sea"(海図) / "washi"(和紙のにじみ) / "atlas"(地図帳) から選ぶ -->
 <section class="screen active" id="homeScreen" data-theme="washi">
+  <a class="plaza" href="https://ainotenoue.github.io/">← ひろばへ</a>
   <header class="home-header">
     <div class="title-wrap">
       <h1>Geo Explorer</h1>
